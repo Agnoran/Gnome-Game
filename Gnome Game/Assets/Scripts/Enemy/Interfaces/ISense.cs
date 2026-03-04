@@ -1,7 +1,7 @@
 public interface IEnemySense
 {
     bool HasTarget { get; }
-    Transform Target { get; }
+    //Transfrom Target { get; }
     float DistanceToTarget { get; }
     bool CanSeeTarget { get; }
 }

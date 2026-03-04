@@ -43,9 +43,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RotateCamera",
+                    "name": "SprintToggle",
                     "type": "Button",
-                    "id": "943b4269-25ff-4664-995e-a24ba849f704",
+                    "id": "f0d221a4-adb3-4f3c-86d9-70e515ca6498",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "d238908a-ec43-4e98-aacf-1eda1925a2d7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -186,70 +195,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "0d22e622-4bf3-499d-a8ca-e83526b707b2",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "eac72e5b-dab8-446e-84e6-8569bf4b91f7",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": true,
+                    "action": "SprintToggle",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "b772fa86-0f3e-4cbb-b5e2-70fa5191662d",
-                    "path": "<Keyboard>/q",
+                    "name": "",
+                    "id": "96f8e40a-0ba4-4b33-89c6-f954b1686842",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCamera",
+                    "action": "SprintToggle",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "295c523b-6765-47ed-9e4e-a96b6639c1d3",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "6a119fae-e4d1-44cc-8a5b-9921b2f95948",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "76707245-9535-4e64-991b-c0d6b78ab00e",
-                    "path": "<Gamepad>/dpad/left",
+                    "name": "",
+                    "id": "557d46cf-a2d7-4697-bc84-e8eafcce2c9b",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateCamera",
+                    "action": "Attack",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "9ba9199b-69a1-4b6a-9571-9ece8afdfd07",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RotateCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
