@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +25,43 @@ public class UIManager : MonoBehaviour
  
     void Update()
     {
-        
+        if (Input.GetButtonDown("Back"))
+        {
+            if (menuActive == null)
+            {
+                statePause();
+                menuActive = menuPause;
+                menuActive.SetActive(true);
+            }
+            else if (menuActive == menuPause)
+            {
+                stateUnpause();
+            }
+        }
+    }
+
+    public void statePause()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void stateUnpause()
+    {
+        isPaused = false;
+        Time.timeScale = timeScaleOrig;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        menuActive.SetActive(false);
+        menuActive = null;
+    }
+
+    public void youLose()
+    {
+        statePause();
+        menuActive = menuLose;
+        menuActive.SetActive(true);
     }
 }

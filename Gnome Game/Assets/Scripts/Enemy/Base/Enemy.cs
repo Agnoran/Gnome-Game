@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, IEnemyDamage, IEnemyMovable
 
     public void MoveEnemy(Vector3 velocity)
     {
-        transform.localRotation
+        Quaternion localRotation = transform.localRotation;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

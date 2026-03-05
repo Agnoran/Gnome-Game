@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IEnemySense
 {
     bool HasTarget { get; }
