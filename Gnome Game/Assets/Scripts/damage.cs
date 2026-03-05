@@ -4,12 +4,18 @@ using System.Collections;
 public class damage : MonoBehaviour
 {
     enum damageType { bullet,stationary,DOT}
+    public enum statusType { none, poisoned, burned, shocked, frozen, wet, clear };
+    
     [SerializeField] damageType type;
+    [SerializeField] statusType status;
     [SerializeField] Rigidbody rb;
 
 
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
+    [SerializeField] int statusDamageAmount;
+    [SerializeField] float statusDamageRate;
+    [SerializeField] float statusDuration;
 
     [SerializeField] int speed;
     [SerializeField] float destroyTime;
@@ -33,11 +39,20 @@ public class damage : MonoBehaviour
         {
             return;
         }
+        //check if what entered the trigger derives from istatus and or idamage;
         IDamage dmg = other.GetComponent<IDamage>();
+        IStatus stat = other.GetComponent<IStatus>();
+        //if derived from istatus will apply the status and send all relevant information to object being statused.
+        if (stat != null)
+        {
+            stat.applyStatus(status,statusDamageAmount,statusDamageRate,statusDuration);
+        } 
+        //if derived from idamage will deal damage to object.
         if (dmg != null && type != damageType.DOT)
         {
             dmg.takeDamage(damageAmount);
         }
+        //if bullet will use hit effect then destroy self
         if (type == damageType.bullet)
         {
             if(hitEffect != null)
