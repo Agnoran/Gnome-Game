@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
 
-    public Image playerHP;
-    public Image playerMP;
+   
 
     int gnomeTotal;
     public TMP_Text gnomeRemainingText;

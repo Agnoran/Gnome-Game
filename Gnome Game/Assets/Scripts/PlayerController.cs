@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     damage.statusType inflictedStatus;
 
     [SerializeField] int hp;
+    [SerializeField] int mp;
     int HPOriginal;
+    int MPOriginal;
     [SerializeField] int damage;
     [SerializeField] Renderer model;
     Color colorOG;
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Start()
     {
         HPOriginal = hp;
+        MPOriginal = mp;
         colorOG = model.material.color;
         endStatus();
     }
@@ -44,6 +47,13 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             StartCoroutine(playerDamageFlash());
         }
+    }
+
+    public void updatePlayerUI()
+    {
+        UIManager.Instance.playerHP.fillAmount = (float)HPOriginal / hp;
+        UIManager.Instance.playerMP.fillAmount = (float)MPOriginal / mp;
+
     }
 
     IEnumerator playerDamageFlash()
