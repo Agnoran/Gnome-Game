@@ -11,6 +11,8 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] string jump = "Jump";
     [SerializeField] string attack = "Attack";
     [SerializeField] string sprint = "Sprint";
+    [SerializeField] string sprintToggle = "SprintToggle";
+
     [SerializeField] string interact = "Interact";
     [SerializeField] string dash = "Dash";
     [SerializeField] string roll = "Roll";
@@ -23,6 +25,8 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction jumpAction;
     InputAction attackAction;
     InputAction sprintAction;
+    InputAction sprintToggleAction;
+
     InputAction interactAction;
     InputAction dashAction;
     InputAction rollAction;
@@ -36,6 +40,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool RollInput { get; private set; }
 
     public float SprintValue { get; private set; }
+    public bool SprintToggleValue { get; private set; }
     public float RotateCameraInput { get; private set; }
 
     public static PlayerInputHandler Instance { get; private set; }
@@ -74,6 +79,7 @@ public class PlayerInputHandler : MonoBehaviour
         dashAction = actionMap.FindAction(dash);
         rollAction = actionMap.FindAction(roll);
         rotateCameraAction = actionMap.FindAction(rotateCamera);
+        sprintToggleAction = actionMap.FindAction(sprintToggle);
 
         RegisterInputAction();
     }
@@ -102,6 +108,10 @@ public class PlayerInputHandler : MonoBehaviour
         {
             sprintAction.performed += ctx => SprintValue = ctx.ReadValue<float>();
             sprintAction.canceled += ctx => SprintValue = 0f;
+        }
+        if (sprintToggleAction != null)
+        {
+            sprintToggleAction.performed += ctx => SprintToggleValue = !SprintToggleValue;
         }
 
         if (interactAction != null)
@@ -135,10 +145,12 @@ public class PlayerInputHandler : MonoBehaviour
         if (jumpAction != null) jumpAction.Enable();
         if (attackAction != null) attackAction.Enable();
         if (sprintAction != null) sprintAction.Enable();
+        if(sprintToggleAction != null) sprintToggleAction.Enable();
         if (interactAction != null) interactAction.Enable();
         if (dashAction != null) dashAction.Enable();
         if (rollAction != null) rollAction.Enable();
         if (rotateCameraAction != null) rotateCameraAction.Enable();
+
     }
 
     void OnDisable()
@@ -147,6 +159,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (jumpAction != null) jumpAction.Disable();
         if (attackAction != null) attackAction.Disable();
         if (sprintAction != null) sprintAction.Disable();
+        if (sprintToggleAction != null) sprintToggleAction.Disable();
         if (interactAction != null) interactAction.Disable();
         if (dashAction != null) dashAction.Disable();
         if (rollAction != null) rollAction.Disable();
