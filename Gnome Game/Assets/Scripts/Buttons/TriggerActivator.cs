@@ -19,7 +19,7 @@ public class TriggerActivator : MonoBehaviour
         // try to get the ITriggerable from the targetObject
         if (targetObject != null)
         {
-            target = targetObject.GetComponent<ITriggerable>();
+            target = targetObject.GetComponentInParent<ITriggerable>();
         }
 
         // if we still don't have a target, log an error

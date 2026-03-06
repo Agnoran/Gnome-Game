@@ -1,0 +1,10 @@
+"gnome game" is a top-down dungeon crawler starring a gnome in a whimsical fantasy world. Use magic to fight through dungeons, gaining experience and resources, and rescuing trapped allies on the way to securing a precious dragon egg
+
+Main focuses toward development
+UI(hud, stat bars, in-level progress, menus, popups)
+Wizard(dialogue, quests, story prog)
+Player(movement, camera, casting spells)
+Magic(spell structure, creation, progression)
+Overworld(navigation, progression, enter/exit maps)
+Dungeons(structure, layout, objects)
+Enemies(basic, bosses)
