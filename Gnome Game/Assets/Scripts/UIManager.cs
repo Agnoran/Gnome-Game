@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
    public static UIManager Instance;
 
+    [SerializeField] GameObject Inventory;
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
