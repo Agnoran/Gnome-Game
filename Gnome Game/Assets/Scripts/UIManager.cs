@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
    public static UIManager Instance;
+    [SerializeField] GameObject HUD;
 
     [SerializeField] GameObject Inventory;
     [SerializeField] GameObject menuActive;
@@ -13,6 +14,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
 
+
+    public GameObject player;
+    public PlayerController playerScript;
     public bool isPaused;
 
     float timeScaleOrig;
@@ -24,12 +28,14 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
         timeScaleOrig = Time.timeScale;
+        player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
     }
 
  
     void Update()
     {
-        if (Input.GetButtonDown("Back"))
+        if (Input.GetButtonDown("Cancel"))
         {
             if (menuActive == null)
             {
