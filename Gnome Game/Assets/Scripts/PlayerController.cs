@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage,IStatus
 {
-    damage.statusType inflictedStatus;
+    [SerializeField]damage.statusType inflictedStatus;
+    [SerializeField] ParticleSystem statusParticles;
+    [SerializeField] GameObject particlePos;
 
     [SerializeField] int hp;
     [SerializeField] int mp;
@@ -15,9 +17,11 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     Color colorOG;
 
     float statusTimer;
-    float sDuration;
-    int sDamage;
-    float sRate;
+    [SerializeField] float sDuration;
+    [SerializeField] int sDamage;
+    [SerializeField] float sRate;
+    bool isDamaging;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -79,14 +83,61 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             return;
         }
         //only apply a new status if there isn't currently one active
-        //TODO allow applying status if going from wet to shocked
-        else if (inflictedStatus == global::damage.statusType.none) 
+        // allow applying status if going from wet to shocked and end wet status if burn status applied after
+        if(inflictedStatus == global::damage.statusType.wet)
+        {
+            if(status == global::damage.statusType.shocked)
+            {
+                inflictedStatus = status;
+                statusTimer = 0;
+                sDamage = statusDamage * 2;
+                sRate = 1;
+                sDuration = 1;
+            }
+            if (status == global::damage.statusType.burned)
+            {
+                endStatus();
+            }
+        }
+        if(inflictedStatus == global::damage.statusType.burned)
+        {
+            if(status == global::damage.statusType.wet || status == global::damage.statusType.frozen)
+            {
+                endStatus();
+            }
+        }
+        else if (inflictedStatus == global::damage.statusType.none)
         {
             inflictedStatus = status;
             statusTimer = 0;
             sDamage = statusDamage;
             sRate = statusRate;
             sDuration = statusDuration;
+            switch (inflictedStatus)
+            {
+                case global::damage.statusType.poisoned:
+                    statusParticles.startColor = Color.green;
+                    Instantiate(statusParticles);
+                    break;
+                case global::damage.statusType.wet:
+                    statusParticles.startColor = Color.blue;
+                    Instantiate(statusParticles);
+                    break;
+                case global::damage.statusType.burned:
+                    statusParticles.startColor = Color.orangeRed;
+                    Instantiate(statusParticles);
+                    break;
+                case global::damage.statusType.shocked:
+                    statusParticles.startColor = Color.yellow;
+                    Instantiate(statusParticles);
+                    break;
+                case global::damage.statusType.frozen:
+                    statusParticles.startColor = Color.cyan;
+                    Instantiate(statusParticles);
+                    break;
+
+                default: break;
+            }
         }
     }
 
@@ -105,11 +156,11 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             endStatus();
         }
-        if (inflictedStatus == global::damage.statusType.poisoned || inflictedStatus == global::damage.statusType.burned)
+        if (inflictedStatus == global::damage.statusType.poisoned || inflictedStatus == global::damage.statusType.burned && !isDamaging)
         {
             StartCoroutine(inflictedStatusDamage(sDamage, sRate));
         }
-        //TODO implement logic for shocked and frozen. Wet status intended to be increase damage in a burst if going from wet to shocked and increase duration of shocked
+        //TODO implement logic for shocked and frozen. 
     }
 
     public void endStatus()
@@ -118,13 +169,16 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         inflictedStatus = global::damage.statusType.none;
         statusTimer = 0;
         sDuration = 0;
+
     }
 
     IEnumerator inflictedStatusDamage(int amount, float rate)
     {
         //DOT status routine
+        isDamaging = true;
         takeDamage(amount);
         yield return new WaitForSeconds(rate);
+        isDamaging = false;
     }
 }
 
