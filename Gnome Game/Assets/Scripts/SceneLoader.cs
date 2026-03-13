@@ -22,6 +22,8 @@ public class SceneLoader : MonoBehaviour
     // Currently loaded area scene name (so we know what to unload)
     private string currentLoadedScene = "";
 
+    private string pendingSceneName = "";
+
     // spawn point ID to use after the next scene finshes loading
     private string pendingSpawnPointID = "DefaultPending";
 
@@ -57,38 +59,23 @@ public class SceneLoader : MonoBehaviour
         
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
 
-
-        Debug.Log($"<color=cyan>[SceneLoader]</color> Loading: '{startingScene}' directly");
+       
 
         pendingSpawnPointID = startingSpawnPointID;
+        pendingSceneName = startingScene;
 
+        Debug.Log($"<color=cyan>[SceneLoader]</color> Loading '{startingScene}' directly...");
+        SceneManager.LoadSceneAsync(startingScene, LoadSceneMode.Additive);
 
-        try
-        {
-            SceneManager.LoadSceneAsync(startingScene, LoadSceneMode.Additive);
-            Debug.Log($"<color=green>[SceneLoader]</color> LoadSceneAsync called successfully!");
-        }
-        catch (System.Exception e) 
-        {
-            Debug.LogError($"<color=red>[SceneLoader]</color> EXCEPTION: {e.Message}");
-            Debug.LogError($"<color=red>[SceneLoader]</color> {e}");
-        }
-
-        //if (string.IsNullOrEmpty(startingScene))
-        //{
-        //    Debug.LogError("<color=red>[SceneLoader]</color> Starting scene is EMPTY!");
-        //    return;
-        //}
-
-        //Debug.Log($"<color=cyan>[SceneLoader]</color> Calling LoadArea('{startingScene}')...");
-        //LoadArea(startingScene, startingSpawnPointID);
 
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     public void LoadArea(string sceneName, string spawnPointID = "Default")
@@ -97,77 +84,34 @@ public class SceneLoader : MonoBehaviour
 
         if (isLoading)
         {
-            //Debug.LogWarning("<color=yellow>[SceneLoader]</color> Already loading!");
+            Debug.LogWarning("<color=yellow>[SceneLoader]</color> Already loading!");
             return;
         }
-        //if (string.IsNullOrEmpty(sceneName))
-        //{
-        //    Debug.LogError("<color=red>[SceneLoader]</color> Scene name is empty!");
-        //    return;
-        //}
-
-        //Debug.Log($"<color=cyan>[SceneLoader]</color> Starting coroutine for '{sceneName}'....");
-
-        StartCoroutine(LoadAreaRoutine(sceneName, spawnPointID));
-
-    }
-
-    private System.Collections.IEnumerator LoadAreaRoutine(string sceneName, string spawnPointID)
-    {
-        //Debug.Log($"<color=green>[SceneLoader</color> === Coroutine started ===");
 
         isLoading = true;
+        pendingSceneName = sceneName;
         pendingSpawnPointID = spawnPointID;
 
-        // Make some kind of a fade to black or an actual scene or something 
+        Debug.Log($"<color=cyan>[SceneLoader]</color> LoadArea called: '{sceneName}'");
 
-
-
-        //Debug.Log($"<color=green>[SceneLoader]</color> currentLoadedScene = '{currentLoadedScene}'");
-        // unload the current area if it exists
-
-        if (!string.IsNullOrEmpty(currentLoadedScene))
+        if(!string.IsNullOrEmpty(currentLoadedScene))
         {
-            // Debug.Log($"<color=green>[SceneLoader]</color> Unloading '{currentLoadedScene}'....");
-            AsyncOperation unload = SceneManager.UnloadSceneAsync(currentLoadedScene);
-            if (unload != null)
-            {
-                while (!unload.isDone) yield return null;
-            }
-
-            yield return Resources.UnloadUnusedAssets();
-            //Debug.Log($"<color=green>[SceneLoader]</color> Unload complete.");
+            Debug.Log($"<color=cyan>[SceneLoader]</color> Unloading '{currentLoadedScene}' first...");
+            SceneManager.UnloadSceneAsync(currentLoadedScene);
         }
-        AsyncOperation load = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        // AsyncOperation load = null;
-        if (load != null)
+        else
         {
-            // Debug.LogError($"<color=red>[SceneLoader]</color> LoadSceneAsync return NULL!'{sceneName}' not found in Build Settings?");
-            while (!load.isDone) yield return null;
-
+            Debug.Log($"<color=cyan>[SceneLoader]</color> Loading '{sceneName}' directly...");
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
-        currentLoadedScene = sceneName;
-        isLoading = false;
-
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnAreaLoaded(sceneName);
-        }
-
-
-        //else
-        //{
-        //    Debug.Log("<color=yellow>[SceneLoader]</color> GameManager.Instance is null!");
-        //}
-
-        // Implement the same logic or same solution here to hide the loading! 
-
-
-        // GameManager.Instance.OnAreaLoaded(sceneName);
 
     }
 
-
+    private void OnSceneUnloaded(Scene scene)
+    {
+        Debug.Log($"<color=cyan>[SceneLoader]</color> Unloaded '{scene.name}'. Now loading '{pendingSceneName}'");
+        SceneManager.LoadSceneAsync(pendingSceneName, LoadSceneMode.Additive);
+    }
 
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
