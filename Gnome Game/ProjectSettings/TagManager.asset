@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 3
   tags:
   - UI Menu
+  - Traps
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Traps
   - 
   - 
   - 
