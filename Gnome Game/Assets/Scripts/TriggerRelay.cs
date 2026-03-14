@@ -13,11 +13,6 @@ public class TriggerRelay : MonoBehaviour, ITriggerable
         for (int i = 0; i < targets.Length; i++)
         {
             triggerTargets[i] = targets[i] as ITriggerable;
-
-            if (triggerTargets[i] == null)
-            {
-                Debug.LogError(targets[i].name + " does not implement ITriggerable", this);
-            }
         }
     }
 
