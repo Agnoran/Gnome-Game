@@ -95,4 +95,16 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed += amount;
     }
 
+    public void moveSpeedSlowed(float amount)
+    {
+        moveSpeed /= amount;
+    }
+    public void SetMoveSpeed(float amount)
+    {
+        moveSpeed = amount;
+    }
+    public void moveSpeedReset()
+    {
+        moveSpeed = origMoveSpeed;
+    }
 }

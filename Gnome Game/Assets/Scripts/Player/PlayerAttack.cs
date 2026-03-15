@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] PlayerInputHandler inputHandler;
@@ -10,26 +11,26 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
     [SerializeField] Transform shootPos;
+    public bool frozen;
 
     float shootTimer;
+    float shootRateOG;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        shootRateOG = shootRate;
+        frozen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        shootTimer = Time.deltaTime;
+        shootTimer += Time.deltaTime;
 
-        if (inputHandler.AttackInput)
+        if (inputHandler.AttackInput  && shootTimer >= shootRate && !frozen)
         {
-            if (shootTimer >= shootRate)
-            {
-                Shoot();
-            }
+            Shoot();
         }
     }
 
@@ -37,5 +38,14 @@ public class PlayerAttack : MonoBehaviour
     {
         shootTimer = 0;
         Instantiate(bullet,shootPos.position,transform.rotation);
+    }
+
+    public void attackSlowed(int amount)
+    {
+        shootRate *= amount;
+    }
+    public void attackspdReset()
+    {
+        shootRate = shootRateOG;
     }
 }
