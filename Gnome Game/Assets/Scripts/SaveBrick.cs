@@ -65,13 +65,16 @@ public class SaveBrick : MonoBehaviour
     [SerializeField] private float floatHeight = 0.15f;
     private Vector3 basePosition;
 
+    private bool hasBeenActicated = false;
+    bool hasBeenActivated;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         originalPosition = transform.position;
         RefreshDisplay();
-       // basePosition = transform.position;
+        // basePosition = transform.position;
+        Debug.Log($"<color=yellow>[SaveBrick]</color> Brick '{slotName} (slot {slotIndex}) ready. hasSave={hasSave}");
 
         
         
@@ -130,13 +133,16 @@ public class SaveBrick : MonoBehaviour
             if (brickRenderer != null) brickRenderer.material.color = emptyColor;
             if (brickLight != null) { brickLight.color = emptyColor; brickLight.intensity = 0.5f; }
         }
+        
     }
 
             // On Triger Enter , player jumping into the squares trigger collider from under. 
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"<color>=yellow[SaveBrick]</color> OnTriggerEnter! Object: '{other.gameObject.name}', Tag: '{other.tag}'");
+        // Debug.Log($"<color>=yellow[SaveBrick]</color> OnTriggerEnter! Object: '{other.gameObject.name}', Tag: '{other.tag}'");
+
+        if (hasBeenActivated) return;
 
         if (!other.CompareTag("Player"))
         {
@@ -144,8 +150,8 @@ public class SaveBrick : MonoBehaviour
             return;
         }
 
-        playerInRange = true;
-        Debug.Log($"<color>=ygreen>[SaveBrick]</color> Player entered brick '{slotName}' trigger!");
+        hasBeenActivated = true;
+      //  Debug.Log($"<color>=ygreen>[SaveBrick]</color> Player entered brick '{slotName}' trigger!");
 
         TriggerBrick();
 
@@ -154,15 +160,15 @@ public class SaveBrick : MonoBehaviour
         //        ActivateSlot();
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log($"<Color=green>[SaveBrick]</color> TriggerBrick called on '{slotName}'!");
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    Debug.Log($"<Color=green>[SaveBrick]</color> TriggerBrick called on '{slotName}'!");
 
-        if (!other.CompareTag("Player")) return;
+    //    if (!other.CompareTag("Player")) return;
 
-        playerInRange = false;
+    //    playerInRange = false;
 
-    }
+    //}
 
     private void TriggerBrick()
     {
@@ -290,11 +296,6 @@ public class SaveBrick : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, transform.localScale);
-
-#if UNITY_EDITOR
-        UnityEditor.Handles.Label(transform.position + Vector3.up * 1.5f, $"Brick {slotName}"
-            );
-#endif
     }
 
 
