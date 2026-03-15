@@ -24,9 +24,11 @@ public class menuButtonFunctions : MonoBehaviour
 #endif
     }
 
-    /*public void respawnPlayer()
+    /*
+    public void respawnPlayer()
     {
         UIManager.Instance.playerScript.spawnPlayer();
         UIManager.Instance.stateUnpause();
-    }*/
+    }
+    */
 }

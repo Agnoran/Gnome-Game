@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc8966ae1d07864384af5f198e8a608, type: 3}
-  m_Name: Dialog
-  m_EditorClassIdentifier: Assembly-CSharp::dialogData
-  lines:
-  - 
-  - 
-  - 
-  - 
-  - 
+  m_Script: {fileID: 11500000, guid: af6259ea72bf2df46bb95bcf66694648, type: 3}
+  m_Name: New Dialog
+  m_EditorClassIdentifier: Assembly-CSharp::dialogCoreNodes
+  dialogText: 
+  choices: []

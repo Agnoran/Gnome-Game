@@ -16,4 +16,4 @@ public class itemPickup : MonoBehaviour
         }
     }
 }
-// attach to all pickup ables
+// attach to all pickups
