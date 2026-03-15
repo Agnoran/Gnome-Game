@@ -67,6 +67,7 @@ public class shopManager : MonoBehaviour
             inventoryManager.Instance.AddItem(slot.item.Item);
 
             slot.stock--;
+            FindAnyObjectByType<shopUIManager>().RefreshShopUI();
 
             Debug.Log("Purchased: " + slot.item.DisplayName);
         }
