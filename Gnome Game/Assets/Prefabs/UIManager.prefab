@@ -163,6 +163,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4072989453063347392}
   - {fileID: 224373700152438633}
   - {fileID: 2858358628419876618}
   - {fileID: 8994959080446270854}
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   HUD: {fileID: 1725286512157452887}
+  Gold: {fileID: 6137821389205317159}
   Inventory: {fileID: 478653932240609478}
   menuActive: {fileID: 0}
   menuPause: {fileID: 3406175369775281761}
@@ -1068,7 +1070,6 @@ GameObject:
   - component: {fileID: 193295256484178550}
   - component: {fileID: 5366184775242389005}
   - component: {fileID: 6412945872343650168}
-  - component: {fileID: 1102033618071094527}
   m_Layer: 5
   m_Name: HUD
   m_TagString: UI Menu
@@ -1090,7 +1091,6 @@ RectTransform:
   m_Children:
   - {fileID: 710406588055625793}
   - {fileID: 484584880187084809}
-  - {fileID: 4072989453063347392}
   m_Father: {fileID: 3611454964400402070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1175,19 +1175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HUD
   gnomeRemainingText: {fileID: 3799686883266002075}
   gnomeCollectedText: {fileID: 1706072742667880518}
---- !u!114 &1102033618071094527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725286512157452887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d505fecd932960947b499d8d962fd072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::goldUI
-  goldText: {fileID: 5943549729275680352}
 --- !u!1 &1871798080595470163
 GameObject:
   m_ObjectHideFlags: 0
@@ -5800,13 +5787,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8769894417197040876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3987403660437160331}
-  m_Father: {fileID: 1303917657724007732}
+  m_Father: {fileID: 3611454964400402070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
