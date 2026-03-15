@@ -1,65 +1,45 @@
 using UnityEngine;
 
-public class SpikeTrap : MonoBehaviour, ITriggerable
+public class SpikeTrap : MonoBehaviour
 {
-    [Header("Settings")]
     public bool isTimed = false;
-    public float interval = 2.0f;
-
+    public float interval = 2f;
     private Animator anim;
-    private Collider damageCollider;
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
-        damageCollider = GetComponentInChildren<Collider>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Start()
     {
-        if (isTimed)
-        {
-            InvokeRepeating(nameof(ToggleSpikes), interval, interval);
-        }
+        if (isTimed) InvokeRepeating(nameof(ToggleSpikes), interval, interval);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something hit the spikes: " + other.name);
-        if (!isTimed && other.CompareTag("Player"))
+        if (!isTimed && other.CompareTag("Player") && anim != null)
         {
-            Activate();
+            anim.SetBool("IsOut", true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isTimed && other.CompareTag("Player"))
+        if (anim != null) anim.SetBool("IsOut", false);
+        if (!isTimed && other.CompareTag("Player") && anim != null)
         {
-            Deactivate();
+            anim.SetBool("IsOut", false);
         }
     }
 
-    public void Activate()
+    void ToggleSpikes()
     {
-        if (!isTimed) SetSpikeState(true);
-    }
-
-    public void Deactivate()
-    {
-        if (!isTimed) SetSpikeState(false);
-    }
-
-    private void ToggleSpikes()
-    {
-        bool currentState = anim.GetBool("IsOut");
-        SetSpikeState(!currentState);
-    }
-
-    private void SetSpikeState(bool extend)
-    {
-        if (anim != null) anim.SetBool("IsOut", extend);
-
-        if (damageCollider != null) damageCollider.enabled = extend;
+        if (anim != null)
+        {
+            Debug.Log("Toggling Spikes! New State: " + !anim.GetBool("IsOut"));
+            bool state = anim.GetBool("IsOut");
+            anim.SetBool("IsOut", !state);
+        }
     }
 }
