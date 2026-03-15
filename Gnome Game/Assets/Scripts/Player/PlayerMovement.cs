@@ -94,7 +94,10 @@ public class PlayerMovement : MonoBehaviour
     {
         moveSpeed += amount;
     }
-
+    public void hasteMoveSpeed(float amount)
+    {
+        moveSpeed *= amount;
+    }
     public void moveSpeedSlowed(float amount)
     {
         moveSpeed /= amount;

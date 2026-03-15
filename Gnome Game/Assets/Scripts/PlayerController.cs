@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             return;
         }
         hp -= amount;
+        //updatePlayerUI();
 
         if (hp < 0)
         {
@@ -81,18 +82,36 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         model.material.color = colorOG;
     }
 
-        //get information from what inflicted the status and apply the condiiton to the player.
+    //get information from what inflicted the status and apply the condiiton to the player.
     public void applyStatus(damage.statusType status, int statusDamage, float statusRate, float statusDuration)
     {
         //if the player status passed in is a buff, apply stats to buff variables allowing for separate instances of statuses vs buffs.
-        if(status == global::damage.statusType.shield)
+        if (status == global::damage.statusType.shield || status == global::damage.statusType.hasted && buff == global::damage.statusType.none)
         {
             buff = status;
             buffDuration = statusDuration;
             
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
-            model.material.color = Color.whiteSmoke;
+            if(buff == global::damage.statusType.shield)
+            {
+                model.material.color = Color.whiteSmoke;
+            }
+            if (buff == global::damage.statusType.hasted)
+            {
+                model.material.color = Color.orange;
+                attack.modAttackSpeed(2);
+                movement.hasteMoveSpeed(2);
+            }
             return;
+        }
+        if(inflictedStatus == global::damage.statusType.slowed)
+        {
+            if(status == global::damage.statusType.hasted)
+            {
+                endStatus();
+                applyStatus(status,statusDamage, statusRate, statusDuration);
+                return;
+            }
         }
         //if clear status applied like from a heal spell will end currently inflicted status.
         if(status == global::damage.statusType.clear)
@@ -104,6 +123,11 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         if (inflictedStatus == status)
         {
             statusTimer = 0;
+            return;
+        }
+        if (buff == status)
+        {
+            buffTimer = 0;
             return;
         }
         //only apply a new status if there isn't currently one active
@@ -269,6 +293,17 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     }
     void endBuff()
     {
+        if(buff == global::damage.statusType.hasted)
+        {
+            if(movement != null)
+            {
+                movement.moveSpeedReset();
+            }
+            if (attack != null)
+            {  
+                attack.attackspdReset();
+            }
+        }
         //clears buff and resets values once the duration elapses
         buff = global::damage.statusType.none;
         buffTimer = 0;
@@ -284,6 +319,30 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         takeDamage(amount);
         yield return new WaitForSeconds(rate);
         isDamaging = false;
+    }
+
+    public void addMP(int amount)
+    {
+        if (mp < MPOriginal)
+        {
+            mp += amount;
+        }
+        //updatePlayerUI();
+    }
+    public void removeMP(int amount)
+    {
+        if (mp < 0)
+        {
+            mp -= amount;
+        }
+        //updatePlayerUI();
+    }
+    public void Heal(int amount)
+    {
+        if(hp < HPOriginal)
+        {
+            hp += amount;
+        }
     }
 }
 

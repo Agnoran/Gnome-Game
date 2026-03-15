@@ -10,6 +10,8 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] string move = "Move";
     [SerializeField] string jump = "Jump";
     [SerializeField] string attack = "Attack";
+    [SerializeField] string shoot = "Shoot";
+    [SerializeField] string enchant = "Enchant";
     [SerializeField] string sprint = "Sprint";
     [SerializeField] string sprintToggle = "SprintToggle";
 
@@ -24,6 +26,8 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction moveAction;
     InputAction jumpAction;
     InputAction attackAction;
+    InputAction shootAction;
+    InputAction enchantAction;
     InputAction sprintAction;
     InputAction sprintToggleAction;
 
@@ -35,6 +39,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MoveInput { get; private set; }
     public bool JumpInput { get; private set; }
     public bool AttackInput { get; private set; }
+    public bool ShootInput { get; private set; }
+    public bool EnchantInput {  get; private set; }
     public bool InteractInput { get; private set; }
     public bool DashInput { get; private set; }
     public bool RollInput { get; private set; }
@@ -74,6 +80,8 @@ public class PlayerInputHandler : MonoBehaviour
         moveAction = actionMap.FindAction(move);
         jumpAction = actionMap.FindAction(jump);
         attackAction = actionMap.FindAction(attack);
+        shootAction = actionMap.FindAction(shoot);
+        enchantAction = actionMap.FindAction(enchant);
         sprintAction = actionMap.FindAction(sprint);
         interactAction = actionMap.FindAction(interact);
         dashAction = actionMap.FindAction(dash);
@@ -102,6 +110,16 @@ public class PlayerInputHandler : MonoBehaviour
         {
             attackAction.performed += ctx => AttackInput = true;
             attackAction.canceled += ctx => AttackInput = false;
+        }
+        if (shootAction != null)
+        {
+            shootAction.performed += ctx => ShootInput = true;
+            shootAction.canceled += ctx => ShootInput = false;
+        }
+        if(enchantAction != null)
+        {
+            enchantAction.performed += ctx => EnchantInput = true;
+            enchantAction.performed += ctx => EnchantInput = false;
         }
 
         if (sprintAction != null)
@@ -144,6 +162,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (moveAction != null) moveAction.Enable();
         if (jumpAction != null) jumpAction.Enable();
         if (attackAction != null) attackAction.Enable();
+        if(shootAction != null) shootAction.Enable();
+        if (enchantAction != null) enchantAction.Enable();
         if (sprintAction != null) sprintAction.Enable();
         if(sprintToggleAction != null) sprintToggleAction.Enable();
         if (interactAction != null) interactAction.Enable();
@@ -158,6 +178,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (moveAction != null) moveAction.Disable();
         if (jumpAction != null) jumpAction.Disable();
         if (attackAction != null) attackAction.Disable();
+        if (shootAction != null) shootAction.Disable();
+        if (enchantAction != null)enchantAction.Disable();
         if (sprintAction != null) sprintAction.Disable();
         if (sprintToggleAction != null) sprintToggleAction.Disable();
         if (interactAction != null) interactAction.Disable();

@@ -4,7 +4,7 @@ using System.Collections;
 public class damage : MonoBehaviour
 {
     enum damageType { bullet,stationary,DOT}
-    public enum statusType { none, poisoned, burned, shocked, frozen, wet, clear, shield, slowed };
+    public enum statusType { none, poisoned, burned, shocked, frozen, wet, clear, shield, slowed, hasted };
     
     [SerializeField] damageType type;
     [SerializeField] statusType status;
