@@ -62,7 +62,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.sceneUnloaded += OnSceneUnloaded;
 
        
-
+        currentLoadedScene = startingScene;
         pendingSpawnPointID = startingSpawnPointID;
         pendingSceneName = startingScene;
 
@@ -149,9 +149,14 @@ public class SceneLoader : MonoBehaviour
                 player.transform.rotation = targetSpawn.transform.rotation;
                 Debug.Log($"<color=magenta>[SceneLoader]</color> Player moved to '{targetSpawn.SpawnPointID}'");
             }
-           
+
         }
-     
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnAreaLoaded(scene.name);
+        }
+
     }
 
 }
