@@ -55,6 +55,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public Vector2 MoveInput { get; private set; }
     public float SprintValue { get; private set; }
+    public bool SprintToggleValue { get; private set; }
 
     public bool JumpInput { get; private set; }
     public bool DashInput { get; private set; }
@@ -150,6 +151,14 @@ public class PlayerInputHandler : MonoBehaviour
     {
         RegisterVector2Action(moveAction, value => MoveInput = value, () => MoveInput = Vector2.zero);
         RegisterFloatAction(sprintAction, value => SprintValue = value, () => SprintValue = 0f);
+
+        if (sprintAction != null)
+        {
+            sprintAction.performed += ctx =>
+            {
+                SprintToggleValue = !SprintToggleValue;
+            };
+        }
 
         RegisterButtonAction(jumpAction, value => JumpInput = value);
         RegisterButtonAction(dashAction, value => DashInput = value);
@@ -283,5 +292,15 @@ public class PlayerInputHandler : MonoBehaviour
 
         playerControls.RemoveAllBindingOverrides();
         SaveBindingOverrides();
+    }
+
+    public bool GetSprintActive(bool useToggleSprint)
+    {
+        if (useToggleSprint)
+        {
+            return SprintToggleValue;
+        }
+
+        return SprintValue > 0.1f;
     }
 }
