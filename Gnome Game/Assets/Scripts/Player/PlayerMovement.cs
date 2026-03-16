@@ -1,60 +1,93 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
-    float origMoveSpeed;
     [SerializeField] float sprintMultiplier = 1.5f;
-    float origSprintMod;
 
+    [Header("Jump / Gravity")]
     [SerializeField] float gravity = 9.81f;
-    [SerializeField] float jumpforce = 1.5f;
+    [SerializeField] float jumpForce = 1.5f;
 
-    [SerializeField] float rotateSensitivity;
+    [Header("Rotation")]
+    [SerializeField] float rotateSpeed = 15f;
+    [SerializeField] Transform visualRoot;
 
+    [Header("References")]
     [SerializeField] CharacterController playerController;
     [SerializeField] Camera mainCamera;
     [SerializeField] PlayerInputHandler inputHandler;
 
+    [Header("Options")]
     [SerializeField] bool isToggleSprint = false;
-    bool isSprinting = false;
-
 
     Vector3 currentMovement;
-    Vector3 verticalRotation;
 
     void Awake()
     {
-        playerController = GetComponent<CharacterController>();
-        inputHandler = PlayerInputHandler.Instance;
-        origMoveSpeed = moveSpeed;
-        origSprintMod = sprintMultiplier;
+        if (playerController == null)
+        {
+            playerController = GetComponent<CharacterController>();
+        }
+
+        if (mainCamera == null)
+        {
+            mainCamera = GetComponentInChildren<Camera>();
+
+            if (mainCamera == null)
+            {
+                mainCamera = Camera.main;
+            }
+        }
+
+        if (inputHandler == null)
+        {
+            inputHandler = PlayerInputHandler.Instance;
+
+            if (inputHandler == null)
+            {
+                inputHandler = FindFirstObjectByType<PlayerInputHandler>();
+            }
+        }
     }
-    // Update is called once per frame
+
     void Update()
     {
-
         HandleMovement();
-        HandleRotation();
+        HandleRotationToMouse();
     }
 
     void HandleMovement()
     {
-       
+        if (playerController == null || mainCamera == null || inputHandler == null)
+        {
+            return;
+        }
+
         bool isSprinting = inputHandler.SprintValue > 0.1f;
+
         if (isToggleSprint)
         {
             isSprinting = inputHandler.SprintToggleValue;
         }
-        
+
         float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
 
-        Vector3 inputDirection = new Vector3(inputHandler.MoveInput.x, 0f, inputHandler.MoveInput.y);
-        inputDirection = Vector3.ClampMagnitude(inputDirection, 1f);
+        Vector2 moveInput = inputHandler.MoveInput;
 
-        Vector3 moveDirection = transform.TransformDirection(inputDirection);
+        Vector3 cameraForward = mainCamera.transform.forward;
+        Vector3 cameraRight = mainCamera.transform.right;
+
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        Vector3 moveDirection = (cameraForward * moveInput.y) + (cameraRight * moveInput.x);
+        moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
 
         currentMovement.x = moveDirection.x * currentSpeed;
         currentMovement.z = moveDirection.z * currentSpeed;
@@ -68,31 +101,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerController.isGrounded)
         {
-            currentMovement.y = -0.5f; // Small downward force to keep the player grounded
+            currentMovement.y = -0.5f;
 
             if (inputHandler.JumpInput)
             {
-                currentMovement.y = jumpforce;
+                currentMovement.y = jumpForce;
             }
         }
         else
         {
             currentMovement.y -= gravity * Time.deltaTime;
         }
-
-    }
-    void OnSprint(InputAction Context)
-    {
-
-    }
-    void HandleRotation()
-    {
-        float rotateDir = inputHandler.RotateCameraInput * rotateSensitivity;
-        transform.Rotate(0, rotateDir, 0);
-    }
-    void ModSpeed(float amount)
-    {
-        moveSpeed += amount;
     }
     public void hasteMoveSpeed(float amount)
     {
@@ -109,5 +128,52 @@ public class PlayerMovement : MonoBehaviour
     public void moveSpeedReset()
     {
         moveSpeed = origMoveSpeed;
+    }
+}
+
+    void HandleRotationToMouse()
+    {
+        if (mainCamera == null || Mouse.current == null || visualRoot == null)
+        {
+            return;
+        }
+
+        Vector3 playerScreenPosition = mainCamera.WorldToScreenPoint(transform.position);
+        Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+        Vector2 screenLookDirection = mouseScreenPosition - new Vector2(playerScreenPosition.x, playerScreenPosition.y);
+
+        if (screenLookDirection.sqrMagnitude < 0.001f)
+        {
+            return;
+        }
+
+        screenLookDirection.Normalize();
+
+        Vector3 cameraForward = mainCamera.transform.forward;
+        Vector3 cameraRight = mainCamera.transform.right;
+
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        Vector3 worldLookDirection =
+            (cameraRight * screenLookDirection.x) +
+            (cameraForward * screenLookDirection.y);
+
+        if (worldLookDirection.sqrMagnitude < 0.001f)
+        {
+            return;
+        }
+
+        Quaternion targetRotation = Quaternion.LookRotation(worldLookDirection);
+
+        visualRoot.rotation = Quaternion.Slerp(
+            visualRoot.rotation,
+            targetRotation,
+            rotateSpeed * Time.deltaTime
+        );
     }
 }
