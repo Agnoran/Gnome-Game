@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     [SerializeField] damage.statusType inflictedStatus;
     [SerializeField] damage.statusType buff;
     [SerializeField] ParticleSystem statusParticles;
-    [SerializeField] GameObject particlePos;
-    PlayerMovement movement;
-    PlayerAttack attack;
+    [SerializeField] GameObject particle;
+    [SerializeField] PlayerMovement movement;
+    [SerializeField] PlayerAttack attack;
 
     [SerializeField] int hp;
     public int mp;
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     int sDamage;
     float sRate;
     bool isDamaging;
-
+    float moddedMoveSpeed;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,8 +36,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         MPOriginal = mp;
         colorOG = model.material.color;
         endStatus();
-        movement = GetComponent<PlayerMovement>();
-        attack = GetComponentInChildren<PlayerAttack>();
+
     }
 
     // Update is called once per frame

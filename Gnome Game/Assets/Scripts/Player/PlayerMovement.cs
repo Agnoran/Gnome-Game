@@ -115,6 +115,11 @@ public class PlayerMovement : MonoBehaviour
             currentMovement.y -= gravity * Time.deltaTime;
         }
     }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
     public void hasteMoveSpeed(float amount)
     {
         moveSpeed *= amount;

@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enchant();
         }
-        if(hasHappened = true && !inputHandler.ShootInput)
+        if(hasHappened == true && !inputHandler.ShootInput)
         {
             attackspdReset();
             movement.moveSpeedReset();
