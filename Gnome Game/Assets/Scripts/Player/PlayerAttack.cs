@@ -48,6 +48,7 @@ public class PlayerAttack : MonoBehaviour
         frozen = false;
         hasHappened = false;
         playerController = GetComponent<PlayerController>();
+        inputHandler = GetComponent<PlayerInputHandler>();
     }
 
     // Update is called once per frame
