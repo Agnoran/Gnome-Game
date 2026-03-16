@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using System;
 
 public class inventoryManager : MonoBehaviour
 {
@@ -55,4 +56,6 @@ public class inventoryManager : MonoBehaviour
             }
         }
     }
+
+    
 }

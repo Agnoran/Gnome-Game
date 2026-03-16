@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class NPCDialog : MonoBehaviour
 {
-    public dialogData dialog;
+    public dialogCoreNodes startingNode;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            dialogManager.Instance.StartDialog(dialog);
+            dialogManager.Instance.StartDialog(startingNode);
         }
     }
 }
