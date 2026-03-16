@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { bullet,stationary,DOT}
+    enum damageType { bullet,stationary,DOT, buff}
     public enum statusType { none, poisoned, burned, shocked, frozen, wet, clear, shield, slowed, hasted };
     
     [SerializeField] damageType type;
@@ -31,6 +31,10 @@ public class damage : MonoBehaviour
             rb.linearVelocity = transform.forward * speed;
             Destroy(gameObject, destroyTime);
         }
+        if(type == damageType.buff)
+        {
+            Destroy(gameObject, destroyTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,12 +52,12 @@ public class damage : MonoBehaviour
             stat.applyStatus(status,statusDamageAmount,statusDamageRate,statusDuration);
         } 
         //if derived from idamage will deal damage to object.
-        if (dmg != null && type != damageType.DOT)
+        if (dmg != null && type != damageType.DOT && type != damageType.buff)
         {
             dmg.takeDamage(damageAmount);
         }
         //if bullet will use hit effect then destroy self
-        if (type == damageType.bullet)
+        if (type == damageType.bullet || type == damageType.buff)
         {
             if(hitEffect != null)
             {

@@ -119,7 +119,7 @@ public class PlayerInputHandler : MonoBehaviour
         if(enchantAction != null)
         {
             enchantAction.performed += ctx => EnchantInput = true;
-            enchantAction.performed += ctx => EnchantInput = false;
+            enchantAction.canceled += ctx => EnchantInput = false;
         }
 
         if (sprintAction != null)

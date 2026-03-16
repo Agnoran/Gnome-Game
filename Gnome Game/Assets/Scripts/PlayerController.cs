@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     PlayerAttack attack;
 
     [SerializeField] int hp;
-    [SerializeField] int mp;
+    public int mp;
     int HPOriginal;
     int MPOriginal;
     [SerializeField] int damage;
@@ -241,7 +241,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     public void handleStatus()
     {
         //Logic for what to do based on currently inflicted status will be checked in update to run every frame and handles when to end a status condition
-        if (inflictedStatus == global::damage.statusType.none)
+        if (inflictedStatus == global::damage.statusType.none && buff == global::damage.statusType.none)
         {
             return;
         }
@@ -255,6 +255,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             buffTimer += Time.deltaTime;
         }
+        //clear buff after intended time
         if(buffTimer >= buffDuration)
         {
             endBuff();
@@ -308,7 +309,6 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         buff = global::damage.statusType.none;
         buffTimer = 0;
         buffDuration = 0;
-
         model.material.color = colorOG;
     }
 
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     }
     public void removeMP(int amount)
     {
-        if (mp < 0)
+        if (mp > 0)
         {
             mp -= amount;
         }

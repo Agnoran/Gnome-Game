@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform meleePos;
     [SerializeField] Transform enchantmentPos;
 
-    [Header("----- MP/HP Mods -----")]
+    [Header("----- Enchantment MP/HP Mods -----")]
 
     [SerializeField] int attackMPRegen;
     [SerializeField] int ClearMPCost;
@@ -27,10 +27,18 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] int ShieldMPCost;
     [SerializeField] int HealMPCost;
     [SerializeField] int healAmount;
+
+    [Header("----- Spells MP/HP Mods -----")]
+    [SerializeField] int FlamethrowerMPCost;
+
+
     public bool frozen;
+
+    [SerializeField] PlayerMovement movement;
 
     float shootTimer;
     float shootRateOG;
+    bool hasHappened;
     [SerializeField] PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,6 +46,7 @@ public class PlayerAttack : MonoBehaviour
     {
         shootRateOG = shootRate;
         frozen = false;
+        hasHappened = false;
         playerController = GetComponent<PlayerController>();
     }
 
@@ -54,9 +63,15 @@ public class PlayerAttack : MonoBehaviour
         {
             Shoot();
         }
-        if(inputHandler.EnchantInput && shootTimer >= shootRate && !frozen)
+        if (inputHandler.EnchantInput && shootTimer >= shootRate)
         {
             enchant();
+        }
+        if(hasHappened = true && !inputHandler.ShootInput)
+        {
+            attackspdReset();
+            movement.moveSpeedReset();
+            hasHappened = false;
         }
     }
     void Melee()
@@ -68,29 +83,65 @@ public class PlayerAttack : MonoBehaviour
     void enchant()
     {
         shootTimer = 0;
-        Instantiate(enchantment, enchantmentPos.position, transform.rotation);
-        if(enchantment.name == "Haste")
+        switch (enchantment.name)
         {
-            playerController.removeMP(HasteMPCost);
-        }
-        if (enchantment.name == "Clear")
-        {
-            playerController.removeMP(HasteMPCost);
-        }
-        if (enchantment.name == "Shield")
-        {
-            playerController.removeMP(ShieldMPCost);
-        }
-        if (enchantment.name == "Heal")
-        {
-            playerController.Heal(healAmount);
-            playerController.removeMP(HasteMPCost);
+            case "Haste":
+                if (playerController.mp > HasteMPCost)
+                {
+                    playerController.removeMP(HasteMPCost);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            case "Clear":
+                if (playerController.mp > ClearMPCost)
+                {
+                    playerController.removeMP(ClearMPCost);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            case "Heal":
+                if (playerController.mp > HealMPCost)
+                {
+                    playerController.removeMP(HealMPCost);
+                    playerController.Heal(healAmount);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            case "Shield":
+                if (playerController.mp > ShieldMPCost)
+                {
+                    playerController.removeMP(ShieldMPCost);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            default: break;
         }
     }
     void Shoot()
     {
         shootTimer = 0;
-        Instantiate(bullet,shootPos.position,transform.rotation);
+        switch(bullet.name)
+        {
+            case "Flamethrower":
+                if (playerController.mp > FlamethrowerMPCost)
+                {
+                    playerController.removeMP(FlamethrowerMPCost);
+                    Instantiate(bullet,shootPos.position, transform.rotation);
+                    shootRate = 0.05f;
+                    if (movement != null)
+                    {
+                        movement.SetMoveSpeed(4);
+                    }
+                    hasHappened = true;
+                }
+                break;
+            case "Player Bullet":
+                Instantiate(bullet, shootPos.position, transform.rotation);
+                break;
+
+
+            default: break;
+        }
     }
     public void modAttackSpeed(int amount)
     {
