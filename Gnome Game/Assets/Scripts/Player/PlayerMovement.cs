@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float sprintMultiplier = 1.5f;
+    float origMoveSpeed;
 
     [Header("Jump / Gravity")]
     [SerializeField] float gravity = 9.81f;
@@ -51,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
                 inputHandler = FindFirstObjectByType<PlayerInputHandler>();
             }
         }
+        origMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -129,7 +131,6 @@ public class PlayerMovement : MonoBehaviour
     {
         moveSpeed = origMoveSpeed;
     }
-}
 
     void HandleRotationToMouse()
     {

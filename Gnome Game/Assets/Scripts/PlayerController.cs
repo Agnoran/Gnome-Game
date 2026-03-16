@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         colorOG = model.material.color;
         endStatus();
         movement = GetComponent<PlayerMovement>();
-        attack = GetComponent<PlayerAttack>();
+        attack = GetComponentInChildren<PlayerAttack>();
     }
 
     // Update is called once per frame

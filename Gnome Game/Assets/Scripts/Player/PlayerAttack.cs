@@ -47,7 +47,8 @@ public class PlayerAttack : MonoBehaviour
         shootRateOG = shootRate;
         frozen = false;
         hasHappened = false;
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponentInParent<PlayerController>();
+        movement = GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
