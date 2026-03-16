@@ -18,23 +18,29 @@ public class SceneLoader : MonoBehaviour
 
     [Tooltip("Spawn point ID in the starting scene")]
     [SerializeField] private string startingSpawnPointID = "Default";        // default for now!
-    
+
     // Currently loaded area scene name (so we know what to unload)
     private string currentLoadedScene = "";
+
+    private string pendingSceneName = "";
 
     // spawn point ID to use after the next scene finshes loading
     private string pendingSpawnPointID = "DefaultPending";
 
     // prevent overlapping load req
     private bool isLoading = false;
-    
+
     // Is a scene being loaded? 
-    private bool IsLoading => isLoading;
+    public bool IsLoading => isLoading;
 
     private void Awake()
     {
+
+       // Debug.Log("<color=cyan>[SceneLoader]</color> Awake() called.");
+
         if (Instance != null && Instance != this)
         {
+           // Debug.Log("<color=red>[SceneLoader]</color> Duplicate found! Destroying self");
             Destroy(gameObject);
             return;
 
@@ -42,82 +48,85 @@ public class SceneLoader : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        // Debug.Log("<color=cyan>[SceneLoader]</color> Singleton set. DontDestroyOnLoad applied.");
     }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-   private void Start()
+    private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        //Debug.Log("<color=cyan>[SceneLoader]</color> Start() called.");
         
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+
+       
+        currentLoadedScene = startingScene;
+        pendingSpawnPointID = startingSpawnPointID;
+        pendingSceneName = startingScene;
+
+        Debug.Log($"<color=cyan>[SceneLoader]</color> Loading '{startingScene}' directly...");
+        SceneManager.LoadSceneAsync(startingScene, LoadSceneMode.Additive);
+
+
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 
     public void LoadArea(string sceneName, string spawnPointID = "Default")
     {
+        //Debug.Log($"<color=cyan>[SceneLoader]</color> LoadArea:'{sceneName}'");
+
         if (isLoading)
         {
-            Debug.LogWarning("Already loading a scene, req to load");
+            Debug.LogWarning("<color=yellow>[SceneLoader]</color> Already loading!");
             return;
         }
 
-        StartCoroutine(LoadAreaRoutine(sceneName, spawnPointID));
-
-    }
-
-    private IEnumerator LoadAreaRoutine(string sceneName, string spawnPointID)
-    {
         isLoading = true;
+        pendingSceneName = sceneName;
         pendingSpawnPointID = spawnPointID;
 
-        // Make some kind of a fade to black or an actual scene or something 
+        Debug.Log($"<color=cyan>[SceneLoader]</color> LoadArea called: '{sceneName}'");
 
-
-
-        // unload the current area if it exists
-
-        if (!string.IsNullOrEmpty(currentLoadedScene))
+        if(!string.IsNullOrEmpty(currentLoadedScene))
         {
-            AsyncOperation unload = SceneManager.UnloadSceneAsync(currentLoadedScene);
-            if (unload != null)
-            {
-                while (!unload.isDone)
-                {
-                    {
-                        yield return null;
-
-                    }
-                }
-
-                yield return Resources.UnloadUnusedAssets();
-            }
-
-            AsyncOperation load = SceneManager.LoadSceneAsync(sceneName, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-            while (!load.isDone)
-            {
-                yield return null;
-            }
-
-            currentLoadedScene = sceneName;
-            isLoading = false;
-
-            // Implement the same logic or same solution here to hide the loading! 
-
-
-            GameManager.Instance.OnAreaLoaded(sceneName);
-
+            Debug.Log($"<color=cyan>[SceneLoader]</color> Unloading '{currentLoadedScene}' first...");
+            SceneManager.UnloadSceneAsync(currentLoadedScene);
+        }
+        else
+        {
+            Debug.Log($"<color=cyan>[SceneLoader]</color> Loading '{sceneName}' directly...");
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         }
 
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneUnloaded(Scene scene)
     {
+        Debug.Log($"<color=cyan>[SceneLoader]</color> Unloaded '{scene.name}'. Now loading '{pendingSceneName}'");
+        SceneManager.LoadSceneAsync(pendingSceneName, LoadSceneMode.Additive);
+    }
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    { 
         if (mode != LoadSceneMode.Additive) return;
 
-        SpawnPoint[] spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
-        SpawnPoint targetSpawn = null;
+        Debug.Log($"<color=magenta>[SceneLoader]</color> SceneLoaded: '{scene.name}'");
 
+        SpawnPoint[] spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        Debug.Log($"<color=magenta>[SceneLoader]</color> Found {spawnPoints.Length} spawn points.");
+
+        SpawnPoint targetSpawn = null;
         foreach (SpawnPoint sp in spawnPoints)
         {
+            // Debug.Log($"<color=magenta>[SceneLoader]</color> Spawn point: '{sp.SpawnPointID}'");
             if (sp.SpawnPointID == pendingSpawnPointID)
             {
                 targetSpawn = sp;
@@ -128,7 +137,7 @@ public class SceneLoader : MonoBehaviour
         if (targetSpawn == null && spawnPoints.Length > 0)
         {
             targetSpawn = spawnPoints[0];
-            Debug.LogWarning($"Spawn point ' {pendingSpawnPointID}' not found, using fallback");
+            //  Debug.LogWarning($"<color=yellow>[SceneLoader]</color> Spawn '{pendingSpawnPointID}' not found, using fallback!"); ;
         }
 
         if (targetSpawn != null)
@@ -138,15 +147,17 @@ public class SceneLoader : MonoBehaviour
             {
                 player.transform.position = targetSpawn.transform.position;
                 player.transform.rotation = targetSpawn.transform.rotation;
+                Debug.Log($"<color=magenta>[SceneLoader]</color> Player moved to '{targetSpawn.SpawnPointID}'");
             }
+
+        }
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnAreaLoaded(scene.name);
         }
 
     }
 
-
-        
-
-
-
-  
 }
+

@@ -49,9 +49,10 @@ public class SaveBrick : MonoBehaviour
 
     // State of the brick
 
-    private bool hasBeenHit = false;
-    private SaveData cachedSaveData = null;
     private bool hasSave = false;
+    private SaveData cachedSaveData = null;
+    private bool playerInRange = false;
+
 
     // Bump anim
 
@@ -64,14 +65,18 @@ public class SaveBrick : MonoBehaviour
     [SerializeField] private float floatHeight = 0.15f;
     private Vector3 basePosition;
 
+    private bool hasBeenActicated = false;
+    bool hasBeenActivated;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         originalPosition = transform.position;
-        basePosition = transform.position;
-
         RefreshDisplay();
+        // basePosition = transform.position;
+        Debug.Log($"<color=yellow>[SaveBrick]</color> Brick '{slotName} (slot {slotIndex}) ready. hasSave={hasSave}");
+
+        
         
     }
 
@@ -84,43 +89,122 @@ public class SaveBrick : MonoBehaviour
 
             float bumpOffset = Mathf.Sin(bumpTimer * Mathf.PI) * bumpDistance;
 
+            transform.position = originalPosition + Vector3.up * bumpOffset;
+
             if (bumpTimer >= 1f)
             {
                 isBumping = false;
-                transform.position = basePosition;
+                bumpTimer = 0f;
+                transform.position = originalPosition;
             }
-            else
-            {
-                transform.position = basePosition + new Vector3(0f, bumpOffset, 0f);
-            }
-        }
-        else
-        {
-            float yOffset = Mathf.Sin(Time.time * floatSpeed) * floatHeight;
-            transform.position = basePosition + new Vector3(0f, yOffset, 0f);
         }
         
     }
 
-    // On Triger Enter , player jumping into the squares trigger collider from under. 
+    public void RefreshDisplay()
+    {
+        if (SaveManager.Instance == null)
+        {
+            Debug.LogWarning($"<color=cyan>[SaveBrick]</color> SaveManager not found!");
+            return;
+        }
+
+        cachedSaveData = SaveManager.Instance.PeekSaveSlot(slotIndex);
+        hasSave = cachedSaveData != null;
+
+        if (letterText != null) letterText.text = slotName;
+
+        if (hasSave)
+        {
+            if (statusText != null) statusText.text = $"{cachedSaveData.saveName}";
+
+            Color brickColor = activeColor;
+            if (cachedSaveData.apprenticeRank < rankColors.Length)
+            {
+                brickColor = rankColors[cachedSaveData.apprenticeRank];
+            }
+
+            if (brickRenderer != null) brickRenderer.material.color = brickColor;
+            if (brickLight != null) { brickLight.color = brickColor; brickLight.intensity = 2f; }
+        }
+        else
+        {
+            if (statusText != null) statusText.text = "New";
+            if (brickRenderer != null) brickRenderer.material.color = emptyColor;
+            if (brickLight != null) { brickLight.color = emptyColor; brickLight.intensity = 0.5f; }
+        }
+        
+    }
+
+            // On Triger Enter , player jumping into the squares trigger collider from under. 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-        if (hasBeenHit) return;
+        // Debug.Log($"<color>=yellow[SaveBrick]</color> OnTriggerEnter! Object: '{other.gameObject.name}', Tag: '{other.tag}'");
 
-        hasBeenHit = true;
+        if (hasBeenActivated) return;
 
-        isBumping = true;
-        bumpTimer = 0f;
-
-        if(hitParticles != null)
+        if (!other.CompareTag("Player"))
         {
-            hitParticles.Play();
-
+            Debug.Log($"<color=yellow>[SaveBrick]</color> Not player, ignoring.");
+            return;
         }
 
-        ActivateSlot();
+        hasBeenActivated = true;
+      //  Debug.Log($"<color>=ygreen>[SaveBrick]</color> Player entered brick '{slotName}' trigger!");
+
+        TriggerBrick();
+
+        
+
+        //        ActivateSlot();
+    }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    Debug.Log($"<Color=green>[SaveBrick]</color> TriggerBrick called on '{slotName}'!");
+
+    //    if (!other.CompareTag("Player")) return;
+
+    //    playerInRange = false;
+
+    //}
+
+    private void TriggerBrick()
+    {
+        Debug.Log($"<color=green>[SaveBrick] TriggerBrick called on '{slotName}'!");
+
+        Interact();
+
+    }
+
+    private void Interact()
+    {
+        Debug.Log($"<color>=green>[SaveBrick] Interact called. hasSave={hasSave}, slotIndex={slotIndex}");
+
+        if (hasSave)
+        {
+            Debug.Log($"<color=green>[SaveBrick]</color> Loading existing save!...");
+            SaveData data = SaveManager.Instance.LoadSaveSlot(slotIndex);
+            if (data != null)
+            {
+                Debug.Log($"<color=green>[SaveBrick]</color> Traveling to '{data.currentScene}' spawn '{data.lastSpawnPointID}'");
+                GameManager.Instance.TravelToArea(data.currentScene, data.lastSpawnPointID);
+
+            }
+            else
+            {
+                Debug.LogError($"<color=gred>[SaveBrick]</color> LoadSaveSlot returned null");
+            }
+        }
+        else
+        {
+            Debug.Log($"<color=green>[SaveBrick]</color> Empty slot - starting new save flow");
+            SaveManager.Instance.CreateNewSave(slotIndex, "Gnome" + slotName);
+            GameManager.Instance.TravelToArea("HubScene", "Default");
+
+        }
+        
     }
 
     private void ActivateSlot()
@@ -138,31 +222,11 @@ public class SaveBrick : MonoBehaviour
         {
             SaveManager.Instance.CreateNewSave(slotIndex, slotName);
             Debug.Log($"Brick {slotName} hit! New save created -> HubScene");
+            GameManager.Instance.TravelToArea("HubScene", "Default");
         }
     }
 
-    public void RefreshDisplay()
-    {
-        if (SaveManager.Instance == null) return;
-
-        cachedSaveData = SaveManager.Instance.PeekSaveSlot(slotIndex);
-        hasSave = cachedSaveData != null;
-
-        if (letterText != null)
-        {
-            letterText.text = slotName;
-        }
-
-        if (hasSave)
-        {
-            DisplayExistingSave();
-        }
-        else
-        {
-            DisplayEmptySlot();
-        }
-
-    }
+ 
 
     private void DisplayExistingSave()
     {
@@ -232,11 +296,6 @@ public class SaveBrick : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, transform.localScale);
-
-#if UNITY_EDITOR
-        UnityEditor.Handles.Label(transform.position + Vector3.up * 1.5f, $"Brick {slotName}"
-            );
-#endif
     }
 
 

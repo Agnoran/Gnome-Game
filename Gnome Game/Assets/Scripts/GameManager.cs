@@ -32,11 +32,34 @@ public class GameManager : MonoBehaviour
 
     public void TravelToArea(string sceneName, string spawnPointID = "Default")
     {
+
+        Debug.Log($"<color=orange>[GameManager]</color> TravelToArea called: '{sceneName}', spawn: '{spawnPointID}'");
+        // auto save
         if (SaveManager.Instance != null && SaveManager.Instance.HasActiveSave)
         {
             SaveManager.Instance.ActiveSave.currentScene = sceneName;
             SaveManager.Instance.ActiveSave.lastSpawnPointID = spawnPointID;
             SaveManager.Instance.WriteToDisk();
+        }
+
+        if (SceneLoader.Instance == null)
+        {
+            Debug.LogError("<color=red>[GameManager</color> SceneLoader.Instance is NULL! Can't load scene!");
+            return;
+        }
+        Debug.LogError($"<color=orange>[GameManager]</color> Calling SceneLoader.LoadArea('{sceneName}')...");
+
+        try
+        {
+            SceneLoader.Instance.LoadArea(sceneName, spawnPointID);
+            Debug.Log($"<color=orange>[GameManager]</color> LoadArea Call completed.");
+
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log($"<color=red>[GameManager]</color> EXCEPTION calling LoadArea: {e.Message}");
+            Debug.Log($"<color=red>[GameManager]</color> {e}");
+
         }
     }
 
