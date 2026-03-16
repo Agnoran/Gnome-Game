@@ -153,17 +153,6 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "6e09e944-e6ea-4e61-b86b-69354c3cc9dd",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
                     "id": "0c79b901-0968-4488-8f0e-a86fdd4b0dac",
                     "path": "2DVector",
@@ -217,6 +206,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6e09e944-e6ea-4e61-b86b-69354c3cc9dd",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
