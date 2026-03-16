@@ -16,8 +16,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     
-
-
     public GameObject player;
     public PlayerController playerScript;
     public bool isPaused;
@@ -31,16 +29,16 @@ public class UIManager : MonoBehaviour
     {
         Instance = this;
         timeScaleOrig = Time.timeScale;
+
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
     }
 
- 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (menuActive == null)
+            if (!isPaused)
             {
                 statePause();
                 menuActive = menuPause;
@@ -57,18 +55,11 @@ public class UIManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+       // Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
     }
 
-    public void Resume()
-    {
-        menuPause.SetActive(false);
-        menuSettings.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-      
-    }
+    
 
     public void OpenSettings()
     {
@@ -86,10 +77,14 @@ public class UIManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = timeScaleOrig;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        menuActive.SetActive(false);
-        menuActive = null;
+       // Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
+        
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+            menuActive = null;
+        }
     }
 
     public void QuitGame()

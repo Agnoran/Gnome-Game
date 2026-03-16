@@ -9,7 +9,7 @@ public class dialogManager : MonoBehaviour
     public static dialogManager Instance;
 
     public GameObject dialogPanel;
-    public TextMeshProUGUI dialogText;
+    public TextMeshPro dialogText;
 
     public GameObject choiceButtonPrefab;
     public Transform choiceContainer;
