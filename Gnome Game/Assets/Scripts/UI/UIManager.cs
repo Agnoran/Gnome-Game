@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuControl;
     
     public GameObject player;
     public PlayerController playerScript;
@@ -56,16 +57,33 @@ public class UIManager : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0;
        // Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
+       // Cursor.lockState = CursorLockMode.None;
     }
 
-    
+    void SwitchMenu(GameObject newMenu)
+    {
+        if (menuActive != null)
+            menuActive.SetActive(false);
+
+        menuActive = newMenu;
+        menuActive.SetActive(true);
+    }
+
+    public void OpenControls()
+    {
+        SwitchMenu(menuControl);
+    }
+
+    public void CloseControls()
+    {
+        SwitchMenu(menuPause);
+    }
 
     public void OpenSettings()
     {
-        menuPause.SetActive(false);
-        menuSettings.SetActive(true);
+        SwitchMenu(menuSettings);
     }
+
 
     public void CloseSettings()
     {
