@@ -61,9 +61,12 @@ public class PlayerInputHandler : MonoBehaviour
     public bool RollInput { get; private set; }
 
     public bool BasicAttackInput { get; private set; }
+    public bool ShootInput => BasicAttackInput;
     public bool SpecialSpellInput { get; private set; }
     public bool MeleeInput { get; private set; }
+    public bool AttackInput => MeleeInput;
     public bool BuffInput { get; private set; }
+    public bool EnchantInput => BuffInput;
 
     public bool InteractInput { get; private set; }
     public bool UseItemInput { get; private set; }
