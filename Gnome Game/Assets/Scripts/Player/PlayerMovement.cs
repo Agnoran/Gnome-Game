@@ -5,12 +5,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
+    float origMoveSpeed;
+
     [SerializeField] float sprintMultiplier = 1.5f;
     float origMoveSpeed;
+    float origSprintMod;
 
     [Header("Jump / Gravity")]
     [SerializeField] float gravity = 9.81f;
-    [SerializeField] float jumpForce = 1.5f;
+    [SerializeField] float jumpforce = 1.5f;
 
     [Header("Rotation")]
     [SerializeField] float rotateSpeed = 15f;
@@ -52,7 +55,9 @@ public class PlayerMovement : MonoBehaviour
                 inputHandler = FindFirstObjectByType<PlayerInputHandler>();
             }
         }
+
         origMoveSpeed = moveSpeed;
+        origSprintMod = sprintMultiplier;
     }
 
     void Update()
@@ -63,19 +68,8 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        if (playerController == null || mainCamera == null || inputHandler == null)
-        {
-            return;
-        }
-
-        bool isSprinting = inputHandler.SprintValue > 0.1f;
-
-        if (isToggleSprint)
-        {
-            isSprinting = inputHandler.SprintToggleValue;
-        }
-
-        float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+        bool sprintActive = inputHandler.GetSprintActive(isToggleSprint);
+        float currentSpeed = sprintActive ? moveSpeed * sprintMultiplier : moveSpeed;
 
         Vector2 moveInput = inputHandler.MoveInput;
 
@@ -95,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.z = moveDirection.z * currentSpeed;
 
         HandleJumping();
-
         playerController.Move(currentMovement * Time.deltaTime);
     }
 
@@ -107,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (inputHandler.JumpInput)
             {
-                currentMovement.y = jumpForce;
+                currentMovement.y = jumpforce;
             }
         }
         else
@@ -147,7 +140,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 playerScreenPosition = mainCamera.WorldToScreenPoint(transform.position);
         Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
 
-        Vector2 screenLookDirection = mouseScreenPosition - new Vector2(playerScreenPosition.x, playerScreenPosition.y);
+        Vector2 screenLookDirection =
+            mouseScreenPosition - new Vector2(playerScreenPosition.x, playerScreenPosition.y);
 
         if (screenLookDirection.sqrMagnitude < 0.001f)
         {

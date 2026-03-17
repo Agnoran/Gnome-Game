@@ -1,7 +1,7 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using System.Collections;
+using UnityEngine;
 
 public class dialogManager : MonoBehaviour
 {
@@ -9,39 +9,80 @@ public class dialogManager : MonoBehaviour
     public static dialogManager Instance;
 
     public GameObject dialogPanel;
-    public TextMeshProUGUI dialogText;
+    public TextMeshPro dialogText;
 
-    Queue<string> lines = new Queue<string>();
+    public GameObject choiceButtonPrefab;
+    public Transform choiceContainer;
+
+    dialogCoreNodes currentNode;
+
+    //Queue<string> lines = new Queue<string>();
+    dialogCoreNodes nodes;
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void StartDialog(dialogData dialog)
+    public void StartDialog(dialogCoreNodes startingNode)
     {
         dialogPanel.SetActive(true);
+        /*
         lines.Clear();
+       
         foreach(string line in dialog.lines)
         {
             lines.Enqueue(line);
         }
         DisplayNextLine();
+        */
+        ShowNodes(startingNode);
+        
     }
 
-    public void DisplayNextLine()
+    void ShowNodes(dialogCoreNodes nodes)
     {
-        if(lines.Count == 0)
+        currentNode = nodes;
+        StartCoroutine(Typeline(nodes.dialogText));
+
+        // to clear out the old
+        foreach (Transform child in choiceContainer)
+        { Destroy(child.gameObject); }
+
+        // create new
+        foreach (dialogChoice choice in nodes.choices)
+        {
+            GameObject button = Instantiate(choiceButtonPrefab, choiceContainer);
+            button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
+
+            button.GetComponent<UnityEngine.UI.Button>()
+                .onClick.AddListener(() => SelectChoice(choice));
+        }
+    }
+
+    void SelectChoice(dialogChoice choice)
+    {
+        if (choice.nextNode != null)
+        { ShowNodes(choice.nextNode); }
+        else
+        { EndDialog(); }
+    }
+
+    /*
+     * public void DisplayNextLine()  // Read line by line
+    {
+        if (lines.Count == 0)
         {
             EndDialog();
             return;
         }
         string line = lines.Dequeue();
 
-        StartCoroutine(Typeline(line));
-    }
 
-    IEnumerator Typeline(string line)
+    }
+    */
+
+    IEnumerator Typeline(string line)  // Typewriter Effect
     {
         dialogText.text = "";
 

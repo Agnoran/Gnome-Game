@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
+        updatePlayerUI();
     }
 
     public void takeDamage(int amount)
