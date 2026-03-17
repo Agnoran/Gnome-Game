@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &23695157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23695159}
+  - component: {fileID: 23695158}
+  m_Layer: 0
+  m_Name: mechantNPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &23695158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23695157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6f885d0ce8b6741996828de4549738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::mechantNPC
+  shopUI: {fileID: 0}
+  merchantDialog: {fileID: 0}
+--- !u!4 &23695159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23695157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1639.5752, y: -0, z: 4153.0557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &188859916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -575,6 +621,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2497979395146069046, guid: d734e6d725f2be3498c4ed25eca30a20, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 87.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406175369775281761, guid: d734e6d725f2be3498c4ed25eca30a20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3611454964400402070, guid: d734e6d725f2be3498c4ed25eca30a20, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -653,6 +707,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3611454964400402070, guid: d734e6d725f2be3498c4ed25eca30a20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088784547893304699, guid: d734e6d725f2be3498c4ed25eca30a20, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 44.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810112677684307670, guid: d734e6d725f2be3498c4ed25eca30a20, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -734,3 +796,4 @@ SceneRoots:
   - {fileID: 188859916}
   - {fileID: 712690171}
   - {fileID: 1751264993}
+  - {fileID: 23695159}
