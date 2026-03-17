@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 
     float shootTimer;
     float shootRateOG;
-    bool hasHappened;
+     public bool hasHappened;
     [SerializeField] PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,8 +47,8 @@ public class PlayerAttack : MonoBehaviour
         shootRateOG = shootRate;
         frozen = false;
         hasHappened = false;
-        playerController = GetComponent<PlayerController>();
-        inputHandler = GetComponent<PlayerInputHandler>();
+        playerController = GetComponentInParent<PlayerController>();
+        movement = GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
         {
             enchant();
         }
-        if(hasHappened = true && !inputHandler.ShootInput)
+        if(hasHappened == true && !inputHandler.ShootInput)
         {
             attackspdReset();
             movement.moveSpeedReset();
@@ -144,13 +144,13 @@ public class PlayerAttack : MonoBehaviour
             default: break;
         }
     }
-    public void modAttackSpeed(int amount)
+    public float GetAttackSpeed()
     {
-        shootRate /= amount;
+        return shootRate;
     }
-    public void attackSlowed(int amount)
+    public void SetAttackSpeed(float amount)
     {
-        shootRate *= amount;
+        shootRate = amount;
     }
     public void attackspdReset()
     {

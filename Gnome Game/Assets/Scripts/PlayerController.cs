@@ -7,15 +7,15 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     [SerializeField] damage.statusType inflictedStatus;
     [SerializeField] damage.statusType buff;
     [SerializeField] ParticleSystem statusParticles;
-    [SerializeField] GameObject particlePos;
-    PlayerMovement movement;
-    PlayerAttack attack;
+    [SerializeField] GameObject particle;
+    [SerializeField] PlayerMovement movement;
+    [SerializeField] PlayerAttack attack;
+    PlayerInputHandler inputHandler;
 
     [SerializeField] int hp;
     public int mp;
     int HPOriginal;
     int MPOriginal;
-    [SerializeField] int damage;
     [SerializeField] Renderer model;
     Color colorOG;
 
@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     int sDamage;
     float sRate;
     bool isDamaging;
-
+    float moddedMoveSpeed;
+    float moddedAttackSpeed;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,8 +37,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         MPOriginal = mp;
         colorOG = model.material.color;
         endStatus();
-        movement = GetComponent<PlayerMovement>();
-        attack = GetComponent<PlayerAttack>();
+
     }
 
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
 
         if (hp < 0)
         {
-            UIManager.Instance.youLose();
+            //UIManager.Instance.youLose();
         }
         else
         {
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     public void applyStatus(damage.statusType status, int statusDamage, float statusRate, float statusDuration)
     {
         //if the player status passed in is a buff, apply stats to buff variables allowing for separate instances of statuses vs buffs.
-        if (status == global::damage.statusType.shield || status == global::damage.statusType.hasted && buff == global::damage.statusType.none)
+        if ((status == global::damage.statusType.shield || status == global::damage.statusType.hasted) && buff == global::damage.statusType.none)
         {
             buff = status;
             buffDuration = statusDuration;
@@ -100,8 +100,8 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             if (buff == global::damage.statusType.hasted)
             {
                 model.material.color = Color.orange;
-                attack.modAttackSpeed(2);
-                movement.hasteMoveSpeed(2);
+                moddedAttackSpeed = attack.GetAttackSpeed() /2;
+                moddedMoveSpeed = movement.GetMoveSpeed() * 2;
             }
             return;
         }
@@ -177,59 +177,43 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             if (inflictedStatus == global::damage.statusType.shocked)
             {
                 takeDamage(sDamage);
-                if (movement != null)
-                {
-                    movement.moveSpeedSlowed(2);
-                }
-                if (attack != null)
-                {
-                    attack.attackSlowed(2);
-                }
+                moddedMoveSpeed = movement.GetMoveSpeed() / 2;
+                moddedAttackSpeed = attack.GetAttackSpeed() * 2;
             }
-            if (inflictedStatus == global::damage.statusType.frozen)
-            {
-                if (movement != null)
-                {
-                    movement.SetMoveSpeed(0);
-                }
-                if (attack != null)
-                {
-                    attack.frozen = true;
-                }
-            }
+          
             //logic for slowed effect
             if (inflictedStatus == global::damage.statusType.slowed)
             {
                 if (movement != null)
                 {
-                    movement.moveSpeedSlowed(3);
+                    moddedMoveSpeed = movement.GetMoveSpeed() / 3;
                 }
                 if (attack != null)
                 {
-                    attack.attackSlowed(3);
+                    moddedAttackSpeed = attack.GetAttackSpeed() * 3;
                 }
             }
             switch (inflictedStatus)
             {
                 case global::damage.statusType.poisoned:
                     statusParticles.startColor = Color.green;
-                    Instantiate(statusParticles);
+                    particle.SetActive(true);
                     break;
                 case global::damage.statusType.wet:
                     statusParticles.startColor = Color.blue;
-                    Instantiate(statusParticles);
+                    particle.SetActive(true);
                     break;
                 case global::damage.statusType.burned:
                     statusParticles.startColor = Color.orangeRed;
-                    Instantiate(statusParticles);
+                    particle.SetActive(true);
                     break;
                 case global::damage.statusType.shocked:
                     statusParticles.startColor = Color.yellow;
-                    Instantiate(statusParticles);
+                    particle.SetActive(true);
                     break;
                 case global::damage.statusType.frozen:
                     statusParticles.startColor = Color.cyan;
-                    Instantiate(statusParticles);
+                    particle.SetActive(true);
                     break;
                 case global::damage.statusType.slowed:
                     model.material.color = Color.grey;
@@ -266,11 +250,39 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             endStatus();
         }
-        if (inflictedStatus == global::damage.statusType.poisoned || inflictedStatus == global::damage.statusType.burned && !isDamaging)
+        if ((inflictedStatus == global::damage.statusType.poisoned && !isDamaging ) || (inflictedStatus == global::damage.statusType.burned && !isDamaging))
         {
             StartCoroutine(inflictedStatusDamage(sDamage, sRate));
         }
-
+        if (inflictedStatus == global::damage.statusType.frozen)
+        {
+            if (movement != null)
+            {
+                movement.SetMoveSpeed(0);
+            }
+            if (attack != null)
+            {
+                attack.frozen = true;
+            }
+        }
+        if (inflictedStatus == global::damage.statusType.slowed)
+        {
+            movement.SetMoveSpeed(moddedMoveSpeed);
+            attack.SetAttackSpeed(moddedAttackSpeed);
+        }
+        if (inflictedStatus == global::damage.statusType.shocked)
+        {
+            movement.SetMoveSpeed(moddedMoveSpeed);
+            attack.SetAttackSpeed(moddedAttackSpeed);
+        }
+        if (buff == global::damage.statusType.hasted)
+        {
+            movement.SetMoveSpeed(moddedMoveSpeed);
+            if(!attack.hasHappened)
+            {
+                attack.SetAttackSpeed(moddedAttackSpeed);
+            }
+        }
     }
 
     public void endStatus()
@@ -292,8 +304,9 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         inflictedStatus = global::damage.statusType.none;
         statusTimer = 0;
         sDuration = 0;
+        particle.SetActive(false);
     }
-    void endBuff()
+     public void endBuff()
     {
         if(buff == global::damage.statusType.hasted)
         {

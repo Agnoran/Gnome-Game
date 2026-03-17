@@ -6,4 +6,6 @@ public interface IStatus
     void handleStatus();
 
     void endStatus();
+
+    void endBuff();
 }

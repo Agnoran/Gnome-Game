@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     float origMoveSpeed;
 
     [SerializeField] float sprintMultiplier = 1.5f;
+    float origMoveSpeed;
     float origSprintMod;
 
     [Header("Jump / Gravity")]
@@ -108,6 +109,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+    public void hasteMoveSpeed(float amount)
+    {
+        moveSpeed *= amount;
+    }
+    public void moveSpeedSlowed(float amount)
+    {
+        moveSpeed /= amount;
+    }
+    public void SetMoveSpeed(float amount)
+    {
+        moveSpeed = amount;
+    }
+    public void moveSpeedReset()
+    {
+        moveSpeed = origMoveSpeed;
+    }
+
     void HandleRotationToMouse()
     {
         if (mainCamera == null || Mouse.current == null || visualRoot == null)
@@ -153,30 +175,5 @@ public class PlayerMovement : MonoBehaviour
             targetRotation,
             rotateSpeed * Time.deltaTime
         );
-    }
-
-    void ModSpeed(float amount)
-    {
-        moveSpeed += amount;
-    }
-
-    public void hasteMoveSpeed(float amount)
-    {
-        moveSpeed *= amount;
-    }
-
-    public void moveSpeedSlowed(float amount)
-    {
-        moveSpeed /= amount;
-    }
-
-    public void SetMoveSpeed(float amount)
-    {
-        moveSpeed = amount;
-    }
-
-    public void moveSpeedReset()
-    {
-        moveSpeed = origMoveSpeed;
     }
 }
