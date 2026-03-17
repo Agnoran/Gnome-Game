@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject prevMenuActive;
 
+    public Image playerHP;
+    public Image playerMP;
+
     [Header("Start / Tutorial Menus")]
     [SerializeField] GameObject menuStart;
     [SerializeField] GameObject HUD;
-    [SerializeField] currencyManager GetCurrency;
+    [SerializeField] GameObject Gold;
     [SerializeField] GameObject menuTutorialOne;
     [SerializeField] GameObject menuTutorialTwo;
 
@@ -188,10 +192,11 @@ public class WorldController : MonoBehaviour
 
     public void StatePaused()
     {
+        SetActiveMenu(menuPause);
         isPaused = true;
         Time.timeScale = 0f;
 
-        SetActiveMenu(menuPause);
+        
     }
 
     public void StateUnpaused()

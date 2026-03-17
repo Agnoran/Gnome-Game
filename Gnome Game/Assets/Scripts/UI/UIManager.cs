@@ -25,8 +25,7 @@ public class UIManager : MonoBehaviour
 
     float timeScaleOrig;
 
-    public Image playerHP;
-    public Image playerMP;
+    
 
     void Awake()
     {
