@@ -136,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8358234174136147646}
   - component: {fileID: 5029777415896353337}
+  - component: {fileID: 4215983153807704553}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -181,6 +182,19 @@ MonoBehaviour:
   linkedButtons: []
   pressedMaterial: {fileID: 2100000, guid: 23976a3f8e953ed4d959e3a46b9d4494, type: 2}
   unpressedMaterial: {fileID: 2100000, guid: 9db34e3ee1315a94b807877d38ff55fb, type: 2}
+--- !u!114 &4215983153807704553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138885713916402845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5bd4830920f5ae498def99f1e075d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerActivator
+  targetObject: {fileID: 2409939150399257543, guid: b24237242d4341d4c91cd9bfa3be8f6c, type: 3}
 --- !u!1 &3313389059617071460
 GameObject:
   m_ObjectHideFlags: 0
