@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b91a9c079e121a4ebcacd2ba803fd23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerRelay
-  targets: []
+  targets:
+  - {fileID: 0}
