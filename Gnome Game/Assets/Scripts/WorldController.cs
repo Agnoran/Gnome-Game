@@ -10,6 +10,8 @@ public class WorldController : MonoBehaviour
 
     [Header("Start / Tutorial Menus")]
     [SerializeField] GameObject menuStart;
+    [SerializeField] GameObject HUD;
+    [SerializeField] currencyManager GetCurrency;
     [SerializeField] GameObject menuTutorialOne;
     [SerializeField] GameObject menuTutorialTwo;
 
