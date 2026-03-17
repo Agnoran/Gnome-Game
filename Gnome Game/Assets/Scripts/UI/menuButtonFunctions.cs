@@ -15,7 +15,13 @@ public class menuButtonFunctions : MonoBehaviour
 
     public void resume()
     {
-      UIManager.Instance.stateUnpause();
+        UIManager OurManager = FindFirstObjectByType<UIManager>();
+        if (OurManager == null)
+        {
+            Debug.Log("Not working!");
+            return;
+        }
+        OurManager.ResumeGame();
     }
 
     public void restart()

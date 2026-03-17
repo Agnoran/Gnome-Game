@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuControl;
+
+    [SerializeField] PlayerInputHandler inputHandler;
     
     public GameObject player;
     public PlayerController playerScript;
@@ -23,13 +25,22 @@ public class UIManager : MonoBehaviour
 
     float timeScaleOrig;
 
-    public Image playerHP;
-    public Image playerMP;
+    
 
     void Awake()
     {
         Instance = this;
         timeScaleOrig = Time.timeScale;
+
+        if (inputHandler == null)
+        {
+            inputHandler = PlayerInputHandler.Instance;
+
+            if (inputHandler == null)
+            {
+                inputHandler = FindFirstObjectByType<PlayerInputHandler>();
+            }
+        }
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
@@ -37,13 +48,12 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (inputHandler.PauseInput)
         {
             if (!isPaused)
             {
+                
                 statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(true);
             }
             else if (menuActive == menuPause)
             {
@@ -54,12 +64,24 @@ public class UIManager : MonoBehaviour
 
     public void statePause()
     {
+        menuActive = menuPause;
+        menuActive.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
        // Cursor.visible = true;
        // Cursor.lockState = CursorLockMode.None;
     }
 
+    public void ResumeGame()
+    {
+        isPaused = false;
+        if ( menuActive != null )
+        {
+            menuActive.SetActive(false);
+        }
+        menuActive = null;
+        Time.timeScale = timeScaleOrig;
+    }
     void SwitchMenu(GameObject newMenu)
     {
         if (menuActive != null)
@@ -101,8 +123,9 @@ public class UIManager : MonoBehaviour
         if (menuActive != null)
         {
             menuActive.SetActive(false);
-            menuActive = null;
-        }
+        }  
+        menuActive = null;
+        
     }
 
     public void QuitGame()
@@ -112,8 +135,9 @@ public class UIManager : MonoBehaviour
 
     public void youLose()
     {
-        statePause();
+   
         menuActive = menuLose;
         menuActive.SetActive(true);
+        Time.timeScale = 0;
     }
 }

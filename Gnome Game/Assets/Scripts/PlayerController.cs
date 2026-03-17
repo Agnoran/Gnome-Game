@@ -70,8 +70,8 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
 
     public void updatePlayerUI()
     {
-        UIManager.Instance.playerHP.fillAmount = (float)HPOriginal / hp;
-        UIManager.Instance.playerMP.fillAmount = (float)MPOriginal / mp;
+        WorldController.instance.playerHP.fillAmount = (float)HPOriginal / hp;
+        WorldController.instance.playerMP.fillAmount = (float)MPOriginal / mp;
 
     }
 
