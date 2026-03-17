@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 
     float shootTimer;
     float shootRateOG;
-    bool hasHappened;
+     public bool hasHappened;
     [SerializeField] PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -144,13 +144,13 @@ public class PlayerAttack : MonoBehaviour
             default: break;
         }
     }
-    public void modAttackSpeed(int amount)
+    public float GetAttackSpeed()
     {
-        shootRate /= amount;
+        return shootRate;
     }
-    public void attackSlowed(int amount)
+    public void SetAttackSpeed(float amount)
     {
-        shootRate *= amount;
+        shootRate = amount;
     }
     public void attackspdReset()
     {
