@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
-        //updatePlayerUI();
+        updatePlayerUI();
+        
     }
 
     public void takeDamage(int amount)
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     {
         WorldController.instance.playerHP.fillAmount = (float)HPOriginal / hp;
         WorldController.instance.playerMP.fillAmount = (float)MPOriginal / mp;
-
+       
     }
 
     IEnumerator playerDamageFlash()
