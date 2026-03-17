@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
-        updatePlayerUI();
+        //updatePlayerUI();
     }
 
     public void takeDamage(int amount)
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
             if(buff == global::damage.statusType.shield)
             {
-                model.material.color = Color.whiteSmoke;
+                model.material.color = Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
@@ -216,7 +216,8 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
                     particle.SetActive(true);
                     break;
                 case global::damage.statusType.slowed:
-                    model.material.color = Color.grey;
+                    statusParticles.startColor = Color.black;
+                    particle.SetActive(true);
                     break;
                 default: break;
             }
@@ -356,6 +357,10 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         if(hp < HPOriginal)
         {
             hp += amount;
+        }
+        if (hp > HPOriginal)
+        {
+            hp = HPOriginal;
         }
     }
 }

@@ -34,8 +34,10 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] float tpWaitTime; //how long the ghost waits between teleporting
     float tpWaitOg;
     [SerializeField] float tpInvisTime;     //how long the ghost stays disappeared for 
+    [SerializeField] float tpInvisDelay;
 
     [Header("Status Managment")]
+    [SerializeField] damage.statusType Attribute; 
     [SerializeField] damage.statusType inflictedStatus;
     [SerializeField] damage.statusType buff;
     [SerializeField] ParticleSystem statusParticles;
@@ -54,7 +56,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     float moddedMoveSpeed;
 
     bool isFrozen;
-
+    bool weakness;
 
 
 
@@ -162,6 +164,11 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
 
     public void takeDamage(int amount)
     {
+        if(weakness)
+        {
+            amount *= 5;
+        }
+        weakness = false;
         //reduce health
         HP -= amount;
 
@@ -188,6 +195,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             
 
             Teleport(hit);
+            
         }
     }
 
@@ -205,12 +213,13 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     void Teleport(NavMeshHit target)
     {
         StartCoroutine(Disappear());
-        gameObject.transform.position = target.position;
+        agent.SetDestination(target.position);
     }
 
 
     IEnumerator Disappear()
     {
+        yield return new WaitForSeconds(tpInvisDelay);
 
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -226,6 +235,11 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     //get information from what inflicted the status and apply the condiiton to the player.
     public void applyStatus(damage.statusType status, int statusDamage, float statusRate, float statusDuration)
     {
+        if(Attribute == status)
+        {
+            return;
+        }
+        checkWeakness(status);
         //if the player status passed in is a buff, apply stats to buff variables allowing for separate instances of statuses vs buffs.
         if ((status == global::damage.statusType.shield || status == global::damage.statusType.hasted) && buff == global::damage.statusType.none)
         {
@@ -235,7 +249,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
             if (buff == global::damage.statusType.shield)
             {
-                model.material.color = Color.whiteSmoke;
+                model.material.color = Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
@@ -308,11 +322,16 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         }
         else if (inflictedStatus == global::damage.statusType.none)
         {
+            if (weakness)
+            {
+                statusDamage *= 2;
+            }
             inflictedStatus = status;
             statusTimer = 0;
             sDamage = statusDamage;
             sRate = statusRate;
             sDuration = statusDuration;
+            //TODO add check weakness function
             // implement logic for shocked and frozen. 
             if (inflictedStatus == global::damage.statusType.shocked)
             {
@@ -346,11 +365,11 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
                     particle.SetActive(true);
                     break;
                 case global::damage.statusType.frozen:
-                    statusParticles.startColor = Color.cyan;
                     particle.SetActive(true);
                     break;
                 case global::damage.statusType.slowed:
-                    model.material.color = Color.grey;
+                    statusParticles.startColor = Color.black;
+                    particle.SetActive(true);
                     break;
                 default: break;
             }
@@ -447,6 +466,54 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         statusTimer = 0;
         sDuration = 0;
         particle.SetActive(false);
+    }
+
+    void checkWeakness(damage.statusType Status)
+    {
+        switch (Attribute)
+        {
+            case global::damage.statusType.poisoned:
+
+                if (Status == damage.statusType.burned || Status == damage.statusType.wet)
+                {
+                    weakness = true;
+                }
+                break;
+            case global::damage.statusType.wet:
+
+                if (Status == damage.statusType.shocked || Status == damage.statusType.frozen || Status == damage.statusType.poisoned)
+                {
+                    weakness = true;
+                }
+                break;
+            case global::damage.statusType.burned:
+
+                if (Status == damage.statusType.wet)
+                {
+                    weakness = true;
+                }
+                break;
+            case global::damage.statusType.shocked:
+                if (Status == damage.statusType.wet)
+                {
+                    weakness = true;
+                }
+                break;
+            case global::damage.statusType.frozen:
+
+                if (Status == damage.statusType.burned || Status == damage.statusType.shocked)
+                {
+                    weakness = true;
+                }
+                break;
+            case global::damage.statusType.slowed:
+                if (Status == damage.statusType.frozen || Status == damage.statusType.poisoned)
+                {
+                    weakness = true;
+                }
+                break;
+            default: break;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     float origMoveSpeed;
 
     [SerializeField] float sprintMultiplier = 1.5f;
-    float origMoveSpeed;
     float origSprintMod;
 
     [Header("Jump / Gravity")]

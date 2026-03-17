@@ -56,9 +56,9 @@ public class PlayerAttack : MonoBehaviour
     {
         shootTimer += Time.deltaTime;
 
-        if (inputHandler.AttackInput  && shootTimer >= shootRate && !frozen)
+        if(inputHandler.MeleeInput && shootTimer >= shootRate)
         {
-            Melee();
+            Melee(); 
         }
         if(inputHandler.ShootInput && shootTimer >= shootRate && !frozen)
         {

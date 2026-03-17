@@ -54,7 +54,7 @@ MonoBehaviour:
   damageRate: 0
   statusDamageAmount: 0
   statusDamageRate: 0
-  statusDuration: 10
+  statusDuration: 7
   speed: 20
   destroyTime: 2
   hitEffect: {fileID: 0}
