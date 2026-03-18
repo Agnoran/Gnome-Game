@@ -7,9 +7,7 @@ public class EnemyDOTDamagePool : MonoBehaviour
     [SerializeField] float meltRateScale;    //how quickly to melt
     [SerializeField] int destroyTime;   //how long until it disappears?
 
-   /* float newX;
-    float newY;
-    float newZ;*/
+
 
     Vector3 scaleVec;
 
@@ -22,16 +20,13 @@ public class EnemyDOTDamagePool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //meltRateScale *= Time.deltaTime;
-        //Melt();
+
     }
 
-
-    void Melt()
+    private void OnTriggerStay(Collider other)
     {
-        //newX
-        //scaleVec = new Vector3(meltedWidth / meltRateScale, meltedHeight / meltRateScale, meltedWidth / meltRateScale);
-        //gameObject.transform.localScale = scaleVec;
+        
     }
+
 
 }
