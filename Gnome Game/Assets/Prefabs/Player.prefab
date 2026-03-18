@@ -87,12 +87,102 @@ Transform:
   m_GameObject: {fileID: 508808671169673925}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.65}
+  m_LocalPosition: {x: 0.337, y: 0.56, z: 1.018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5853632437445743936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1934444028835050505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4509908141663936020}
+  - component: {fileID: 3402463998420727273}
+  - component: {fileID: 5709410023169684519}
+  m_Layer: 0
+  m_Name: Staff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4509908141663936020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934444028835050505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18, y: 0.39816016, z: 0.18}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4163764144539183589}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!33 &3402463998420727273
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934444028835050505}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5709410023169684519
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934444028835050505}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6882c18841bb71d4f989bdd7bd238c00, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2601279986166204030
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +356,7 @@ Transform:
   - {fileID: 1127570743553968561}
   - {fileID: 7363648729564043063}
   - {fileID: 7797739315691487817}
+  - {fileID: 4163764144539183589}
   m_Father: {fileID: 3813620833287469775}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4083737244486750443
@@ -281,10 +372,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   inputHandler: {fileID: 8014845794941350033}
-  bullet: {fileID: 197963296258554442, guid: cbb27d78c14bb5949a08a32d5ce2d25e, type: 3}
+  basicShot: {fileID: 197963296258554442, guid: cbb27d78c14bb5949a08a32d5ce2d25e, type: 3}
+  specialShot: {fileID: 6982560049949143496, guid: 06c3432ee1a7d1a4ea02b43ad9caeea1, type: 3}
   melee: {fileID: 3322809873616591940, guid: d344d2288045ced42ab09eaa3d27c9d5, type: 3}
   enchantment: {fileID: 3137806040249747994, guid: b96ec52c8fa40bb4fbe79c0fdaa7c259, type: 3}
   shootRate: 1
+  basicAttackRate: 1
+  weaponModel: {fileID: 4163764144539183589}
   shootPos: {fileID: 1127570743553968561}
   meleePos: {fileID: 7797739315691487817}
   enchantmentPos: {fileID: 7363648729564043063}
@@ -294,7 +388,7 @@ MonoBehaviour:
   ShieldMPCost: 4
   HealMPCost: 3
   healAmount: 3
-  FlamethrowerMPCost: 1
+  SpellMPCost: 0
   frozen: 0
   movement: {fileID: 0}
   hasHappened: 0
@@ -379,6 +473,38 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3540945191092637329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4163764144539183589}
+  m_Layer: 3
+  m_Name: weaponPOS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4163764144539183589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540945191092637329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.309, y: 0.338, z: 0.535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4509908141663936020}
+  m_Father: {fileID: 5853632437445743936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3717151014586143134
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,15 +553,20 @@ MonoBehaviour:
   actionMapName: Player
   move: Move
   jump: Jump
-  attack: Attack
-  shoot: Shoot
-  enchant: Enchant
   sprint: Sprint
-  sprintToggle: SprintToggle
-  interact: Interact
   dash: Dash
   roll: Roll
-  rotateCamera: RotateCamera
+  basicAttack: BasicAttack
+  specialSpell: SpecialSpell
+  melee: Melee
+  buff: Buff
+  interact: Interact
+  useItem: UseItem
+  hotbarScroll: HotbarScroll
+  playerMenu: OpenPlayerMenu
+  inventory: OpenInventory
+  map: OpenMap
+  pause: Pause
 --- !u!1 &7585933562757087071
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +646,7 @@ MonoBehaviour:
   moveSpeed: 8
   sprintMultiplier: 2
   gravity: 10
-  jumpForce: 1.5
+  jumpforce: 1.5
   rotateSpeed: 15
   visualRoot: {fileID: 5853632437445743936}
   playerController: {fileID: 3531931213495739001}

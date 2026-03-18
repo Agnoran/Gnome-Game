@@ -44,8 +44,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
-        updatePlayerUI();
-        
+        //updatePlayerUI();
     }
 
     public void takeDamage(int amount)
@@ -57,11 +56,10 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             return;
         }
         hp -= amount;
-        updatePlayerUI();
 
         if (hp < 0)
         {
-            //UIManager.Instance.youLose();
+            UIManager.Instance.youLose();
         }
         else
         {
@@ -71,9 +69,9 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
 
     public void updatePlayerUI()
     {
-        WorldController.instance.playerHP.fillAmount = (float)HPOriginal / hp;
-        WorldController.instance.playerMP.fillAmount = (float)MPOriginal / mp;
-       
+        WorldController.instance.playerHP.fillAmount = (float)hp/ HPOriginal;
+        WorldController.instance.playerMP.fillAmount = (float)mp / MPOriginal;
+
     }
 
     IEnumerator playerDamageFlash()
@@ -104,14 +102,12 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
                 moddedAttackSpeed = attack.GetAttackSpeed() /2;
                 moddedMoveSpeed = movement.GetMoveSpeed() * 2;
             }
-            return;
-        }
-        if(inflictedStatus == global::damage.statusType.slowed)
-        {
-            if(status == global::damage.statusType.hasted)
+            if (inflictedStatus == global::damage.statusType.slowed)
             {
-                endStatus();
-                applyStatus(status,statusDamage, statusRate, statusDuration);
+                if (status == global::damage.statusType.hasted)
+                {
+                    endStatus();
+                }
                 return;
             }
         }
@@ -121,6 +117,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             endStatus();
             return;
         }
+        
         //if currently inflicted with the same status that tries to reapply, reset timer effectively resetting the duration.
         if (inflictedStatus == status)
         {
@@ -363,6 +360,11 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             hp = HPOriginal;
         }
+    }
+
+    public void breakFreeze()
+    {
+        sDuration -= 1;
     }
 }
 
