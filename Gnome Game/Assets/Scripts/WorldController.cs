@@ -23,6 +23,7 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuInventory;
     [SerializeField] GameObject menuWinGame;
+    [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuShop;
 
     [Header("Extra Menus")]
@@ -321,5 +322,13 @@ public class WorldController : MonoBehaviour
     {
         rebinderOpen = false;
         SetActiveMenu(menuPause);
+    }
+
+    public void youLose()
+    {
+
+        menuActive = menuLose;
+        menuActive.SetActive(true);
+        Time.timeScale = 0;
     }
 }
