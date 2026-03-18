@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
-        //updatePlayerUI();
+        updatePlayerUI();
     }
 
     public void takeDamage(int amount)
@@ -56,10 +56,11 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             return;
         }
         hp -= amount;
+        updatePlayerUI();
 
-        if (hp < 0)
+        if (hp <= 0)
         {
-            UIManager.Instance.youLose();
+            WorldController.instance.youLose();
         }
         else
         {
