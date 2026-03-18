@@ -66,6 +66,9 @@ public class WorldController : MonoBehaviour
         pauseInputHeld = false;
         inventoryInputHeld = false;
 
+        player = GameObject.FindWithTag("Player");
+        inputHandler = player.GetComponentInChildren<PlayerInputHandler>();
+
         StateBeginGame();
     }
 
