@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
             return;
         }
         hp -= amount;
-        //updatePlayerUI();
+        updatePlayerUI();
 
         if (hp < 0)
         {
