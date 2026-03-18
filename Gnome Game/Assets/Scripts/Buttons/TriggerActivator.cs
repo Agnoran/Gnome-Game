@@ -25,7 +25,7 @@ public class TriggerActivator : MonoBehaviour
         // if we still don't have a target, log an error
         if (target == null)
         {
-            Debug.LogError("TriggerActivator couldn't find ITriggerable on targetObject.", this);
+            //Debug.LogError("TriggerActivator couldn't find ITriggerable on targetObject.", this);
         }
     }
 

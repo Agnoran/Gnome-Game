@@ -7,9 +7,9 @@ using TMPro;
 public class shopSlotUI : MonoBehaviour
 {
     public Image icon;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI priceText;
-    public TextMeshProUGUI stockText;
+    public TextMeshPro nameText;
+    public TextMeshPro priceText;
+    public TextMeshPro stockText;
     public UnityEngine.UI.Button buyButton;
 
     int slotIndex;

@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - UI Menu
-  - Traps
+  - Shop
   layers:
   - Default
   - TransparentFX
@@ -13,10 +13,10 @@ TagManager:
   - Player
   - Water
   - UI
-  - Trap
-  - 
-  - 
-  - 
+  - Enemy
+  - Enemy Bullet
+  - Player Bullet
+  - Enchantment
   - 
   - 
   - 

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2255879945463604114}
   - component: {fileID: 3011790996300500151}
   - component: {fileID: 6116475212663617905}
-  m_Layer: 8
-  m_Name: Bullet
+  m_Layer: 7
+  m_Name: Bullet - Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,10 +48,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::damage
   type: 0
+  status: 2
   rb: {fileID: 3011790996300500151}
   damageAmount: 1
   damageRate: 0
-  speed: 16
+  statusDamageAmount: 1
+  statusDamageRate: 1
+  statusDuration: 5
+  speed: 30
   destroyTime: 2
   hitEffect: {fileID: 0}
 --- !u!96 &2255879945463604114
@@ -103,7 +107,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Time: 0.1
+  m_Time: 0.05
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -125,8 +129,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.23503351, b: 1, a: 1}
-      key1: {r: 0, g: 0.23503351, b: 1, a: 1}
+      key0: {r: 1, g: 0.07510978, b: 0, a: 1}
+      key1: {r: 1, g: 0.07510978, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -186,7 +190,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0

@@ -15,36 +15,45 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuControl;
+
+    [SerializeField] PlayerInputHandler inputHandler;
     
-
-
     public GameObject player;
     public PlayerController playerScript;
     public bool isPaused;
 
     float timeScaleOrig;
 
-    public Image playerHP;
-    public Image playerMP;
+    
 
     void Awake()
     {
         Instance = this;
         timeScaleOrig = Time.timeScale;
+
+        if (inputHandler == null)
+        {
+            inputHandler = PlayerInputHandler.Instance;
+
+            if (inputHandler == null)
+            {
+                inputHandler = FindFirstObjectByType<PlayerInputHandler>();
+            }
+        }
+
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
     }
 
- 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (inputHandler.PauseInput)
         {
-            if (menuActive == null)
+            if (!isPaused)
             {
+                
                 statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(true);
             }
             else if (menuActive == menuPause)
             {
@@ -55,26 +64,48 @@ public class UIManager : MonoBehaviour
 
     public void statePause()
     {
+        menuActive = menuPause;
+        menuActive.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+       // Cursor.visible = true;
+       // Cursor.lockState = CursorLockMode.None;
     }
 
-    public void Resume()
+    public void ResumeGame()
     {
-        menuPause.SetActive(false);
-        menuSettings.SetActive(false);
-        Time.timeScale = 1f;
         isPaused = false;
-      
+        if ( menuActive != null )
+        {
+            menuActive.SetActive(false);
+        }
+        menuActive = null;
+        Time.timeScale = timeScaleOrig;
+    }
+    void SwitchMenu(GameObject newMenu)
+    {
+        if (menuActive != null)
+            menuActive.SetActive(false);
+
+        menuActive = newMenu;
+        menuActive.SetActive(true);
+    }
+
+    public void OpenControls()
+    {
+        SwitchMenu(menuControl);
+    }
+
+    public void CloseControls()
+    {
+        SwitchMenu(menuPause);
     }
 
     public void OpenSettings()
     {
-        menuPause.SetActive(false);
-        menuSettings.SetActive(true);
+        SwitchMenu(menuSettings);
     }
+
 
     public void CloseSettings()
     {
@@ -86,10 +117,15 @@ public class UIManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = timeScaleOrig;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        menuActive.SetActive(false);
+       // Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
+        
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+        }  
         menuActive = null;
+        
     }
 
     public void QuitGame()
@@ -99,8 +135,9 @@ public class UIManager : MonoBehaviour
 
     public void youLose()
     {
-        statePause();
+   
         menuActive = menuLose;
         menuActive.SetActive(true);
+        Time.timeScale = 0;
     }
 }
