@@ -241,7 +241,7 @@ public class WorldController : MonoBehaviour
     public void StateCloseInventory()
     {
         invOpen = false;
-        SetActiveMenu(null);
+        SetActiveMenu(menuPause);
     }
 
     public void StateWinGame()
