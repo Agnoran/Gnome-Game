@@ -210,7 +210,12 @@ public class PlayerAttack : MonoBehaviour, IPickup
     }
     public void attackspdReset()
     {
-        shootRate = SpellList[spellListPos].shootRate;
+        if (SpellList.Count > 0)
+        {
+            shootRate = SpellList[spellListPos].shootRate;
+        }
+        else shootRate = 1f;
+
         basicAttackRate = shootRateOG;
     }
 
