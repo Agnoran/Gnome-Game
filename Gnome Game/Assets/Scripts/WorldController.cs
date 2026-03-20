@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
 {
@@ -8,8 +9,13 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject prevMenuActive;
 
+    public Image playerHP;
+    public Image playerMP;
+
     [Header("Start / Tutorial Menus")]
     [SerializeField] GameObject menuStart;
+    [SerializeField] GameObject HUD;
+    [SerializeField] GameObject Gold;
     [SerializeField] GameObject menuTutorialOne;
     [SerializeField] GameObject menuTutorialTwo;
 
@@ -17,6 +23,7 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuInventory;
     [SerializeField] GameObject menuWinGame;
+    [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuShop;
 
     [Header("Extra Menus")]
@@ -58,6 +65,9 @@ public class WorldController : MonoBehaviour
 
         pauseInputHeld = false;
         inventoryInputHeld = false;
+
+        player = GameObject.FindWithTag("Player");
+        inputHandler = player.GetComponentInChildren<PlayerInputHandler>();
 
         StateBeginGame();
     }
@@ -186,10 +196,11 @@ public class WorldController : MonoBehaviour
 
     public void StatePaused()
     {
+        SetActiveMenu(menuPause);
         isPaused = true;
         Time.timeScale = 0f;
 
-        SetActiveMenu(menuPause);
+        
     }
 
     public void StateUnpaused()
@@ -234,7 +245,7 @@ public class WorldController : MonoBehaviour
     public void StateCloseInventory()
     {
         invOpen = false;
-        SetActiveMenu(null);
+        SetActiveMenu(menuPause);
     }
 
     public void StateWinGame()
@@ -314,5 +325,13 @@ public class WorldController : MonoBehaviour
     {
         rebinderOpen = false;
         SetActiveMenu(menuPause);
+    }
+
+    public void youLose()
+    {
+
+        menuActive = menuLose;
+        menuActive.SetActive(true);
+        Time.timeScale = 0;
     }
 }

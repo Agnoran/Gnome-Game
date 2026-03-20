@@ -121,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7656295257732849400}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: stateUnpause
+      - m_Target: {fileID: 6792910940516162549}
+        m_TargetAssemblyTypeName: menuButtonFunctions, Assembly-CSharp
+        m_MethodName: resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -227,6 +227,7 @@ MonoBehaviour:
   menuWin: {fileID: 8376513418799471413}
   menuLose: {fileID: 2453311711941156530}
   menuControl: {fileID: 435466150739803376}
+  inputHandler: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0
@@ -925,10 +926,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5591256427737692176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -90, y: 0}
+  m_SizeDelta: {x: 20, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2879000859769002184
 CanvasRenderer:
@@ -2750,10 +2751,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9081422129185280632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -64}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 206, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5458469556712280406
 CanvasRenderer:
@@ -9692,10 +9693,6 @@ PrefabInstance:
     - target: {fileID: 3449228250916230886, guid: 1bf8e5d1656b2784c8a3432d2859dae4, type: 3}
       propertyPath: m_Name
       value: Control Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3449228250916230886, guid: 1bf8e5d1656b2784c8a3432d2859dae4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4966041925958782963, guid: 1bf8e5d1656b2784c8a3432d2859dae4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

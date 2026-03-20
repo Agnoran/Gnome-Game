@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &951946719738818706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8056543947793843169}
+  - component: {fileID: 6915167457844056742}
+  m_Layer: 0
+  m_Name: Basic Ghost Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8056543947793843169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951946719738818706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 1.3, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6915167457844056742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951946719738818706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d64a871ce4689f4ba46896ee52f6ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  spawnerName: Template Spawner
+  description: Template spawner used to spawn Items/Enemies
+  spawnSpeed: 3
+  maxSpawn: 3
+  itemsToSpawn:
+  - {fileID: 4791871667248529999, guid: d76728aebdda5224b84ec9943d3d173a, type: 3}
+  totalTheSpawns: 1
+  spawnRadius: 0
+  forceSpawn: 0
+  continuousSpawning: 1
+  startActive: 1
+  currentItemToSpawn: {fileID: 0}
+  spawnAmountMode: 0
+  amountPerSpawn: 3
+  spawnPlacementMode: 0
+  lineSpacing: 2
+  lineDirection: {x: 1, y: 0, z: 0}
