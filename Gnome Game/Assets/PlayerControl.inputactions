@@ -275,6 +275,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e4b63a6a-8e00-4f15-a69e-28eca22258b0",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BasicAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "828a9e62-3181-45bd-b82b-a61c6bfc1f62",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -308,8 +319,30 @@
                 },
                 {
                     "name": "",
+                    "id": "d2ded150-defc-4765-a93f-9fb212a0dd4e",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0a2ee479-99d7-4532-af07-8743c9d114e7",
                     "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "447261c6-7ad3-4b98-bd98-2fe129a44b99",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -330,8 +363,30 @@
                 },
                 {
                     "name": "",
+                    "id": "ea9fba8c-5c62-46f7-a26d-51b7e8c40306",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialSpell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dd0a6b97-aecb-4de5-a030-818fbb185d76",
                     "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Buff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0a659c8-0db3-4083-99f9-4b6397abde5b",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -352,6 +407,17 @@
                 },
                 {
                     "name": "",
+                    "id": "aa776215-8ece-4116-8350-44824b08c95a",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "285f1b42-79e8-4c9f-8530-2b3c52fb2fe4",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -363,8 +429,30 @@
                 },
                 {
                     "name": "",
+                    "id": "55ee4901-0b3a-4aff-a9c8-74498d3cad6a",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "840c2a71-f6ef-4b1c-880d-e421f1f6f439",
                     "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HotbarScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc7f74de-71ee-4f67-8271-f90041d5352c",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -407,8 +495,30 @@
                 },
                 {
                     "name": "",
+                    "id": "94c6eb6a-4113-4782-ac1c-a29528bdc976",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9139dbeb-d97e-437f-9f18-59c60b16e15d",
                     "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "319cd885-6e35-49d5-92b7-96e26e8f2a18",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

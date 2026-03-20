@@ -4776,7 +4776,7 @@ GameObject:
   - component: {fileID: 8675490541507056652}
   - component: {fileID: 1472352871751496224}
   - component: {fileID: 338597277750984320}
-  - component: {fileID: 8973303113485252897}
+  - component: {fileID: 6185515452431279423}
   m_Layer: 5
   m_Name: Settings Menu
   m_TagString: UI Menu
@@ -4847,7 +4847,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8973303113485252897
+--- !u!114 &6185515452431279423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4856,9 +4856,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4417018420542100746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c552f7ad815d742b9c71be474b16d2, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d407c3562996e4d91029fe46e9a60e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::menuButtonFunctions
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonFunctions
 --- !u!1 &4512919999222075755
 GameObject:
   m_ObjectHideFlags: 0
@@ -7451,7 +7451,7 @@ GameObject:
   - component: {fileID: 4360032491207618484}
   - component: {fileID: 3508623832134222619}
   - component: {fileID: 2266997917906880525}
-  - component: {fileID: 6520378565710153165}
+  - component: {fileID: 537015114182094314}
   m_Layer: 5
   m_Name: Lose Menu
   m_TagString: UI Menu
@@ -7520,7 +7520,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6520378565710153165
+--- !u!114 &537015114182094314
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7529,9 +7529,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6428269010643127834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c552f7ad815d742b9c71be474b16d2, type: 3}
+  m_Script: {fileID: 11500000, guid: b9d407c3562996e4d91029fe46e9a60e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::menuButtonFunctions
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonFunctions
 --- !u!1 &6456695660834983639
 GameObject:
   m_ObjectHideFlags: 0

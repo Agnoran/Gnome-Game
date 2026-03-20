@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +11,13 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject prevMenuActive;
 
+    public TMP_Text Gold;
     public Image playerHP;
     public Image playerMP;
 
     [Header("Start / Tutorial Menus")]
     [SerializeField] GameObject menuStart;
     [SerializeField] GameObject HUD;
-    [SerializeField] GameObject Gold;
     [SerializeField] GameObject menuTutorialOne;
     [SerializeField] GameObject menuTutorialTwo;
 
@@ -49,6 +51,7 @@ public class WorldController : MonoBehaviour
 
     bool pauseInputHeld;
     bool inventoryInputHeld;
+    private int total;
 
     void Awake()
     {
@@ -72,12 +75,18 @@ public class WorldController : MonoBehaviour
         StateBeginGame();
     }
 
-    void Update()
+    private void Update()
+    {
+        Update(total);
+    }
+
+    void Update(int total)
     {
         if (inputHandler == null) return;
 
         HandlePauseInput();
         HandleInventoryInput();
+        UpdateGoldAmount(total);
     }
 
     void HandlePauseInput()
@@ -333,5 +342,12 @@ public class WorldController : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
         Time.timeScale = 0;
+    }
+    int goldAmount;
+    public void UpdateGoldAmount(int total)
+    {
+        
+        goldAmount += total;
+        Gold.text = goldAmount.ToString("F0");
     }
 }

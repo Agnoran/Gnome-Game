@@ -10,7 +10,7 @@ public class mechantNPC : MonoBehaviour, iInteractable
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && PlayerInputHandler.Instance.InteractInput)
         { Interact(); }
     }
 
