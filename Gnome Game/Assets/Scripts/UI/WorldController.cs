@@ -348,6 +348,6 @@ public class WorldController : MonoBehaviour
     {
         
         goldAmount += total;
-        Gold.text = goldAmount.ToString("F0");
+        Gold.text = goldAmount.ToString();
     }
 }
