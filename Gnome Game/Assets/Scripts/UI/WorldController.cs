@@ -11,7 +11,6 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject prevMenuActive;
 
-    public TMP_Text Gold;
     public Image playerHP;
     public Image playerMP;
 
@@ -75,18 +74,15 @@ public class WorldController : MonoBehaviour
         StateBeginGame();
     }
 
-    private void Update()
-    {
-        Update(total);
-    }
+    
 
-    void Update(int total)
+    void Update()
     {
         if (inputHandler == null) return;
 
         HandlePauseInput();
         HandleInventoryInput();
-        UpdateGoldAmount(total);
+        
     }
 
     void HandlePauseInput()
@@ -343,11 +339,5 @@ public class WorldController : MonoBehaviour
         menuActive.SetActive(true);
         Time.timeScale = 0;
     }
-    int goldAmount;
-    public void UpdateGoldAmount(int total)
-    {
-        
-        goldAmount += total;
-        Gold.text = goldAmount.ToString();
-    }
+    
 }

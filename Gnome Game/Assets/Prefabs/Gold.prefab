@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff37d801b5334e04488c5321e1c81186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::goldPickup
-  goldAmount: 10
+  goldAmount: 25

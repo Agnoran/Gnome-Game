@@ -8,7 +8,7 @@ public class goldPickup : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            currencyManager.instance.AddGold(goldAmount);
+            HUD.instance.UpdateGoldAmount(goldAmount);
             Destroy(gameObject);
         }
     }
