@@ -931,12 +931,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpellCraftingManager
   spellbook: {fileID: 6901420152685313862}
   playerAttack: {fileID: 0}
-  readyButton: {fileID: 0}
+  readyButton: {fileID: 7758888059083782982}
   readyCheckText: {fileID: 6805479127879383861}
   ingredientText: {fileID: 3351312743405867793}
   cancelCraftingWarning: {fileID: 1386707258273883816}
   resetCraftingWarning: {fileID: 1386707258273883816}
-  recipeListUI: {fileID: 0}
+  recipeListUI: {fileID: 3731562865060790467}
   maxTries: 3
 --- !u!114 &6901420152685313862
 MonoBehaviour:
