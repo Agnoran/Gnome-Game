@@ -373,22 +373,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 464204439726599727, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_text
-      value: Option A
-      objectReference: {fileID: 0}
-    - target: {fileID: 1577592441077624584, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793287608066227278, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2793287608066227278, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6284946299011422968, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       propertyPath: m_Name
       value: Updated UI manager
@@ -471,18 +455,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6539600115720002297, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689861859036043702, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7689861859036043702, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460451503687444262, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
