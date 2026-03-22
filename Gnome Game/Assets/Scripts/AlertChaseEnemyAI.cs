@@ -196,9 +196,10 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         //reduce health
         HP -= amount;
         Alert();
-        faceTarget();
-        agent.speed = moveSpeed;
         agent.SetDestination(player.transform.position);
+        agent.speed = moveSpeed;
+        faceTarget();
+
 
         //check for death
         if (HP < 0)
