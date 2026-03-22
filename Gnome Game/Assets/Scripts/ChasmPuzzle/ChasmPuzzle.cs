@@ -15,8 +15,8 @@ public class ChasmPuzzle : MonoBehaviour
     [SerializeField] GameObject specialFloors;
 
     [Header("Buttons / Controls")]
-    [SerializeField] Button[] puzzleButtons;
-    [SerializeField] Button[] specialButtons;
+    [SerializeField] GameButton[] puzzleButtons;
+    [SerializeField] GameButton[] specialButtons;
 
 
     [Header("Player / Checkpoints")]
@@ -71,7 +71,7 @@ public class ChasmPuzzle : MonoBehaviour
     {
         if (puzzleCompleted)
         {
-            foreach(Button button in specialButtons)
+            foreach(GameButton button in specialButtons)
             {
                 if (button == null) continue;
                 button.Deactivate();
@@ -84,7 +84,7 @@ public class ChasmPuzzle : MonoBehaviour
             return;
         }
 
-        foreach (Button button in puzzleButtons)
+        foreach (GameButton button in puzzleButtons)
         {
             if (button == null) continue;
             button.Deactivate();
@@ -103,7 +103,7 @@ public class ChasmPuzzle : MonoBehaviour
     {
         if (puzzleCompleted)
         {
-            foreach (Button button in specialButtons)
+            foreach (GameButton button in specialButtons)
             {
                 if (button == null) continue;
                 button.Activate();
@@ -116,7 +116,7 @@ public class ChasmPuzzle : MonoBehaviour
             return;
         }
 
-        foreach (Button button in puzzleButtons)
+        foreach (GameButton button in puzzleButtons)
         {
             if (button == null) continue;
             button.Activate();
@@ -133,7 +133,7 @@ public class ChasmPuzzle : MonoBehaviour
     {
         puzzleCompleted = true;
 
-        foreach (Button button in puzzleButtons)
+        foreach (GameButton button in puzzleButtons)
         {
             if (button == null) continue;
             button.Activate();
@@ -152,13 +152,13 @@ public class ChasmPuzzle : MonoBehaviour
             finalFloors.SetActive(true);
         }
 
-        foreach (Button button in puzzleButtons)
+        foreach (GameButton button in puzzleButtons)
         {
             if (button == null) continue;
             button.gameObject.SetActive(false);
         }
 
-        foreach (Button button in specialButtons)
+        foreach (GameButton button in specialButtons)
         {
             if (button == null) continue;
             button.gameObject.SetActive(true);
@@ -214,7 +214,7 @@ public class ChasmPuzzle : MonoBehaviour
     }
     public void deactivateSpecialButtons()
     {
-        foreach (Button button in specialButtons)
+        foreach (GameButton button in specialButtons)
         {
             if (button == null) continue;
             button.gameObject.SetActive(false);

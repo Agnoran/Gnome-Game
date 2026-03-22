@@ -3,13 +3,13 @@ using UnityEngine.UIElements;
 
 public class buttonPuzzle : MonoBehaviour
 {
-    [SerializeField] Button[] puzzleButtons;
+    [SerializeField] GameButton[] puzzleButtons;
     [SerializeField] GameObject door;
     bool solved = false;
     private void Update()
     {
         solved = true;
-        foreach (Button button in puzzleButtons)
+        foreach (GameButton button in puzzleButtons)
         {
             if (!button.IsPressed)
             {

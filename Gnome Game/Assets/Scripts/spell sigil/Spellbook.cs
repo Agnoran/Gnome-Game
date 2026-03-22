@@ -39,4 +39,20 @@ public class Spellbook : MonoBehaviour
 
         return spellArray;
     }
+    public SpellRecipe[] GetLockedSpells()
+    {
+        List<SpellRecipe> lockedSpells = new List<SpellRecipe>();
+
+        foreach (SpellRecipe spell in allSpells)
+        {
+            if (spell == null) continue;
+
+            if (!unlockedSpells.Contains(spell))
+            {
+                lockedSpells.Add(spell);
+            }
+        }
+
+        return lockedSpells.ToArray();
+    }
 }

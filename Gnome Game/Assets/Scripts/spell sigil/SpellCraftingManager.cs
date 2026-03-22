@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class SpellCraftingManager : MonoBehaviour
 {
@@ -10,13 +11,12 @@ public class SpellCraftingManager : MonoBehaviour
     [SerializeField] PlayerAttack playerAttack;
 
     [Header("UI")]
-    [SerializeField] Button readyButton;
-    [SerializeField] Image readyButtonImage;
+    [SerializeField] UnityEngine.UI.Button readyButton;
     [SerializeField] TextMeshProUGUI readyCheckText;
     [SerializeField] TMP_Text ingredientText;
     [SerializeField] GameObject cancelCraftingWarning;
     [SerializeField] GameObject resetCraftingWarning;
-
+    [SerializeField] SpellRecipeListUI recipeListUI;
     [Header("Crafting")]
     [SerializeField] int maxTries = 3;
 
@@ -34,43 +34,71 @@ public class SpellCraftingManager : MonoBehaviour
     int testTry = 0;
     public int TestTry => testTry;
 
+
+
     public void TryUnlockSpell()
     {
         if (currentRecipe == null) return;
         if (!canCraft) return;
         if (spellbook.IsUnlocked(currentRecipe)) return;
+        if (currentRecipe.rewardSpell == null) return;
 
         hasStartedCrafting = true;
 
-        bool success = TestDrawing();
+        spellbook.Unlock(currentRecipe);
+        playerAttack.getSpell(currentRecipe.rewardSpell);
+        ConsumeIngredients(currentRecipe);
 
-        if (success)
+        if (recipeListUI != null)
         {
-            spellbook.Unlock(currentRecipe);
-            playerAttack.getSpell(currentRecipe.rewardSpell);
-            ConsumeIngredients(currentRecipe);
-
-            Debug.Log("Craft succeeded: " + currentRecipe.spellName);
-
-            ResetCraftingState();
+            recipeListUI.BuildRecipeList();
         }
-        else
-        {
-            testTry++;
 
-            if (testTry < maxTries)
-            {
-                Debug.Log("Drawing failed, try again! Attempt: " + testTry + " / " + maxTries);
-            }
-            else
-            {
-                Debug.Log("Drawing failed, no more attempts left.");
+        Debug.Log("Craft succeeded: " + currentRecipe.spellName);
 
-                FailCraft(currentRecipe);
-                ResetCraftingState();
-            }
-        }
+        ResetCraftingState();
     }
+    // uncomment this when drawing is implemented
+    //public void TryUnlockSpell()
+    //{
+    //    if (currentRecipe == null) return;
+    //    if (!canCraft) return;
+    //    if (spellbook.IsUnlocked(currentRecipe)) return;
+    //    if (currentRecipe.rewardSpell == null) return;
+
+    //    hasStartedCrafting = true;
+
+    //    // Drawing validation bypassed for now.
+    //    // Keep this flag/spot so real glyph checking can be re-added later.
+    //    bool success = true;
+
+    //    if (success)
+    //    {
+    //        spellbook.Unlock(currentRecipe);
+    //        playerAttack.getSpell(currentRecipe.rewardSpell);
+    //        ConsumeIngredients(currentRecipe);
+
+    //        Debug.Log("Craft succeeded: " + currentRecipe.spellName);
+
+    //        ResetCraftingState();
+    //    }
+    //    else
+    //    {
+    //        testTry++;
+
+    //        if (testTry < maxTries)
+    //        {
+    //            Debug.Log("Drawing failed, try again! Attempt: " + testTry + " / " + maxTries);
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Drawing failed, no more attempts left.");
+
+    //            FailCraft(currentRecipe);
+    //            ResetCraftingState();
+    //        }
+    //    }
+    //}
 
     public void SelectRecipe(SpellRecipe recipe)
     {
@@ -120,15 +148,17 @@ public class SpellCraftingManager : MonoBehaviour
         {
             readyCheckText.text = "Can't Craft";
             readyCheckText.color = Color.white;
-            readyButtonImage.color = Color.red;
+            readyButton.image.color = Color.red;
             canCraft = false;
+            readyButton.interactable = false;
         }
         else
         {
             readyCheckText.text = "Craft";
             readyCheckText.color = Color.white;
-            readyButtonImage.color = Color.green;
+            readyButton.image.color = Color.green;
             canCraft = true;
+            readyButton.interactable = true;
         }
 
         testTry = 0;
@@ -240,7 +270,8 @@ public class SpellCraftingManager : MonoBehaviour
 
         readyCheckText.text = "Select Recipe";
         readyCheckText.color = Color.white;
-        readyButtonImage.color = Color.white;
+        readyButton.image.color = Color.darkGray;
+        readyButton.interactable = false;
 
         ingredientText.text = "";
     }
