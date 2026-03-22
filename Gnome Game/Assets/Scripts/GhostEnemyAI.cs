@@ -14,6 +14,8 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] int HP;                //health
     [SerializeField] int knockbackDist;     //how far back the ghost gets shoved on hit
     [SerializeField] float knockbackSpeed;  //how quickly the knockback lerp runs
+    [SerializeField] GameObject ItemDrop;
+    [SerializeField] Transform dropPos;
 
     [SerializeField] Renderer model;
     Color colorOG;
@@ -175,6 +177,10 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         //check for death
         if (HP < 0)
         {
+            if (ItemDrop != null)
+            {
+                Instantiate(ItemDrop, dropPos.position, transform.rotation);
+            }
             Destroy(gameObject);
         }
         else
@@ -365,6 +371,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
                     particle.SetActive(true);
                     break;
                 case global::damage.statusType.frozen:
+                    statusParticles.startColor = Color.cyan;
                     particle.SetActive(true);
                     break;
                 case global::damage.statusType.slowed:
@@ -415,17 +422,17 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         if (inflictedStatus == global::damage.statusType.slowed)
         {
             tpWaitTime = moddedMoveSpeed;
-            shootRate = shootRateOg;
+            shootRate = moddedAttackSpeed;
         }
         if (inflictedStatus == global::damage.statusType.shocked)
         {
             tpWaitTime = moddedMoveSpeed;
-            shootRate = shootRateOg;
+            shootRate = moddedAttackSpeed;
         }
         if (buff == global::damage.statusType.hasted)
         {
             tpWaitTime = moddedMoveSpeed;
-            shootRate = shootRateOg;
+            shootRate = moddedAttackSpeed;
         }
     }
 

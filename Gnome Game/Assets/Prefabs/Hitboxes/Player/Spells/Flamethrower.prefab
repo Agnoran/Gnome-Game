@@ -55,9 +55,9 @@ MonoBehaviour:
   rb: {fileID: 8017810773024619531}
   damageAmount: 1
   damageRate: 0
-  statusDamageAmount: 0
-  statusDamageRate: 0
-  statusDuration: 0
+  statusDamageAmount: 1
+  statusDamageRate: 3
+  statusDuration: 3
   speed: 3
   destroyTime: 3
   hitEffect: {fileID: 0}
