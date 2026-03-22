@@ -440,22 +440,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3239713318683433841, guid: 453d654c5db061e4297bf1ae511caa9d, type: 3}
-      propertyPath: FOV
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3239713318683433841, guid: 453d654c5db061e4297bf1ae511caa9d, type: 3}
-      propertyPath: moveSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3239713318683433841, guid: 453d654c5db061e4297bf1ae511caa9d, type: 3}
-      propertyPath: explosionTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3239713318683433841, guid: 453d654c5db061e4297bf1ae511caa9d, type: 3}
-      propertyPath: faceTargetSpeed
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 4916928577925479423, guid: 453d654c5db061e4297bf1ae511caa9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.502792

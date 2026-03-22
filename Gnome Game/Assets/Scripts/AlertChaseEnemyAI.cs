@@ -10,7 +10,8 @@ using Color = UnityEngine.Color;
 public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
 {
     [SerializeField] GameObject alertCube;  //like an exclamation point when seeing player
-    [SerializeField] float alertTimer;      //how long the alert object is visible
+    float alertTimer;
+    [SerializeField] float alertTime;//how long the alert object is visible
     [SerializeField] float lookWaitTime;   //how long to look in a direction before switching
     [SerializeField] NavMeshAgent agent;    //drives movement
     [SerializeField] float moveSpeed;       //how quickly to chase
@@ -18,9 +19,19 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     [SerializeField] int HP;
     [SerializeField] GameObject ItemDrop;
     [SerializeField] Transform itemDropPos;
+    [SerializeField] GameObject explosion;
+    [SerializeField] float explosionTime;
+    float explosionTimer;
+    bool willExplode;
 
     [SerializeField] Renderer model;
     UnityEngine.Color colorOG;
+
+    Vector3 playerDir;
+    float angleToPlayer;
+    [SerializeField] int faceTargetSpeed;
+    [SerializeField] int FOV;
+
 
     [Header("Status Managment")]
     [SerializeField] damage.statusType Attribute;
@@ -44,7 +55,7 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     bool weakness;
 
     float lookTimer;    //how long looking in a direction. reset on turn
-    bool idle;          //drives idle/chase logic
+    bool alert;          
 
     GameObject player;
     bool playerInTrigger;
@@ -54,30 +65,46 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     {
         gameObject.transform.Rotate(0f, 90 * Random.Range(0, 3), 0.0f, Space.Self);
         player = GameObject.FindWithTag("Player");
-        idle = true;
+        alert = false;
         playerInTrigger = false;
         lookTimer = 0;
         colorOG = model.material.color;
         moveSpeedOG = moveSpeed;
+        isFrozen = false;
+        willExplode = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         handleStatus();
-        if (idle)
+        if(alert)
         {
-            Idle();
+            alertTimer += Time.deltaTime;
+        }
+        if(alertTimer >= alertTime)
+        {
+            alertCube.SetActive(false);
+        }
+        if (willExplode)
+        {
+            explosionTimer += Time.deltaTime;
 
-            if (playerInTrigger && CanSeePlayer())
+            agent.speed = moveSpeed / 2;
+
+            StartCoroutine(ExplosionFlash());
+            if (explosionTimer >= explosionTime)
             {
-                Alert();
+                explode();
             }
+        }
+        if (CanSeePlayer())
+        {
+
         }
         else
         {
-            agent.SetDestination(player.transform.position);
-            agent.speed = moveSpeed;
+            Idle();
         }
 
     }
@@ -104,36 +131,50 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
 
     void Alert()
     {
-        idle = false;
-        StartCoroutine(RunAlertPopup());
-    }
-
-    IEnumerator RunAlertPopup()
-    {
+        alert = true;
         alertCube.SetActive(true);
-        yield return new WaitForSeconds(alertTimer);
-        alertCube.SetActive(false);
-        
     }
-
 
 
 
     bool CanSeePlayer()
     {
+        playerDir = player.transform.position - transform.position; 
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
-        Physics.Raycast(gameObject.transform.position, Vector3.forward, out RaycastHit hit);
+        Debug.DrawRay(transform.position, playerDir);
 
-        if (hit.collider.CompareTag("Player") && !isFrozen)
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, playerDir, out hit))
         {
-            return true;
+            if (angleToPlayer <= FOV && hit.collider.CompareTag("Player") && playerInTrigger && !isFrozen)
+            {
+                agent.SetDestination(player.transform.position);
+                agent.speed = moveSpeed;
+                faceTarget();
+                Alert();
+                
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    willExplode = true;
+                    agent.stoppingDistance = 1;
+                }
+                
+
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+       
+        return false;
+
 
     }
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(playerDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -155,6 +196,9 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         //reduce health
         HP -= amount;
         Alert();
+        faceTarget();
+        agent.speed = moveSpeed;
+        agent.SetDestination(player.transform.position);
 
         //check for death
         if (HP < 0)
@@ -177,6 +221,20 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         model.material.color = UnityEngine.Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOG;
+    }
+
+    IEnumerator ExplosionFlash()
+    {
+        float explosionInterval = 1f;
+        model.material.color = UnityEngine.Color.red;
+        yield return new WaitForSeconds(explosionInterval);
+        explosionInterval -= 0.1f;
+        model.material.color = colorOG;
+    }
+    void explode()
+    {
+        Instantiate(explosion,transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
     //get information from what inflicted the status and apply the condiiton to the player.
