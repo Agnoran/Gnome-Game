@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fire particle material
+  m_Name: particle - ice
   m_Shader: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -137,12 +137,12 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.9056604, g: 0.42282715, b: 0.16660735, a: 1}
+    - _BaseColor: {r: 0.16470589, g: 0.8158792, b: 0.90588236, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.9056604, g: 0.42282712, b: 0.16660732, a: 1}
+    - _Color: {r: 0.16470584, g: 0.81587917, b: 0.90588236, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 2.9960785, g: 0.42995974, b: 0.015686305, a: 1}
+    - _EmissionColor: {r: 0.94687384, g: 2.3965774, b: 2.9960787, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

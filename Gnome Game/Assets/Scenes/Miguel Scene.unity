@@ -541,14 +541,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2589650114112007877, guid: ccd7b6b5a6d33134d959a9634ec053f8, type: 3}
-      propertyPath: charge
-      value: 
-      objectReference: {fileID: 2466010751089518807, guid: f424bec6282c85f4abf4282214e43688, type: 3}
-    - target: {fileID: 4671807945664293390, guid: ccd7b6b5a6d33134d959a9634ec053f8, type: 3}
-      propertyPath: lengthInSec
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 4791871667248529999, guid: ccd7b6b5a6d33134d959a9634ec053f8, type: 3}
       propertyPath: m_Name
       value: Ghost - Fire

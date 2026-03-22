@@ -88,6 +88,7 @@ MonoBehaviour:
   knockbackSpeed: 8
   ItemDrop: {fileID: 0}
   dropPos: {fileID: 1556356798697491365}
+  charge: {fileID: 2466010751089518807, guid: f424bec6282c85f4abf4282214e43688, type: 3}
   model: {fileID: 8771818154822635479}
   shootRate: 0.7
   projectile: {fileID: 5664110817717348276, guid: 5deb96f0232090846a3561283ae84962, type: 3}
@@ -272,6 +273,10 @@ PrefabInstance:
     - target: {fileID: 3301770895528744107, guid: 718642251a9f81e4fad2a76984173f90, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918228266624273970, guid: 718642251a9f81e4fad2a76984173f90, type: 3}
+      propertyPath: lengthInSec
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6198293849534055050, guid: 718642251a9f81e4fad2a76984173f90, type: 3}
       propertyPath: m_LocalPosition.x

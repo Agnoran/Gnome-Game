@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9179947531374726159}
   - component: {fileID: 8332303960507721478}
   m_Layer: 6
-  m_Name: charge
+  m_Name: charge - poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4782,7 +4782,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34d6b0c55796e02489b24e572318a63d, type: 2}
+  - {fileID: 2100000, guid: 181c7f7c20e35d64c865f07ec16e844e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
