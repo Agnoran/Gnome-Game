@@ -119,6 +119,7 @@ MonoBehaviour:
   knockbackSpeed: 0
   ItemDrop: {fileID: 0}
   dropPos: {fileID: 6279845192895347535}
+  charge: {fileID: 2466010751089518807, guid: 16e116e4a52e9714d8339e54ee70cc93, type: 3}
   model: {fileID: 8771818154822635479}
   shootRate: 1.5
   projectile: {fileID: 5664110817717348276, guid: 2759909cecbf0ec48ab0374a8dbca9b5, type: 3}

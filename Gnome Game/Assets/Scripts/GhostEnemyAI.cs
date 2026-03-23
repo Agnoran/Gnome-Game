@@ -16,6 +16,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] float knockbackSpeed;  //how quickly the knockback lerp runs
     [SerializeField] GameObject ItemDrop;
     [SerializeField] Transform dropPos;
+    [SerializeField] GameObject charge;
 
     [SerializeField] Renderer model;
     Color colorOG;
@@ -61,7 +62,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     bool weakness;
 
 
-
+    bool isCharging;
     float elapsedTime;
     bool isVisible;
     Vector3 startingPos;
@@ -93,15 +94,15 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
 
 
         //increment shoot timer always - shoot method will reset to zero after shooting
-        shotTimer += Time.deltaTime;
         roamTimer += Time.deltaTime;
         handleStatus();
 
 
         if (playerInTrigger && !isFrozen)
         {
-            if (CanSeePlayer())
+            if (CanSeePlayer() && isVisible)
             {
+
                 Shoot();
             }
         }
@@ -131,13 +132,22 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     //shoot handles attacking
     public void Shoot()
     {
-        if (shotTimer >= shootRate && isVisible)
+        shotTimer += Time.deltaTime;
+        if(!isCharging)
+        {
+            Instantiate(charge, shootPos.position, Quaternion.LookRotation(playerDir));
+            isCharging = true;
+        }
+        if (shotTimer >= shootRate)
         {
             Debug.Log("shoot");
 
             Instantiate(projectile, shootPos.position, Quaternion.LookRotation(playerDir));
             shotTimer = 0;
+            isCharging = false;
         }
+
+        
     }
 
 

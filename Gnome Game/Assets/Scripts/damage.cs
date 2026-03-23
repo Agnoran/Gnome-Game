@@ -3,7 +3,7 @@ using System.Collections;
 
 public class damage : MonoBehaviour
 {
-    enum damageType { bullet,stationary,DOT, buff}
+    enum damageType { bullet,stationary,DOT, buff, explosion}
     public enum statusType { none, poisoned, burned, shocked, frozen, wet, clear, shield, slowed, hasted };
     
     [SerializeField] damageType type;
@@ -31,7 +31,11 @@ public class damage : MonoBehaviour
             rb.linearVelocity = transform.forward * speed;
             Destroy(gameObject, destroyTime);
         }
-        if(type == damageType.buff)
+        if (type == damageType.explosion)
+        {
+            Destroy(gameObject, destroyTime);
+        }
+        if (type == damageType.buff)
         {
             Destroy(gameObject, destroyTime);
         }
