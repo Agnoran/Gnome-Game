@@ -11,7 +11,6 @@ public class inventoryManager : MonoBehaviour
     public int maxSlots = 20;
     public List<inventorySlot> inventory = new List<inventorySlot>();
 
-
     private void Awake()
     {
         Instance = this;
@@ -70,4 +69,6 @@ public class inventoryManager : MonoBehaviour
     {
         return inventory.Find(slot => slot.item == item);
     }
+
+
 }
