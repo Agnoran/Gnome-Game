@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ButtonTrigger : MonoBehaviour
 {
-    [SerializeField] Button parentButton;
+    [SerializeField] GameButton parentButton;
 
     void Awake()
     {
         // if parentButton is not set, try to find a Button component in the parents
         if (parentButton == null)
         {
-            parentButton = GetComponentInParent<Button>();
+            parentButton = GetComponentInParent<GameButton>();
         }
 
         // if we still don't have a parentButton, log an error

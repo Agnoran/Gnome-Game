@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Button : MonoBehaviour, IButton, ITriggerable
+public class GameButton : MonoBehaviour, IButton, ITriggerable
 {
     public void Activate()
     {
@@ -37,13 +37,13 @@ public class Button : MonoBehaviour, IButton, ITriggerable
     [SerializeField] bool isResetButton = false;
     public bool IsResetButton => isResetButton;
 
-    [SerializeField] Button[] linkedButtons;
+    [SerializeField] GameButton[] linkedButtons;
 
     [SerializeField] Material pressedMaterial;
     [SerializeField] Material unpressedMaterial;
     public void ResetAll()
     {
-        foreach (Button button in linkedButtons)
+        foreach (GameButton button in linkedButtons)
         {
             if (button == null) continue;
             if (button == this) continue; // never reset self
@@ -76,7 +76,7 @@ public class Button : MonoBehaviour, IButton, ITriggerable
 
         if (isResetButton) return;
 
-        foreach (Button button in linkedButtons)
+        foreach (GameButton button in linkedButtons)
         {
             if (button == null) continue;
             if (button == this) continue;
@@ -144,7 +144,7 @@ public class Button : MonoBehaviour, IButton, ITriggerable
         }
         if (linkedButtons != null)
         {
-            foreach (Button button in linkedButtons)
+            foreach (GameButton button in linkedButtons)
             {
                 if (button == this)
                 {

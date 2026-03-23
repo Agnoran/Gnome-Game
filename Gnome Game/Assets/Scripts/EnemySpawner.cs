@@ -19,6 +19,10 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
     [SerializeField] string spawnerName = "Template Spawner";
     [SerializeField] string description = "Template spawner used to spawn Items/Enemies";
 
+    [Header("Battlefield Manager")]
+    [SerializeField] bool controlledByBattlefieldManager = false;
+    public bool ControlledByBattlefieldManager => controlledByBattlefieldManager;
+
     [Header("Spawn timing")]
     [SerializeField] float spawnSpeed = 3f;
 
@@ -29,6 +33,9 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
     [Header("Spawn tracking")]
     int amountSpawned = 0;
     public int AmountSpawned => amountSpawned;
+
+    int aliveCount = 0;
+    public int AliveCount => aliveCount;
 
     bool spawnerActive = false;
     public bool SpawnerActive => spawnerActive;
@@ -76,6 +83,7 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
     {
         origMaxSpawn = maxSpawn;
         amountSpawned = 0;
+        aliveCount = 0;
         currentCoroutine = null;
         currentArrayIndex = 0;
         usedStartingObject = false;
@@ -122,6 +130,22 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
             return;
         }
 
+        if (controlledByBattlefieldManager)
+        {
+            BattlefieldManager manager = BattlefieldManager.Instance;
+
+            if (manager == null)
+            {
+                Debug.LogWarning("Spawner is set to use BattlefieldManager, but no manager exists in scene: " + gameObject.name, this);
+                return;
+            }
+
+            if (!manager.CanSpawnerSpawn(this))
+            {
+                return;
+            }
+        }
+
         spawnerActive = true;
 
         if (continuousSpawning)
@@ -151,6 +175,7 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
         Deactivate();
 
         amountSpawned = 0;
+        aliveCount = 0;
         maxSpawn = origMaxSpawn;
 
         if (!totalTheSpawns && maxSpawn > 0)
@@ -171,6 +196,24 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
                 spawnerActive = false;
                 currentCoroutine = null;
                 yield break;
+            }
+
+            if (controlledByBattlefieldManager)
+            {
+                BattlefieldManager manager = BattlefieldManager.Instance;
+
+                if (manager == null)
+                {
+                    spawnerActive = false;
+                    currentCoroutine = null;
+                    yield break;
+                }
+
+                if (!manager.CanSpawnerSpawn(this))
+                {
+                    yield return new WaitForSeconds(spawnSpeed);
+                    continue;
+                }
             }
 
             TrySpawningOneSet();
@@ -197,6 +240,21 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
                 return;
             }
 
+            if (controlledByBattlefieldManager)
+            {
+                BattlefieldManager manager = BattlefieldManager.Instance;
+
+                if (manager == null)
+                {
+                    return;
+                }
+
+                if (!manager.CanSpawnerSpawn(this))
+                {
+                    return;
+                }
+            }
+
             GameObject itemToSpawn = GetNextItemToSpawn();
 
             if (itemToSpawn == null)
@@ -212,8 +270,59 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
                 continue;
             }
 
-            Instantiate(itemToSpawn, spawnPosition, Quaternion.identity);
+            GameObject spawnedObject = Instantiate(itemToSpawn, spawnPosition, Quaternion.identity);
+
             amountSpawned++;
+            RegisterSpawnedObject(spawnedObject);
+        }
+    }
+
+    void RegisterSpawnedObject(GameObject spawnedObject)
+    {
+        if (spawnedObject == null)
+        {
+            return;
+        }
+
+        aliveCount++;
+
+        if (controlledByBattlefieldManager)
+        {
+            BattlefieldManager manager = BattlefieldManager.Instance;
+
+            if (manager != null)
+            {
+                manager.NotifyEnemySpawn(this);
+            }
+        }
+
+        BattlefieldSpawnTracker tracker = spawnedObject.GetComponent<BattlefieldSpawnTracker>();
+
+        if (tracker == null)
+        {
+            tracker = spawnedObject.AddComponent<BattlefieldSpawnTracker>();
+        }
+
+        tracker.Initialize(this);
+    }
+
+    public void NotifySpawnedObjectRemoved()
+    {
+        aliveCount--;
+
+        if (aliveCount < 0)
+        {
+            aliveCount = 0;
+        }
+
+        if (controlledByBattlefieldManager)
+        {
+            BattlefieldManager manager = BattlefieldManager.Instance;
+
+            if (manager != null)
+            {
+                manager.NotifyEnemyRemoved(this);
+            }
         }
     }
 
@@ -311,6 +420,7 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
             int previewCount = spawnAmountMode == SpawnAmountMode.Multiple ? Mathf.Max(1, amountPerSpawn) : 1;
 
             Vector3 direction = lineDirection.normalized;
+
             if (direction == Vector3.zero)
             {
                 direction = Vector3.right;
@@ -328,6 +438,33 @@ public class EnemySpawner : MonoBehaviour, ITriggerable
                 Vector3 previewPosition = transform.position + (worldDirection * currentOffset);
                 Gizmos.DrawWireSphere(previewPosition, 0.3f);
             }
+        }
+    }
+}
+
+public class BattlefieldSpawnTracker : MonoBehaviour
+{
+    EnemySpawner owningSpawner;
+    bool hasReportedRemoval = false;
+
+    public void Initialize(EnemySpawner spawner)
+    {
+        owningSpawner = spawner;
+        hasReportedRemoval = false;
+    }
+
+    void OnDestroy()
+    {
+        if (hasReportedRemoval)
+        {
+            return;
+        }
+
+        hasReportedRemoval = true;
+
+        if (owningSpawner != null)
+        {
+            owningSpawner.NotifySpawnedObjectRemoved();
         }
     }
 }

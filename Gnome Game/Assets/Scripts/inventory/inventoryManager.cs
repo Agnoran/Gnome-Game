@@ -39,23 +39,36 @@ public class inventoryManager : MonoBehaviour
         return false;
     }
 
-    public void RemoveItem(itemData item)
+    public bool RemoveItem(itemData item, int amount)
     {
-        foreach (inventorySlot slot in inventory)
+        inventorySlot slot = FindItem(item);
+
+        if (slot == null)
         {
-            if (slot.item == item)
-            {
-                slot.quantity--;
-
-                if (slot.quantity <= 0)
-                {
-                    inventory.Remove(slot);
-                }
-
-                return;
-            }
+            Debug.LogWarning("Item not found in inventory");
+            return false;
         }
+
+        if (slot.quantity < amount)
+        {
+            Debug.LogWarning("Not enough items to remove");
+            return false;
+        }
+
+        slot.quantity -= amount;
+
+        if (slot.quantity <= 0)
+        {
+            inventory.Remove(slot);
+        }
+
+        return true;
     }
 
-    
+    public inventorySlot FindItem(itemData item)
+    {
+        return inventory.Find(slot => slot.item == item);
+    }
+
+
 }

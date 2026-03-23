@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool isToggleSprint = false;
 
     Vector3 currentMovement;
+
+    bool canMove = true;
+    public bool CanMove => canMove;
+
+    bool hardLocked = false;
+
+    Coroutine stopMovementRoutine;
 
     void Awake()
     {
@@ -61,6 +69,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            HandleRotationToMouse();
+            return;
+        }
+
         HandleMovement();
         HandleRotationToMouse();
     }
@@ -112,18 +126,22 @@ public class PlayerMovement : MonoBehaviour
     {
         return moveSpeed;
     }
+
     public void hasteMoveSpeed(float amount)
     {
         moveSpeed *= amount;
     }
+
     public void moveSpeedSlowed(float amount)
     {
         moveSpeed /= amount;
     }
+
     public void SetMoveSpeed(float amount)
     {
         moveSpeed = amount;
     }
+
     public void moveSpeedReset()
     {
         moveSpeed = origMoveSpeed;
@@ -174,5 +192,49 @@ public class PlayerMovement : MonoBehaviour
             targetRotation,
             rotateSpeed * Time.deltaTime
         );
+    }
+
+    public void StopMovement(float seconds)
+    {
+        if (stopMovementRoutine != null)
+        {
+            StopCoroutine(stopMovementRoutine);
+        }
+
+        stopMovementRoutine = StartCoroutine(StopMovementRoutine(seconds));
+    }
+
+    IEnumerator StopMovementRoutine(float seconds)
+    {
+        canMove = false;
+        currentMovement = Vector3.zero;
+
+        yield return new WaitForSeconds(seconds);
+
+        if (!hardLocked)
+        {
+            canMove = true;
+        }
+
+        stopMovementRoutine = null;
+    }
+
+    public void DisableMovement()
+    {
+        hardLocked = true;
+        canMove = false;
+        currentMovement = Vector3.zero;
+
+        if (stopMovementRoutine != null)
+        {
+            StopCoroutine(stopMovementRoutine);
+            stopMovementRoutine = null;
+        }
+    }
+
+    public void EnableMovement()
+    {
+        hardLocked = false;
+        canMove = true;
     }
 }
