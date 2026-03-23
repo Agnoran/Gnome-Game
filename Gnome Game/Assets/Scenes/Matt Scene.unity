@@ -373,9 +373,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5017973665833973469, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 1641618382}
+    - target: {fileID: 5017973665833973469, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
+      propertyPath: m_sendNavigationEvents
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6284946299011422968, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       propertyPath: m_Name
       value: Updated UI manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284946299011422968, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6539600115720002297, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       propertyPath: m_Pivot.x
@@ -629,6 +641,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
+--- !u!1 &1641618382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2447033953396267418, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
+  m_PrefabInstance: {fileID: 774840796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5387682447862101596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -779,10 +796,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 615942471380501526, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1986607125247778930, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.58012
@@ -823,29 +836,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2828359557236473313, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3091123278307505587, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4968274649321461277, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
       propertyPath: shopUI
       value: 
       objectReference: {fileID: 115320584}
-    - target: {fileID: 4968274649321461277, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5935187995982982603, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
       propertyPath: m_Name
       value: Shop Building
-      objectReference: {fileID: 0}
-    - target: {fileID: 6388937527905640081, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class settingsManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class settingsManager : MonoBehaviour
 
     private void OnEnable()
     {
-
+        audioMixer = GetComponent<AudioMixer>();
         resolutions = Screen.resolutions;
         //resolutionDropdown.ClearOptions();
 
@@ -71,6 +72,7 @@ public class settingsManager : MonoBehaviour
     {
         float volume = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
         audioMixer.SetFloat("MusicVolume", volume);
+        PlayerPrefs.Save();
 
         PlayerPrefs.SetFloat("MusicVolume", value);
     }
@@ -79,6 +81,7 @@ public class settingsManager : MonoBehaviour
     {
         float volume = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
         audioMixer.SetFloat("SFXVolume", volume);
+        PlayerPrefs.Save();
 
         PlayerPrefs.SetFloat("SFXVolume", value);
     }
@@ -92,6 +95,7 @@ public class settingsManager : MonoBehaviour
             resolution.height,
             Screen.fullScreen);
         PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
+
         PlayerPrefs.Save();
     }
 
@@ -99,6 +103,7 @@ public class settingsManager : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("Fullscreen", Screen.fullScreen ? 1 : 0);
+
         PlayerPrefs.Save();
     } 
 }
