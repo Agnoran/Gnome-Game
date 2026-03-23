@@ -3,6 +3,10 @@ using UnityEngine.InputSystem;
 
 public class aimToGamepad : MonoBehaviour
 {
+    Camera mainCamera;
+    Transform visualRoot;
+    float rotateSpeed = 15f;
+
     void HandleRotationToStick()
     {
         if (mainCamera == null || visualRoot == null || Gamepad.current == null)
@@ -48,9 +52,6 @@ public class aimToGamepad : MonoBehaviour
         {
             HandleRotationToStick();
         }
-        else
-        {
-            HandleRotationToMouse();
-        }
+        
     }
 }
