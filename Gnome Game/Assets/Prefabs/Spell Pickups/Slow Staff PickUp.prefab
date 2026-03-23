@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 400935081930920425}
   - component: {fileID: 5200593025379848553}
   - component: {fileID: 9040919730937166214}
+  - component: {fileID: 355698326817112275}
+  - component: {fileID: 2482208400937862882}
   m_Layer: 0
-  m_Name: Water Staff
+  m_Name: Slow Staff PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3506351527548109682}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.18, y: 0.81276, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1617109031215441762}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5200593025379848553
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -91,6 +93,41 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &355698326817112275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506351527548109682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fa5e1d03e6bc949919fb6ba5adba34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpellPickup
+  stats: {fileID: 11400000, guid: dc07a0eb0ffb5f34c8dd74757e9fe91f, type: 2}
+  spellList: []
+--- !u!135 &2482208400937862882
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506351527548109682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
 --- !u!1 &6160766586026088181
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b16ccf3c9b07584c987dec9a28dc441, type: 2}
+  - {fileID: 2100000, guid: 1f2e89da8bb322646852b5a8c44e12e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

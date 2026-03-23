@@ -149,6 +149,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EnchantCycle",
+                    "type": "Button",
+                    "id": "8cbae8da-f4bf-43cd-a7f3-e98b90b7a8a0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -413,6 +422,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Melee",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfccf516-cfe8-4c1e-8d9a-a2b68bc33d61",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnchantCycle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

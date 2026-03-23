@@ -8,11 +8,8 @@ public class itemPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            bool success = inventoryManager.Instance.AddItem(item);
-            if (success)
-            {
-                Destroy(gameObject);
-            }
+            inventoryManager.Instance.AddItem(item);
+            Destroy(gameObject);
         }
     }
 }
