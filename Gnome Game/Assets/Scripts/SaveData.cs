@@ -24,7 +24,10 @@ public class SaveData
 
     [Header("World State")]
     public string currentScene = "HubScene";
-    public string lastSpawnPointID = "Default";
+    public string lastSpawnPointID = "Spawn";
+
+    [Header("Currency")]
+    public int coins = 0;
 
     [Header("Resources / Inventory")]
     public string[] resourceNames = new string[0];              // resources such as wood, stone etc
@@ -44,17 +47,4 @@ public class SaveData
     // public bool canUseItem = false, or (true) ??
 
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
