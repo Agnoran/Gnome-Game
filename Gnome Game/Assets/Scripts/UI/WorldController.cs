@@ -47,6 +47,7 @@ public class WorldController : MonoBehaviour
 
     bool gameWon;
     public bool GameWon => gameWon;
+    public GameObject MenuActive => menuActive;
 
     bool pauseInputHeld;
     bool inventoryInputHeld;

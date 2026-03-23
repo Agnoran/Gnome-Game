@@ -848,6 +848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Credits
       objectReference: {fileID: 0}
+    - target: {fileID: 3376085627050898154, guid: c1846106e95a9814b8dfd45d5b8f5379, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3672516499559184304, guid: c1846106e95a9814b8dfd45d5b8f5379, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 49
