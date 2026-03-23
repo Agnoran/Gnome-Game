@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
-  m_Name: IceBall
+  m_Name: Fire Ball
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3506351527548109682, guid: bf54081dd4b7d3d4e856c874d1b6f799, type: 3}
-  shootRate: 1
-  MPcost: 2
-  Spell: {fileID: 6982560049949143496, guid: 06c3432ee1a7d1a4ea02b43ad9caeea1, type: 3}
+  SpellWeaponModel: {fileID: 3506351527548109682, guid: f122f8e99b33f1f489e13b72671e7a9c, type: 3}
+  shootRate: 0.7
+  MPcost: 4
+  Spell: {fileID: 6982560049949143496, guid: d6963fd2764a11348b5dc749d9624a92, type: 3}
   hitEffect: {fileID: 0}

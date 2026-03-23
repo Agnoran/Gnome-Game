@@ -26,6 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] string interact = "Interact";
     [SerializeField] string useItem = "UseItem";
     [SerializeField] string hotbarScroll = "HotbarScroll";
+    [SerializeField] string EnchantCycle = "EnchantCycle";
 
     [Header("Menu Actions")]
     [SerializeField] string playerMenu = "OpenPlayerMenu";
@@ -49,6 +50,7 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction interactAction;
     InputAction useItemAction;
     InputAction hotbarScrollAction;
+    InputAction enchantCycleAction;
 
     InputAction playerMenuAction;
     InputAction inventoryAction;
@@ -77,6 +79,9 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 HotbarScrollInput { get; private set; }
     public bool HotbarNextInput { get; private set; }
     public bool HotbarPreviousInput { get; private set; }
+
+    public bool EnchantCycleInput { get; private set; }
+
 
     public bool PlayerMenuInput { get; private set; }
     public bool InventoryInput { get; private set; }
@@ -142,6 +147,8 @@ public class PlayerInputHandler : MonoBehaviour
         interactAction = actionMap.FindAction(interact);
         useItemAction = actionMap.FindAction(useItem);
         hotbarScrollAction = actionMap.FindAction(hotbarScroll);
+        enchantCycleAction = actionMap.FindAction(EnchantCycle);
+
 
         playerMenuAction = actionMap.FindAction(playerMenu);
         inventoryAction = actionMap.FindAction(inventory);
@@ -191,6 +198,9 @@ public class PlayerInputHandler : MonoBehaviour
             },
             () => HotbarScrollInput = Vector2.zero
         );
+
+        RegisterButtonAction(enchantCycleAction, value => EnchantCycleInput = value);
+
 
         RegisterButtonAction(playerMenuAction, value => PlayerMenuInput = value);
         RegisterButtonAction(inventoryAction, value => InventoryInput = value);

@@ -20,8 +20,11 @@ public class PlayerAttack : MonoBehaviour, IPickup
 
     public Transform weaponModel;
     List<SpellStats> SpellList = new List<SpellStats>();
+    List<SpellStats> EnchantmentList = new List<SpellStats>();
     int spellListPos = 0;
     GameObject currentSpell;
+    int enchantListPos = 0;
+    GameObject currEnchant;
 
     [Header("----- Attack Positions -----")]
 
@@ -37,6 +40,8 @@ public class PlayerAttack : MonoBehaviour, IPickup
     [SerializeField] int ShieldMPCost;
     [SerializeField] int HealMPCost;
     [SerializeField] int healAmount;
+    [SerializeField] int enchantMPCost;
+
 
     [Header("----- Spells MP/HP Mods -----")]
     [SerializeField] int SpellMPCost;
@@ -66,6 +71,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
     {
         shootTimer += Time.deltaTime;
         selectSpell();
+        selectEnchantment();
         if (inputHandler.MeleeInput && shootTimer >= basicAttackRate)
         {
             if (frozen)
@@ -249,8 +255,36 @@ public class PlayerAttack : MonoBehaviour, IPickup
         }
 
     }
+    void changeEnchantment(SpellStats current)
+    {
+        if (currEnchant != null)
+        {
+            Destroy(currEnchant);
+        }
+        enchantMPCost = current.MPcost;
+        enchantment = current.Spell;
+        
+    }
+    void selectEnchantment()
+    {
+        if (inputHandler.EnchantCycleInput && enchantListPos < EnchantmentList.Count - 1)
+        {
+            enchantListPos++;
+            changeEnchantment(EnchantmentList[enchantListPos]);
+        }
+        else if (inputHandler.EnchantCycleInput && enchantListPos >= EnchantmentList.Count - 1)
+        {
+            enchantListPos = 0;
+            changeEnchantment(EnchantmentList[enchantListPos]);
+        }
+    }
     public void getSpell(SpellStats spell)
     {
+        if(spell.Spell.name == "Clear" || spell.Spell.name == "Haste" || spell.Spell.name == "Shield" || spell.Spell.name == "Heal")
+        {
+            EnchantmentList.Add(spell);
+            return;
+        }
         SpellList.Add(spell);
         if(SpellList.Count == 1)
         {

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
+  m_Name: Shield Stats
+  m_EditorClassIdentifier: Assembly-CSharp::SpellStats
+  SpellWeaponModel: {fileID: 0}
+  shootRate: 0
+  MPcost: 4
+  Spell: {fileID: 3137806040249747994, guid: 0700df7ac89120b4fbb179dc2126b3d0, type: 3}
+  hitEffect: {fileID: 0}

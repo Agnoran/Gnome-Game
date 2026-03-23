@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e3cbc26597cf645a4719c637cc5ffd, type: 3}
+  m_Name: Recipe - Poison Ball
+  m_EditorClassIdentifier: Assembly-CSharp::SpellRecipe
+  spellName: Poison Ball
+  rewardSpell: {fileID: 11400000, guid: 1441ab11507d88f408aba50ff1f0e9a1, type: 2}
+  referencePoints: []
+  costs:
+  - item: {fileID: 11400000, guid: e78afaa3ca93ac84faad9b7c3edf5a03, type: 2}
+    quantity: 5
+  - item: {fileID: 11400000, guid: fb3fe9bdf88051549ac843eaeeeb8c37, type: 2}
+    quantity: 5
+  - item: {fileID: 11400000, guid: a3e9b8df7bb70f6489ae0f15e1bb3c31, type: 2}
+    quantity: 10

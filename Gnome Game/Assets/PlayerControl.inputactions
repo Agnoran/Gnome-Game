@@ -16,15 +16,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Aim",
-                    "type": "Value",
-                    "id": "931ceaf9-be6b-4bdb-9d2d-1534abc5b08b",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "cb8259cd-1db2-46a7-9b2e-dc5522bd4f23",
@@ -158,6 +149,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EnchantCycle",
+                    "type": "Button",
+                    "id": "8cbae8da-f4bf-43cd-a7f3-e98b90b7a8a0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -228,72 +228,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "9759f389-0c49-484c-bbab-e1bc6552b6a6",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "3dd32298-3a39-4020-90a2-562e4830af5e",
-                    "path": "<Mouse>/delta/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "d8366a79-9007-426e-8084-349775abb431",
-                    "path": "<Mouse>/delta/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "fb1e0e75-1625-43eb-a50c-72d6f23bd87f",
-                    "path": "<Mouse>/delta/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "29a0c2ea-7e2b-4224-8dd1-f6480c782e8e",
-                    "path": "<Mouse>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "c5a8627a-f6cc-4059-ad81-37be9df24936",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "",
                     "id": "1b9c18d3-2e4d-472b-8265-d830bf53be6c",
                     "path": "<Keyboard>/space",
@@ -350,17 +284,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e4b63a6a-8e00-4f15-a69e-28eca22258b0",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BasicAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "828a9e62-3181-45bd-b82b-a61c6bfc1f62",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -394,30 +317,8 @@
                 },
                 {
                     "name": "",
-                    "id": "d2ded150-defc-4765-a93f-9fb212a0dd4e",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0a2ee479-99d7-4532-af07-8743c9d114e7",
                     "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "447261c6-7ad3-4b98-bd98-2fe129a44b99",
-                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -438,30 +339,8 @@
                 },
                 {
                     "name": "",
-                    "id": "ea9fba8c-5c62-46f7-a26d-51b7e8c40306",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpecialSpell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "dd0a6b97-aecb-4de5-a030-818fbb185d76",
                     "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Buff",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f0a659c8-0db3-4083-99f9-4b6397abde5b",
-                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -482,17 +361,6 @@
                 },
                 {
                     "name": "",
-                    "id": "aa776215-8ece-4116-8350-44824b08c95a",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "285f1b42-79e8-4c9f-8530-2b3c52fb2fe4",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -504,30 +372,8 @@
                 },
                 {
                     "name": "",
-                    "id": "55ee4901-0b3a-4aff-a9c8-74498d3cad6a",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UseItem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "840c2a71-f6ef-4b1c-880d-e421f1f6f439",
                     "path": "<Mouse>/scroll",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HotbarScroll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bc7f74de-71ee-4f67-8271-f90041d5352c",
-                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -570,17 +416,6 @@
                 },
                 {
                     "name": "",
-                    "id": "94c6eb6a-4113-4782-ac1c-a29528bdc976",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenMap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9139dbeb-d97e-437f-9f18-59c60b16e15d",
                     "path": "<Keyboard>/v",
                     "interactions": "",
@@ -592,12 +427,12 @@
                 },
                 {
                     "name": "",
-                    "id": "319cd885-6e35-49d5-92b7-96e26e8f2a18",
-                    "path": "<Gamepad>/rightStickPress",
+                    "id": "bfccf516-cfe8-4c1e-8d9a-a2b68bc33d61",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Melee",
+                    "action": "EnchantCycle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

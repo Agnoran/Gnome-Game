@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
   SpellWeaponModel: {fileID: 3506351527548109682, guid: ad47da65065d94541b40979ffc3e1014, type: 3}
   shootRate: 0.5
-  MPcost: 3
+  MPcost: 1
   Spell: {fileID: 6982560049949143496, guid: 0f3a7c00f1060d3458a19f4d0258a7f7, type: 3}
   hitEffect: {fileID: 0}
