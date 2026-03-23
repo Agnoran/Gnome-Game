@@ -7,7 +7,10 @@ using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class settingsManager : MonoBehaviour
 {
+
+
     public AudioMixer audioMixer;
+    public AudioClip clickSound;
 
     public Slider musicSlider;
     public Slider sfxSlider;
