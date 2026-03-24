@@ -5,9 +5,10 @@ using UnityEngine.EventSystems;
 public class Credits : MonoBehaviour
 {
     private RectTransform rectTransform;
-    public float scrollSpeed;
 
     public GameObject firstSelected;
+    public GameObject creditsPanel;
+    public GameObject mainMenu;
 
     void OnEnable()
     {
@@ -17,16 +18,11 @@ public class Credits : MonoBehaviour
 
     void Update()
     {
-        rectTransform.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
-
         if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
         {
             ExitCredits();
         }
     }
-
-    public GameObject creditsPanel;
-    public GameObject mainMenu;
 
     public void ExitCredits()
     {
