@@ -1,43 +1,34 @@
 using UnityEngine;
 
-public class PlayerInputAudioObserver : MonoBehaviour
+public class PlayerAudioObserver : MonoBehaviour
 {
-    private bool wasWalking = false;
+    private bool isWalking = false;
 
     void Update()
     {
-        // 1. Check if the Input Handler exists
-        if (PlayerInputHandler.Instance == null) return;
+        if (PlayerInputHandler.Instance == null || AudioManager.instance == null) return;
 
-        // 2. Listen to the "MoveInput" Vector2 from your teammate's script
+        // --- MOVEMENT SOUNDS ---
         Vector2 moveInput = PlayerInputHandler.Instance.MoveInput;
-        bool isMoving = moveInput.sqrMagnitude > 0.01f;
+        bool currentlyMoving = moveInput.sqrMagnitude > 0.01f;
 
-        // 3. Logic for Walking Sound
-        if (isMoving && !wasWalking)
+        if (currentlyMoving && !isWalking)
         {
-            // Start the loop or play the first step
-            AudioManager.instance.Play("GnomeWalk_Loop"); 
-            wasWalking = true;
+            AudioManager.instance.Play("Gnome Walk");
+            isWalking = true;
         }
-        else if (!isMoving && wasWalking)
+        else if (!currentlyMoving && isWalking)
         {
-            // If you add a Stop method to your AudioManager, call it here
-            // AudioManager.instance.Stop("GnomeWalk_Loop");
-            wasWalking = false;
+            AudioManager.instance.Stop("Gnome Walk");
+            isWalking = false;
         }
 
-        // 4. Listen to the "RollInput" (Button)
-        if (PlayerInputHandler.Instance.RollInput)
-        {
-            // Use a specific name from your SoundBank
-            AudioManager.instance.Play("Gnome_Roll_Boing");
-        }
+        // --- COMBAT/ACTION INPUTS ---
+        if (PlayerInputHandler.Instance.RollInput) AudioManager.instance.Play("Gnome Roll");
+        if (PlayerInputHandler.Instance.MeleeInput) AudioManager.instance.Play("Melee Swing");
 
-        // 5. Listen to the "JumpInput"
-        if (PlayerInputHandler.Instance.JumpInput)
-        {
-            AudioManager.instance.Play("Gnome_Jump_Hup");
-        }
+        // --- SPELL INPUTS ---
+        if (PlayerInputHandler.Instance.ShootInput) AudioManager.instance.Play("Small Magic");
+        if (PlayerInputHandler.Instance.SpecialSpellInput) AudioManager.instance.Play("Big Magic");
     }
 }
