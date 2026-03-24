@@ -86,7 +86,9 @@ MonoBehaviour:
   HP: 5
   knockbackDist: 0
   knockbackSpeed: 0
-  ItemDrop: {fileID: 0}
+  ItemDrop:
+  - {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
+  - {fileID: 232534007684053755, guid: d39b37c333f77ea4ebb5a41f879d538e, type: 3}
   dropPos: {fileID: 5685472218529816289}
   charge: {fileID: 2466010751089518807, guid: 243bc114fb24f734fa3a96253262d5ad, type: 3}
   model: {fileID: 8771818154822635479}

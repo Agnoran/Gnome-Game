@@ -90,7 +90,8 @@ MonoBehaviour:
   roamLowEnd: 2
   roamHighEnd: 6
   HP: 0
-  ItemDrop: {fileID: 0}
+  ItemDrop:
+  - {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
   itemDropPos: {fileID: 4532376348704334386}
   model: {fileID: 6910415399067456085}
   Attribute: 0

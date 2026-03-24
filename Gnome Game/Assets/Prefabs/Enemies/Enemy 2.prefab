@@ -167,14 +167,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AlertChaseEnemyAI
   alertCube: {fileID: 9187837692357931426}
   alertTime: 2
-  lookWaitTime: 2
+  lookWaitTime: 1
   agent: {fileID: 8055204020263810996}
   moveSpeed: 8
   HP: 6
-  ItemDrop: {fileID: 0}
+  ItemDrop:
+  - {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
+  - {fileID: 8722208009285834056, guid: 0920fd55bc7fc8548bf81abf93546b0f, type: 3}
   itemDropPos: {fileID: 4717580835501651421}
   explosion: {fileID: 7428456264589160067, guid: 3a1e774ef273fa54bb1f86c39c1ab21d, type: 3}
-  explosionTime: 4
+  explosionTime: 3
   model: {fileID: 3828727500636126054}
   faceTargetSpeed: 12
   FOV: 30

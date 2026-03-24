@@ -169,7 +169,8 @@ MonoBehaviour:
   dropRate: 0.5
   moveSpeed: 0.2
   HP: 0
-  ItemDrop: {fileID: 0}
+  ItemDrop:
+  - {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
   itemDropPos: {fileID: 8235965163942020399}
   model: {fileID: 2817144062226698848}
   Attribute: 0

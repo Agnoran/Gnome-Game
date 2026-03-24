@@ -14,7 +14,8 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] int HP;                //health
     [SerializeField] int knockbackDist;     //how far back the ghost gets shoved on hit
     [SerializeField] float knockbackSpeed;  //how quickly the knockback lerp runs
-    [SerializeField] GameObject ItemDrop;
+    [SerializeField] List<GameObject> ItemDrop;
+    int itemListPos;
     [SerializeField] Transform dropPos;
     [SerializeField] GameObject charge;
 
@@ -112,6 +113,15 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         }
 
     }
+    void DropItem()
+    {
+        int dropAmount = Random.Range(0,ItemDrop.Count);
+        for (int i = 0; i <= dropAmount; i++)
+        {
+            itemListPos = Random.Range(0, ItemDrop.Count);
+            Instantiate(ItemDrop[itemListPos], dropPos.position, transform.rotation);
+        }
+    }
 
 
     public void Roam()
@@ -187,9 +197,9 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         //check for death
         if (HP < 0)
         {
-            if (ItemDrop != null)
+            if (ItemDrop.Count > 0)
             {
-                Instantiate(ItemDrop, dropPos.position, transform.rotation);
+                DropItem();
             }
             Destroy(gameObject);
         }
