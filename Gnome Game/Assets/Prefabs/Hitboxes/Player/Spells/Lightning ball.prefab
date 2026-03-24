@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 203815154475956594}
   - component: {fileID: 4797528331546563634}
+  - component: {fileID: -3980243164954940704}
   - component: {fileID: 4829260374303809858}
   - component: {fileID: 3547778136046054011}
   - component: {fileID: 1214238440913326469}
   - component: {fileID: 8017810773024619531}
   - component: {fileID: -6063612511066916067}
   m_Layer: 8
-  m_Name: Lightning Ball
+  m_Name: Lightning ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,6 +62,19 @@ MonoBehaviour:
   speed: 15
   destroyTime: 3
   hitEffect: {fileID: 0}
+--- !u!114 &-3980243164954940704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982560049949143496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1d0d909eb9576409bfddf56daf3a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaySoundOnSpawn
+  soundName: Lightning Ball
 --- !u!33 &4829260374303809858
 MeshFilter:
   m_ObjectHideFlags: 0

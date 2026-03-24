@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 
 
-[CreateAssetMenu(fileName = "SoundBank", menuName = "Scriptable Objects/SoundBank")]
+[CreateAssetMenu(fileName = "Sound Bank", menuName = "Scriptable Objects/Sound Bank")]
 public class SoundBank : ScriptableObject
 {
     public List<Sound> sounds;

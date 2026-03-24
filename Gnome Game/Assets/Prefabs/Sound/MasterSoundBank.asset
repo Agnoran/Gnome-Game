@@ -1,0 +1,295 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60651c0af24719d40b64709f1bb72912, type: 3}
+  m_Name: MasterSoundBank
+  m_EditorClassIdentifier: Assembly-CSharp::SoundBank
+  sounds:
+  - type: 0
+    name: Start Menu
+    clip: {fileID: 8300000, guid: 204372ba65134bd4e8f4c8c3f0e2596b, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 1
+    source: {fileID: 0}
+  - type: 0
+    name: World Theme
+    clip: {fileID: 8300000, guid: 982336a422aca0440b29365f2bbaabbe, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0
+    loop: 1
+    source: {fileID: 0}
+  - type: 0
+    name: Enemy Theme
+    clip: {fileID: 8300000, guid: 3f5945b0cd087c44c96c982448cd184e, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0
+    loop: 1
+    source: {fileID: 0}
+  - type: 0
+    name: Boss Theme
+    clip: {fileID: 8300000, guid: 221fd8ba783e1154e9475e9167b0990a, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0
+    loop: 1
+    source: {fileID: 0}
+  - type: 0
+    name: Chasm Puzzle
+    clip: {fileID: 8300000, guid: 14d9ea35121ded543bc053638d3a30b5, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 1
+    source: {fileID: 0}
+  - type: 0
+    name: End Credits
+    clip: {fileID: 8300000, guid: e6c3c00afef3de44f8891565c0b82935, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 1
+    source: {fileID: 0}
+  - type: 1
+    name: UI Button Clicks
+    clip: {fileID: 8300000, guid: 76e27260a405bcf42a821f3695edce68, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Transtion
+    clip: {fileID: 8300000, guid: 6144289e90fd2a24d97bf26a81751f99, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: The Hub Sound
+    clip: {fileID: 8300000, guid: 5d2a09967b1b8b94f9c17ca043430262, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Spell Book
+    clip: {fileID: 8300000, guid: 3071d9dc1aa857940ad035a62ce2f86a, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Lighning Ball
+    clip: {fileID: 8300000, guid: 6ed7f6dd137fb364a933016165d20264, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Small Magic
+    clip: {fileID: 8300000, guid: 229d6a960fd6a324992c5801f13c9d75, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Ice Ball
+    clip: {fileID: 8300000, guid: d4a635366203c9a44bb94f610d1428e5, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 1
+    source: {fileID: 0}
+  - type: 1
+    name: Save Brick
+    clip: {fileID: 8300000, guid: 8c163085879051849a34fe4f36610f26, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Knocked Back
+    clip: {fileID: 8300000, guid: 13c2464947c8d6c4ebcc410c249b23aa, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Gnome Walk
+    clip: {fileID: 8300000, guid: 9d854823490096047a6da02c28c45621, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 1
+    source: {fileID: 0}
+  - type: 1
+    name: Gnome Roll
+    clip: {fileID: 8300000, guid: 20f0f0c7ec9a9f64f98995576ba1eb15, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Gnome Hurt
+    clip: {fileID: 8300000, guid: f40d8b27a2066d44590ef8a98bac9114, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Gnome Death
+    clip: {fileID: 8300000, guid: aa71c41583eec1644a47bff2f8da40a3, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Ghost Enemy Movement
+    clip: {fileID: 8300000, guid: 6e20ef6594786ed4784de73518d61610, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Ghost Enemy Hurt
+    clip: {fileID: 8300000, guid: 675e316d86ec6e64ba65a6d193b6f8fe, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Flamethrower
+    clip: {fileID: 8300000, guid: af21aab05d36eb5488105f5082805db0, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 1
+    source: {fileID: 0}
+  - type: 1
+    name: Fireball
+    clip: {fileID: 8300000, guid: 8c96827bad4f37749b37e994361f0ec3, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Button Magic
+    clip: {fileID: 8300000, guid: 26a102beb098f914ca07a13cddac017d, type: 3}
+    volume: 1
+    pitch: 0
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Lightning Beam
+    clip: {fileID: 8300000, guid: f7161939b9259334c8234e8ce5b29f1f, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Big Magic
+    clip: {fileID: 8300000, guid: 8d4604d48297c5e40b1bf6991da53fa3, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Ice Beam
+    clip: {fileID: 8300000, guid: ecd99721803b9d14eaef6146c7f0b2ce, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Water Ball
+    clip: {fileID: 8300000, guid: 4ac18344232aa4b48b37d694dc980aac, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Water Beam
+    clip: {fileID: 8300000, guid: c0ad1f9b1bda7214597f2e57a825f6fa, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Ghost Enemy Attack
+    clip: {fileID: 8300000, guid: 0b6dfef93b511024aa8d29f22ba46a8d, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Melee Swing
+    clip: {fileID: 8300000, guid: 5928b09acb61c3242997d04ea238489d, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Giant Head Alert
+    clip: {fileID: 8300000, guid: c1d09901bbb8aff4ca03eb55d9fba733, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Giant Head Chasing
+    clip: {fileID: 8300000, guid: b02f2db101bf22849961c3ad060ac8bc, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Giant Head Explosion
+    clip: {fileID: 8300000, guid: b99f723ec4daf3d4dbe764c31fc39c39, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: Poison Ball
+    clip: {fileID: 8300000, guid: c6c095f4a5231014bbbc152cae45ab6b, type: 3}
+    volume: 1
+    pitch: 0.1
+    randomPitchRange: 0.1
+    loop: 0
+    source: {fileID: 0}
