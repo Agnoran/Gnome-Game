@@ -8,7 +8,7 @@ public class DeathAudioObserver : MonoBehaviour
     {
         if (WorldController.instance != null)
         {
-            if (WorldController.instance.menuActive != null && WorldController.instance.menuActive.name == "menuLose")
+            if (WorldController.instance.MenuActive != null && WorldController.instance.MenuActive.name == "menuLose")
             {
                 if (!hasPlayedDeath)
                 {
