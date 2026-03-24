@@ -247,7 +247,7 @@ public class WorldController : MonoBehaviour
         
         isPaused = true;
         craftOpen = true;
-        menuActive.SetActive(menuCraft);
+        SetActiveMenu(menuCraft);
     }
 
     public void StateCloseCraft()
