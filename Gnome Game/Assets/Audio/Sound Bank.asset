@@ -1,5 +1,265 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-9170041877619812061
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Knocked Back_{-9170041877619812061}
+  m_AudioClip: {fileID: 8300000, guid: 13c2464947c8d6c4ebcc410c249b23aa, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-8567318093894246441
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gnome Hurt_{-8567318093894246441}
+  m_AudioClip: {fileID: 8300000, guid: f40d8b27a2066d44590ef8a98bac9114, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-7207528972417923799
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Big Shock_{-7207528972417923799}
+  m_AudioClip: {fileID: 8300000, guid: f7161939b9259334c8234e8ce5b29f1f, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-5543552156131483108
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music_Start Menu_{-5543552156131483108}
+  m_AudioClip: {fileID: 8300000, guid: 204372ba65134bd4e8f4c8c3f0e2596b, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-5441433698410580089
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Big Magic_{-5441433698410580089}
+  m_AudioClip: {fileID: 8300000, guid: 8d4604d48297c5e40b1bf6991da53fa3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3647684175007119144
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gnome Walk_{-3647684175007119144}
+  m_AudioClip: {fileID: 8300000, guid: 9d854823490096047a6da02c28c45621, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3593683209161716616
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Save Brick_{-3593683209161716616}
+  m_AudioClip: {fileID: 8300000, guid: 8c163085879051849a34fe4f36610f26, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-2502874511022823121
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Spell Book_{-2502874511022823121}
+  m_AudioClip: {fileID: 8300000, guid: 3071d9dc1aa857940ad035a62ce2f86a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1671667651724613418
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ghost Enemy Attack_{-1671667651724613418}
+  m_AudioClip: {fileID: 8300000, guid: 0b6dfef93b511024aa8d29f22ba46a8d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1407687805006172346
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Flamethrower_{-1407687805006172346}
+  m_AudioClip: {fileID: 8300000, guid: af21aab05d36eb5488105f5082805db0, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-1245033862842612016
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music_Boss Battle_{-1245033862842612016}
+  m_AudioClip: {fileID: 8300000, guid: 221fd8ba783e1154e9475e9167b0990a, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-88314530911281368
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI Button Clicks_{-88314530911281368}
+  m_AudioClip: {fileID: 8300000, guid: 76e27260a405bcf42a821f3695edce68, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &847194628432735277
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ghost Enemy Movement_{847194628432735277}
+  m_AudioClip: {fileID: 8300000, guid: 6e20ef6594786ed4784de73518d61610, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1059538765009400827
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: The Hub Sound_{1059538765009400827}
+  m_AudioClip: {fileID: 8300000, guid: 5d2a09967b1b8b94f9c17ca043430262, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1310571067877703513
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fireball_{1310571067877703513}
+  m_AudioClip: {fileID: 8300000, guid: 8c96827bad4f37749b37e994361f0ec3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1749156071541426677
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Transition_{1749156071541426677}
+  m_AudioClip: {fileID: 8300000, guid: 6144289e90fd2a24d97bf26a81751f99, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1994277931964585646
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Small Magic_{1994277931964585646}
+  m_AudioClip: {fileID: 8300000, guid: 229d6a960fd6a324992c5801f13c9d75, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2078480710858991859
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Small Ice_{2078480710858991859}
+  m_AudioClip: {fileID: 8300000, guid: d4a635366203c9a44bb94f610d1428e5, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2088385331150159285
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gnome Walk_{2088385331150159285}
+  m_AudioClip: {fileID: 8300000, guid: 9d854823490096047a6da02c28c45621, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2851043186451454458
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music_World Theme_{2851043186451454458}
+  m_AudioClip: {fileID: 8300000, guid: 982336a422aca0440b29365f2bbaabbe, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3202068410156104259
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Melee Swing_{3202068410156104259}
+  m_AudioClip: {fileID: 8300000, guid: 5928b09acb61c3242997d04ea238489d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3287159570047399500
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music_Enemy Encounter_{3287159570047399500}
+  m_AudioClip: {fileID: 8300000, guid: 3f5945b0cd087c44c96c982448cd184e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3423948425944367717
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gnome Roll_{3423948425944367717}
+  m_AudioClip: {fileID: 8300000, guid: 20f0f0c7ec9a9f64f98995576ba1eb15, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4266043218848475771
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music_End Credits_{4266043218848475771}
+  m_AudioClip: {fileID: 8300000, guid: e6c3c00afef3de44f8891565c0b82935, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5999217283699832653
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ghost Enemy Hurt_{5999217283699832653}
+  m_AudioClip: {fileID: 8300000, guid: 675e316d86ec6e64ba65a6d193b6f8fe, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &6040134317755849527
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music_Chasm Puzzle_{6040134317755849527}
+  m_AudioClip: {fileID: 8300000, guid: 14d9ea35121ded543bc053638d3a30b5, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
 AudioRandomContainer:
   m_ObjectHideFlags: 0
@@ -8,20 +268,68 @@ AudioRandomContainer:
   m_PrefabAsset: {fileID: 0}
   m_Name: Sound Bank
   m_Volume: 0
-  m_Pitch: 0
+  m_Pitch: 0.1
   m_AutomaticTriggerTime: 0
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
-  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0.1}
   m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
-  m_Elements: []
+  m_Elements:
+  - {fileID: -3647684175007119144}
+  - {fileID: 7759778847983234744}
+  - {fileID: -5441433698410580089}
+  - {fileID: -7207528972417923799}
+  - {fileID: 1310571067877703513}
+  - {fileID: -1407687805006172346}
+  - {fileID: -1671667651724613418}
+  - {fileID: 5999217283699832653}
+  - {fileID: 847194628432735277}
+  - {fileID: 3423948425944367717}
+  - {fileID: 2088385331150159285}
+  - {fileID: -9170041877619812061}
+  - {fileID: 3202068410156104259}
+  - {fileID: -3593683209161716616}
+  - {fileID: 2078480710858991859}
+  - {fileID: 1994277931964585646}
+  - {fileID: 8884368101960666545}
+  - {fileID: -2502874511022823121}
+  - {fileID: 1059538765009400827}
+  - {fileID: 1749156071541426677}
+  - {fileID: -88314530911281368}
+  - {fileID: -1245033862842612016}
+  - {fileID: 6040134317755849527}
+  - {fileID: 4266043218848475771}
+  - {fileID: 3287159570047399500}
+  - {fileID: -5543552156131483108}
+  - {fileID: 2851043186451454458}
+  - {fileID: -8567318093894246441}
   m_AvoidRepeatingLast: 0
   m_PlaybackMode: 0
-  m_TriggerMode: 1
+  m_TriggerMode: 0
   m_AutomaticTriggerMode: 1
   m_LoopMode: 2
-  m_VolumeRandomizationEnabled: 0
-  m_PitchRandomizationEnabled: 0
+  m_VolumeRandomizationEnabled: 1
+  m_PitchRandomizationEnabled: 1
   m_AutomaticTriggerTimeRandomizationEnabled: 0
-  m_LoopCountRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 1
+--- !u!1233149941 &7759778847983234744
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Big Ice_{7759778847983234744}
+  m_AudioClip: {fileID: 8300000, guid: ecd99721803b9d14eaef6146c7f0b2ce, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &8884368101960666545
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Small Shock_{8884368101960666545}
+  m_AudioClip: {fileID: 8300000, guid: 6ed7f6dd137fb364a933016165d20264, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
