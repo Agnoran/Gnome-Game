@@ -4,16 +4,22 @@ using UnityEngine.EventSystems;
 
 public class Credits : MonoBehaviour
 {
+    public static Credits Instance;
     private RectTransform rectTransform;
 
-    public GameObject firstSelected;
+    
     public GameObject creditsPanel;
     public GameObject mainMenu;
 
-    void OnEnable()
+    void Start()
     {
+        Instance = this;
+    }
+
+    void OnEnable()
+    {        
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(firstSelected);
+        
     }
 
     void Update()
@@ -22,6 +28,11 @@ public class Credits : MonoBehaviour
         {
             ExitCredits();
         }
+    }
+
+    public void ShowCredits()
+    {
+        EventSystem.current.SetSelectedGameObject(creditsPanel);
     }
 
     public void ExitCredits()
