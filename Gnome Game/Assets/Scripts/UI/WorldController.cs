@@ -22,6 +22,7 @@ public class WorldController : MonoBehaviour
 
     [Header("Core Menus")]
     [SerializeField] GameObject menuPause;
+    [SerializeField] GameObject menuCraft;
     [SerializeField] GameObject menuInventory;
     [SerializeField] GameObject menuWinGame;
     [SerializeField] GameObject menuLose;
@@ -39,6 +40,7 @@ public class WorldController : MonoBehaviour
     public bool isPaused;
     public bool invOpen;
     public bool shopOpen;
+    public bool craftOpen;
     public bool settingsOpen;
     public bool mapOpen;
     public bool rebinderOpen;
@@ -61,6 +63,7 @@ public class WorldController : MonoBehaviour
         isPaused = false;
         invOpen = false;
         shopOpen = false;
+        craftOpen = false;
         settingsOpen = false;
         mapOpen = false;
         rebinderOpen = false;
@@ -204,9 +207,7 @@ public class WorldController : MonoBehaviour
     {
         SetActiveMenu(menuPause);
         isPaused = true;
-        Time.timeScale = 0f;
-
-        
+        Time.timeScale = 0f;   
     }
 
     public void StateUnpaused()
@@ -238,6 +239,24 @@ public class WorldController : MonoBehaviour
 
         invOpen = true;
         SetActiveMenu(menuInventory);
+    }
+
+    public void StateOpenCraft()
+    {
+        CloseAllMenuStates();
+        
+        isPaused = true;
+        craftOpen = true;
+        menuActive.SetActive(menuCraft);
+    }
+
+    public void StateCloseCraft()
+    {
+        CloseAllMenuStates();
+
+        isPaused = false;
+        craftOpen = false;
+        menuActive.SetActive(false);
     }
 
     public void StateInvFromPause()

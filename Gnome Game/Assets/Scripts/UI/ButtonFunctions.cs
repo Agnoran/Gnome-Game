@@ -61,6 +61,18 @@ public class ButtonFunctions : MonoBehaviour
         WorldController.instance.StateCloseInventory();
     }
 
+    public void OpenCraft()
+    {
+        if (WorldController.instance == null) return;
+        WorldController.instance.StateOpenCraft();
+    }
+
+    public void CloseCraft()
+    {
+        if (WorldController.instance == null)return;
+        WorldController.instance.StateCloseCraft();
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
