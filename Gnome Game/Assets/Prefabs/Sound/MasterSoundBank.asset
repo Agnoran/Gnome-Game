@@ -70,7 +70,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - type: 1
-    name: Transtion
+    name: Transition
     clip: {fileID: 8300000, guid: 6144289e90fd2a24d97bf26a81751f99, type: 3}
     volume: 1
     pitch: 1
