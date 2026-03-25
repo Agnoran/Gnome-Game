@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.loop = s.loop;
 
+            s.source.playOnAwake = false;
+
             if (s.name.Contains("Music")) s.source.outputAudioMixerGroup = musicGroup;
             else s.source.outputAudioMixerGroup = sfxGroup;
         }
