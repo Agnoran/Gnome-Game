@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Collections;
 
 
 public class PlayerAttack : MonoBehaviour, IPickup
 {
     [SerializeField] PlayerInputHandler inputHandler;
+    [SerializeField] GameObject slashEffect;
 
     [Header("----- Attack Stats -----")]
     [SerializeField] GameObject basicShot;
@@ -31,6 +33,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
     [SerializeField] Transform shootPos;
     [SerializeField] Transform meleePos;
     [SerializeField] Transform enchantmentPos;
+ 
 
     [Header("----- Enchantment MP/HP Mods -----")]
 
@@ -81,6 +84,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             else
             {
                 Melee();
+                StartCoroutine(Slash());
             }
         }
         if (inputHandler.ShootInput && shootTimer >= basicAttackRate)
@@ -124,9 +128,16 @@ public class PlayerAttack : MonoBehaviour, IPickup
         void Melee()
         {
             shootTimer = 0;
+            
             Instantiate(melee, meleePos.position, transform.rotation);
             playerController.addMP(attackMPRegen);
         }
+    IEnumerator Slash()
+    {
+        slashEffect.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        slashEffect.SetActive(false);
+    }
         void enchant()
         {
             shootTimer = 0;

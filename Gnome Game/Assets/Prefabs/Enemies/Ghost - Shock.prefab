@@ -87,10 +87,14 @@ MonoBehaviour:
   HP: 3
   knockbackDist: 2
   knockbackSpeed: 8
-  ItemDrop: {fileID: 0}
+  ItemDrop:
+  - {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
+  - {fileID: 232534007684053755, guid: d39b37c333f77ea4ebb5a41f879d538e, type: 3}
+  - {fileID: 5179035867590707608, guid: 1f23c093ea7692f4dbd7172edfdc0244, type: 3}
   dropPos: {fileID: 960371883968134598}
   charge: {fileID: 2466010751089518807, guid: a192b1cc30794544cba6ff5d204a7000, type: 3}
   model: {fileID: 8771818154822635479}
+  deathPuff: {fileID: 773959886891128846, guid: cd0bc928c3da7d54d96aab49a56de5c5, type: 3}
   shootRate: 1
   projectile: {fileID: 5664110817717348276, guid: b673616f690b6a44a8a5ac0ce922e2e5, type: 3}
   player: {fileID: 0}
@@ -266,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 6097521118269284662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.342, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
