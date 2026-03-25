@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class mechantNPC : MonoBehaviour, iInteractable
 {
+    [SerializeField] dialogCoreNodes startingNode;
+
     public GameObject shopUI;
     public dialogCoreNodes merchantDialog;
 
