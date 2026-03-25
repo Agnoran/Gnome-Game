@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StraightEnemyAI : MonoBehaviour,IDamage,IStatus
@@ -20,8 +21,11 @@ public class StraightEnemyAI : MonoBehaviour,IDamage,IStatus
     int newRotValue;
 
     [SerializeField] int HP;
-    [SerializeField] GameObject ItemDrop;
+    [SerializeField] List<GameObject> ItemDrop;
+    int itemListPos;
     [SerializeField] Transform itemDropPos;
+    [SerializeField] GameObject deathPuff;
+
 
     [SerializeField] Renderer model;
     Color colorOG;
@@ -118,15 +122,25 @@ public class StraightEnemyAI : MonoBehaviour,IDamage,IStatus
         //check for death
         if (HP < 0)
         {
-            if (ItemDrop != null)
+            Instantiate(deathPuff, transform.position, transform.rotation);
+            if (ItemDrop.Count > 0)
             {
-                Instantiate(ItemDrop, itemDropPos.position, transform.rotation);
+                DropItem();
             }
             Destroy(gameObject);
         }
         else
         {
             StartCoroutine(EnemyDamageFlash());
+        }
+    }
+    void DropItem()
+    {
+        int dropAmount = Random.Range(0, ItemDrop.Count);
+        for (int i = 0; i < dropAmount; i++)
+        {
+            itemListPos = Random.Range(0, ItemDrop.Count);
+            Instantiate(ItemDrop[itemListPos], itemDropPos.position, transform.rotation);
         }
     }
 
