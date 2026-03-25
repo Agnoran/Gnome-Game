@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+
 
 public class shopManager : MonoBehaviour
 {
@@ -75,5 +76,54 @@ public class shopManager : MonoBehaviour
         {
             Debug.Log("Not enough gold!");
         }
+    }
+
+    int GetSellPrice(shopItem item)
+    {
+        return Mathf.Max(1, item.Price / 2);
+    }
+
+    public void SellItem(int index)
+    {
+        if (index < 0 || index >= inventoryManager.Instance.inventory.Count)
+            return;
+
+        inventorySlot slot = inventoryManager.Instance.inventory[index];
+
+        if (slot == null || slot.item == null)
+            return;
+
+        itemData itemToSell = slot.item;
+
+        int sellPrice = GetSellPrice(itemToSell);
+
+        inventoryManager.Instance.RemoveItem(index);
+
+        currencyManager.instance.AddGold(sellPrice);
+
+        Debug.Log("Sold: " + itemToSell.name + " for " + sellPrice + " gold");
+
+        FindAnyObjectByType<shopUIManager>().RefreshShopUI();
+    }
+
+    private int GetSellPrice(itemData itemToSell)
+    {
+        return Mathf.Max(1, itemToSell.value / 2);
+    }
+
+    void AddItemBackToShop(shopItem item)
+    {
+        if (item == null)
+        foreach (var slot in shopInventory)
+        {
+            if (slot.item == item)
+            {
+                slot.stock++;
+                return;
+            }
+        }
+
+        // If item not already in shop, add new slot
+        shopInventory.Add(new shopSlot(item, 1));
     }
 }

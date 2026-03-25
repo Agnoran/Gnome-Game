@@ -64,4 +64,9 @@ public class aimToGamepad : MonoBehaviour
         HandleRotationToStick();
         
     }
+
+    void StickRight()
+    {
+        //will fix later
+    }
 }

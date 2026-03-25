@@ -15,4 +15,43 @@ MonoBehaviour:
   dialogText: 'Welcome to my shop.
 
     Would you like to browse my wares?'
-  choices: []
+  choices:
+  - choiceText: Buy
+    nextNode: {fileID: 11400000}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - choiceText: Sell
+    nextNode: {fileID: 11400000}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11500000, guid: dd6f885d0ce8b6741996828de4549738, type: 3}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - choiceText: Exit
+    nextNode: {fileID: 11400000}
+    onSelected:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11500000, guid: 0ab5629e5c3a898489621d0c9700eca7, type: 3}
+          m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
+          m_MethodName: set_name
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: EndDialog()
+            m_BoolArgument: 0
+          m_CallState: 2
