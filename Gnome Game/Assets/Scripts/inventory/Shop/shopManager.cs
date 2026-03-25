@@ -13,6 +13,12 @@ public class shopManager : MonoBehaviour
 
     public List<shopSlot> shopInventory = new List<shopSlot>();
     
+    public static shopManager Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -78,11 +84,6 @@ public class shopManager : MonoBehaviour
         }
     }
 
-    int GetSellPrice(shopItem item)
-    {
-        return Mathf.Max(1, item.Price / 2);
-    }
-
     public void SellItem(int index)
     {
         if (index < 0 || index >= inventoryManager.Instance.inventory.Count)
@@ -103,7 +104,13 @@ public class shopManager : MonoBehaviour
 
         Debug.Log("Sold: " + itemToSell.name + " for " + sellPrice + " gold");
 
-        FindAnyObjectByType<shopUIManager>().RefreshShopUI();
+        var ui = FindAnyObjectByType<shopUIManager>();
+
+        if (ui != null)
+        {
+            ui.RefreshShopUI();
+            ui.RefreshSellUI();
+        }
     }
 
     private int GetSellPrice(itemData itemToSell)
@@ -113,7 +120,8 @@ public class shopManager : MonoBehaviour
 
     void AddItemBackToShop(shopItem item)
     {
-        if (item == null)
+        if (item == null) return;
+
         foreach (var slot in shopInventory)
         {
             if (slot.item == item)

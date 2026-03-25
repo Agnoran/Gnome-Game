@@ -57,8 +57,29 @@ public class dialogManager : MonoBehaviour
         }
     }
 
+    void HandleAction(dialogChoice choice)
+    {
+        switch (choice.action)
+        {
+            case DialogAction.BuyItem:
+                shopManager.Instance.BuyItem();
+                EndDialog();
+                break;
+
+            case DialogAction.SellItem:
+                shopManager.Instance.SellItem();
+                EndDialog();
+                break;
+
+            case DialogAction.CloseDialog:
+                EndDialog();
+                break;
+        }
+    }
+
     void SelectChoice(dialogChoice choice)
     {
+        HandleAction(choice);
         if (choice.nextNode != null)
         { ShowNodes(choice.nextNode); }
         else
