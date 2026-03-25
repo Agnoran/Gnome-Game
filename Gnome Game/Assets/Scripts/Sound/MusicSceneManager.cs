@@ -4,6 +4,21 @@ public class MusicSceneManager : MonoBehaviour
 {
     private string lastScene;
 
+    void Start()
+    {
+        // Wait a tiny bit for the AudioManager to finish its Awake loop
+        Invoke("PlayInitialMusic", 0.1f);
+    }
+
+    void PlayInitialMusic()
+    {
+        if (AudioManager.instance != null)
+        {
+            // Make sure this name matches your SoundBank EXACTLY
+            AudioManager.instance.Play("Music_World Theme");
+        }
+    }
+
     void Update()
     {
         if (GameManager.Instance == null) return;
