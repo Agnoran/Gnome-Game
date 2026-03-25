@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyArena : MonoBehaviour
 
 {
-    [SerializeField] Door door;
+    //[SerializeField] Door door;
 
     int enemiesRemaining;
 
@@ -18,7 +18,7 @@ public class EnemyArena : MonoBehaviour
 
         if (enemiesRemaining <= 0)
         {
-            door.Activate();
+            //door.Activate();
         }
     }
 }

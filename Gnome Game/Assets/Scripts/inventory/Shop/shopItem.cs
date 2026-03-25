@@ -11,16 +11,13 @@ public class shopItem
 */
 public enum ShopCategory
 {
-    Weapons,
-    Potions,
-    Upgrades,
+    Ingredients,
     General
 }
 
 public enum ShopItemType
 {
-    Consumable,
-    Gear,
+   
     Spells,
     Upgrade
 }

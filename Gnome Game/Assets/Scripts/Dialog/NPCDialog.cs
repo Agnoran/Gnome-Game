@@ -13,9 +13,4 @@ public class NPCDialog : MonoBehaviour
     }
 }
 
-/* for player input: 
- * if(Input.GetButtonDown("Space"))
- * {
- *   dialogManager.Instance.DisplayNextLine();
- * }
- */
+

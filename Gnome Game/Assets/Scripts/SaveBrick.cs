@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Runtime.CompilerServices;
+using System.Collections;
 
 // floating brick in the SaveSelectScene you jump into a trigger
 // Brick a, b, c like in super mario sunshine
@@ -27,12 +28,16 @@ public class SaveBrick : MonoBehaviour
     [SerializeField] private Light brickLight;
     [SerializeField] private Renderer brickRenderer;
 
-    [Header("Brick animation")]
-    [Tooltip("How far the brick bounces up when hit")]
-    [SerializeField] private float bumpDistance = 0.3f;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip hitSound;
 
-    [Tooltip("How fast the brick bounces up when hit")]
-    [SerializeField] private float bumpSpeed = 8f;
+    [Header("Timing")]
+    [SerializeField] private float activationDelay = 0.06f;
+
+    // Color 
+    //[SerializeField] private Color selectedColor = Color.white;
+
 
     [Header("Visual Settings")]
     [SerializeField] private Color activeColor = new Color(0.4f, 0.8f, 1f);
@@ -83,20 +88,10 @@ public class SaveBrick : MonoBehaviour
     // Update is called once per frame
    private void Update()
     {
-        if (isBumping)
+     
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            bumpTimer += Time.deltaTime * bumpSpeed;
-
-            float bumpOffset = Mathf.Sin(bumpTimer * Mathf.PI) * bumpDistance;
-
-            transform.position = originalPosition + Vector3.up * bumpOffset;
-
-            if (bumpTimer >= 1f)
-            {
-                isBumping = false;
-                bumpTimer = 0f;
-                transform.position = originalPosition;
-            }
+            audioSource.PlayOneShot(hitSound);
         }
         
     }
@@ -174,9 +169,28 @@ public class SaveBrick : MonoBehaviour
     {
         Debug.Log($"<color=green>[SaveBrick] TriggerBrick called on '{slotName}'!");
 
+        if (audioSource != null && hitSound != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
+
+
+        if (hitParticles != null)
+        {
+            hitParticles.Play();
+        }
+
+        StartCoroutine(DelayedInteract());
         Interact();
 
     }
+
+    private IEnumerator DelayedInteract()
+    {
+        yield return new WaitForSeconds(activationDelay);
+        Interact();
+    }
+
 
     private void Interact()
     {

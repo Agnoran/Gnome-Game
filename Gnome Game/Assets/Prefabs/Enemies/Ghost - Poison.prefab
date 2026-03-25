@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7564911610156609532}
   - component: {fileID: 2589650114112007877}
+  - component: {fileID: -7125159824582170018}
   - component: {fileID: 6865384737417086992}
   - component: {fileID: 8771818154822635479}
   - component: {fileID: 7697450196002300329}
@@ -108,6 +109,19 @@ MonoBehaviour:
   buff: 0
   statusParticles: {fileID: 4671807945664293390}
   particle: {fileID: 6586497311744258199}
+--- !u!114 &-7125159824582170018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791871667248529999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d38acfdaea890c4d8cdfc006b727992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostAudioObserver
+  modelRenderer: {fileID: 0}
 --- !u!33 &6865384737417086992
 MeshFilter:
   m_ObjectHideFlags: 0
