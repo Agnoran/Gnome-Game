@@ -19,7 +19,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomPitchRange: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - type: 0
     name: Music_World Theme
@@ -43,7 +43,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomPitchRange: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - type: 0
     name: Music_Chasm Puzzle
@@ -51,7 +51,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomPitchRange: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - type: 0
     name: Music_End Credits
@@ -59,7 +59,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomPitchRange: 0
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - type: 1
     name: UI Button Clicks
@@ -70,7 +70,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - type: 1
-    name: Transtion
+    name: Transition
     clip: {fileID: 8300000, guid: 6144289e90fd2a24d97bf26a81751f99, type: 3}
     volume: 1
     pitch: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomPitchRange: 0.1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - type: 1
     name: Save Brick
@@ -139,7 +139,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     randomPitchRange: 0.1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - type: 1
     name: Gnome Roll
