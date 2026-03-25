@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Water Ball
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3506351527548109682, guid: ad47da65065d94541b40979ffc3e1014, type: 3}
+  SpellWeaponModel: {fileID: 2148559441110995482, guid: 3b142a623c094de42ba5cd3a9b6f95d4, type: 3}
   shootRate: 0.5
   MPcost: 1
   Spell: {fileID: 6982560049949143496, guid: 0f3a7c00f1060d3458a19f4d0258a7f7, type: 3}
