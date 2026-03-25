@@ -93,6 +93,7 @@ MonoBehaviour:
   dropPos: {fileID: 1556356798697491365}
   charge: {fileID: 2466010751089518807, guid: f424bec6282c85f4abf4282214e43688, type: 3}
   model: {fileID: 8771818154822635479}
+  deathPuff: {fileID: 773959886891128846, guid: cd0bc928c3da7d54d96aab49a56de5c5, type: 3}
   shootRate: 0.7
   projectile: {fileID: 5664110817717348276, guid: 5deb96f0232090846a3561283ae84962, type: 3}
   player: {fileID: 0}
@@ -255,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 7556206726262047548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.342, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

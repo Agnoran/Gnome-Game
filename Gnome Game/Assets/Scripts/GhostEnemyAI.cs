@@ -20,6 +20,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] GameObject charge;
 
     [SerializeField] Renderer model;
+    [SerializeField] GameObject deathPuff;
     Color colorOG;
 
     [Header("Shooting")]
@@ -29,6 +30,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] GameObject projectile; //the proj to instantiate
     [SerializeField] GameObject player;     //the target to shoot at
     [SerializeField] Transform shootPos;    //im setting this to the capsule's transform by default for now
+
 
 
 
@@ -197,6 +199,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         //check for death
         if (HP < 0)
         {
+            Instantiate(deathPuff, transform.position, transform.rotation);
             if (ItemDrop.Count > 0)
             {
                 DropItem();

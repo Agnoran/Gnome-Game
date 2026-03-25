@@ -24,6 +24,8 @@ public class StraightEnemyAI : MonoBehaviour,IDamage,IStatus
     [SerializeField] List<GameObject> ItemDrop;
     int itemListPos;
     [SerializeField] Transform itemDropPos;
+    [SerializeField] GameObject deathPuff;
+
 
     [SerializeField] Renderer model;
     Color colorOG;
@@ -120,6 +122,7 @@ public class StraightEnemyAI : MonoBehaviour,IDamage,IStatus
         //check for death
         if (HP < 0)
         {
+            Instantiate(deathPuff, transform.position, transform.rotation);
             if (ItemDrop.Count > 0)
             {
                 DropItem();
@@ -137,7 +140,7 @@ public class StraightEnemyAI : MonoBehaviour,IDamage,IStatus
         for (int i = 0; i < dropAmount; i++)
         {
             itemListPos = Random.Range(0, ItemDrop.Count);
-            Instantiate(ItemDrop[itemListPos], transform.position, transform.rotation);
+            Instantiate(ItemDrop[itemListPos], itemDropPos.position, transform.rotation);
         }
     }
 
