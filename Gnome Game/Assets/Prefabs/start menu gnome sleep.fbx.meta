@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -112,7 +112,152 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: start menu gnome sleep(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: all_base_curve
+      parentName: start menu gnome sleep(Clone)
+      position: {x: 7.9751554e-19, y: 0, z: -0.0007183381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: staff_base_curve
+      parentName: all_base_curve
+      position: {x: 0.056652375, y: -5.169476e-18, z: -0.015374043}
+      rotation: {x: -0.13052619, y: 0, z: -0, w: 0.9914449}
+      scale: {x: 1, y: 1, z: 1}
+    - name: gnome_base_curve
+      parentName: all_base_curve
+      position: {x: -1.110223e-18, y: 0, z: 2.7755575e-19}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: gnome_beard_staff
+      parentName: start menu gnome sleep(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: alt_beard
+      parentName: gnome_beard_staff
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: gnome_full
+      parentName: gnome_beard_staff
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: staff
+      parentName: gnome_beard_staff
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: gnome_base
+      parentName: start menu gnome sleep(Clone)
+      position: {x: -0, y: -0.0047192727, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: chest
+      parentName: gnome_base
+      position: {x: -0, y: 0.038011517, z: 0}
+      rotation: {x: 0.00000008682914, y: -0.00000014524625, z: 0.18609774, w: 0.98253125}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: head
+      parentName: chest
+      position: {x: -0, y: 0.020031061, z: 0}
+      rotation: {x: 0.84959567, y: 0.07730537, z: -0.09382345, w: 0.51323324}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint4
+      parentName: head
+      position: {x: -0, y: -0.000040673178, z: -0.00003351132}
+      rotation: {x: -0.012647733, y: -0.7543516, z: -0.64260167, w: 0.13362974}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: joint5
+      parentName: joint4
+      position: {x: -0, y: -0.011342228, z: 0.005493946}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: hat_center
+      parentName: head
+      position: {x: -0, y: 0.018652394, z: 0.016437393}
+      rotation: {x: -0.000000011641532, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mid
+      parentName: hat_center
+      position: {x: -0, y: 0.02128987, z: 0.0021966794}
+      rotation: {x: -0.00000001164153, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: top
+      parentName: mid
+      position: {x: -0, y: 0.013933527, z: 0.004956649}
+      rotation: {x: 0.000000034924597, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: tail_1
+      parentName: hat_center
+      position: {x: -0, y: -0.011415957, z: -0.017444305}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: tail_2
+      parentName: tail_1
+      position: {x: -0, y: -0.013766877, z: -0.015809834}
+      rotation: {x: 0.00000001164153, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: R_hip
+      parentName: gnome_base
+      position: {x: -0.02, y: 0.01899872, z: 0}
+      rotation: {x: -5.0821966e-16, y: -0.000000034924593, z: 0.0000000145519135, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: foot
+      parentName: R_hip
+      position: {x: -0, y: -0.016573811, z: 0}
+      rotation: {x: -0, y: -0, z: -1.7749366e-23, w: 1}
+      scale: {x: 1, y: 0.9999998, z: 0.9999999}
+    - name: end
+      parentName: foot
+      position: {x: -0, y: 0, z: 0.013666485}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_hip
+      parentName: gnome_base
+      position: {x: 0.02, y: 0.01899872, z: 0}
+      rotation: {x: -7.6232965e-17, y: -0.000000005820766, z: -0.00000001891749, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: foot
+      parentName: L_hip
+      position: {x: -0, y: -0.016573811, z: 0}
+      rotation: {x: -0, y: -0, z: -4.4373426e-25, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: end
+      parentName: foot
+      position: {x: -0, y: 0, z: 0.013666485}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: staff_base
+      parentName: start menu gnome sleep(Clone)
+      position: {x: 0.055888765, y: 0.00018591959, z: -0.01539852}
+      rotation: {x: -0.000000011641534, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint2
+      parentName: staff_base
+      position: {x: -0, y: 0.049999997, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint3
+      parentName: joint2
+      position: {x: 0.0010153105, y: 0.024898566, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L_tip
+      parentName: joint3
+      position: {x: 0.00973356, y: 0.024926556, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R_tip
+      parentName: joint3
+      position: {x: -0.012544076, y: 0.024207106, z: 0}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -123,13 +268,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

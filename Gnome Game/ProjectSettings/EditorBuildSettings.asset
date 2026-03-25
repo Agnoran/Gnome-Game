@@ -5,6 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 3af713fa995e51c488801a9e346cb81e
+  - enabled: 1
+    path: Assets/Scenes/Beta Milestone Scene.unity
+    guid: 2b77516a3012bb34bbd421d8f9aa24ac
+  - enabled: 0
+    path: Assets/Scenes/Miu Scene.unity
+    guid: f4b47ad8a64369540b513d098f3633dc
   - enabled: 0
     path: Assets/Scenes/CoreScene.unity
     guid: 65ce4cd239100324daa0479bac4ef11a
@@ -20,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AlphaComplete.unity
     guid: 3c0e5ac1183bbc54b9abd94f8f0a4e0c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Matt Scene.unity
     guid: 10e13e85fec20454cb2417cd23ac7681
   m_configObjects:

@@ -31,8 +31,13 @@ public class AudioManager : MonoBehaviour
 
     public void SetGlobalVolume(float volume)
     {
+        if (musicGroup == null) return;
+
         float dbValue = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20;
-        instance.bank.sounds[0].source.outputAudioMixerGroup.audioMixer.SetFloat("MasterVol", dbValue);
+
+        // CHANGE THIS: Ensure "MasterVol" is actually the name in your Mixer
+        // If you used "MusicVolume" in the sliders, use that here too!
+        musicGroup.audioMixer.SetFloat("MusicVolume", dbValue);
     }
 
     public void Play(string name)
@@ -41,12 +46,18 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-
+            Debug.LogWarning("Sound: " + name + " not found in Bank!");
             return;
         }
 
+        // Safety: If the source hasn't been created yet, skip
+        if (s.source == null) return;
+
         float randomVariation = UnityEngine.Random.Range(-s.randomPitchRange, s.randomPitchRange);
         s.source.pitch = s.pitch + randomVariation;
+
+        // Check if it's already playing (optional, prevents 'flanging' on music)
+        if (s.name.Contains("Music") && s.source.isPlaying) return;
 
         s.source.Play();
     }
