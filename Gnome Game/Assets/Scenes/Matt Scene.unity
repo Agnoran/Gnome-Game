@@ -700,6 +700,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
+--- !u!1 &2116624516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8563622773399277359, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
+  m_PrefabInstance: {fileID: 6404545111454508553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5387682447862101596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -805,13 +810,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4968274649321461277, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 3379395192008627880, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1380652874}
+    - target: {fileID: 4982403763144328176, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
+      propertyPath: shopUI
+      value: 
+      objectReference: {fileID: 2116624516}
     - target: {fileID: 5935187995982982603, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
       propertyPath: m_Name
       value: Shop Building
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563622773399277359, guid: 276639d0b67a63b4db8b8b2a6f681c72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
