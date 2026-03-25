@@ -12,11 +12,11 @@ public class MenuAudioBridge : MonoBehaviour
         {
             if (WorldController.instance.IsMenuOpen())
             {
-                mainMixer.SetFloat("MusicVol", dimmedVolume);
+                mainMixer.SetFloat("MusicVolume", dimmedVolume);
             }
             else
             {
-                mainMixer.SetFloat("MusicVol", 0f); // Normal volume
+                mainMixer.SetFloat("MusicVolume", 0f); // Normal volume
             }
         }
     }

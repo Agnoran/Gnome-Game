@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: dd6f885d0ce8b6741996828de4549738
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - startingNode: {instanceID: 0}
+  - shopUI: {instanceID: 0}
+  - merchantDialog: {fileID: 11400000, guid: 23b3e6e19d6c21946acdb5c1729b5560, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
