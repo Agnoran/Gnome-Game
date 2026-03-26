@@ -19,26 +19,12 @@ public class MusicSceneManager : MonoBehaviour
 
     void Update()
     {
-        int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        // Handle Start Menu (Index 0)
-        if (currentBuildIndex == 0)
+        if (currentScene != lastScene)
         {
-            if (AudioManager.instance != null && !AudioManager.instance.IsPlaying("Music_Start Menu"))
-            {
-                // Explicitly stop the other track before starting
-                AudioManager.instance.Stop("Music_World Theme");
-                AudioManager.instance.Play("Music_Start Menu");
-            }
-        }
-        // Handle Game Scene (Index 1)
-        else if (currentBuildIndex == 1)
-        {
-            if (AudioManager.instance != null && !AudioManager.instance.IsPlaying("Music_World Theme"))
-            {
-                AudioManager.instance.Stop("Music_Start Menu");
-                AudioManager.instance.Play("Music_World Theme");
-            }
+            UpdateMusic(currentScene);
+            lastScene = currentScene;
         }
     }
 
