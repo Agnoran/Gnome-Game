@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a2228e163bbbf479ef8bd4b7c5b1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  bank: {fileID: 11400000, guid: 804af50c25b22f5499c7c7b924a66c2f, type: 2}
+  bank: {fileID: 11400000, guid: 7f2b745a06a7d2a49981b19ef0c50c1d, type: 2}
   musicGroup: {fileID: -9136857954637422633, guid: 616e1e24235eb1c4fb515dc44ff8427e, type: 2}
   sfxGroup: {fileID: 6183988258202610529, guid: 616e1e24235eb1c4fb515dc44ff8427e, type: 2}
 --- !u!114 &3184378411429757440
