@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3506351527548109682, guid: 7967f4d0a4886a04f9c57dd143ee4981, type: 3}
+  SpellWeaponModel: {fileID: 4151515771818665644, guid: 5da8c6423f1efcc41841ee7715788008, type: 3}
   shootRate: 1
   MPcost: 6
   Spell: {fileID: 6982560049949143496, guid: 386354e7c0e1e0143b4bb5775e9438b2, type: 3}

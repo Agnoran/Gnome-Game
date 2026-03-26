@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Lightning Ball
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3506351527548109682, guid: 1cb506dba10af9345aa1ea70e28754a1, type: 3}
+  SpellWeaponModel: {fileID: 5238236758960024006, guid: 5c3e8e07e91b3df409aac258476de48b, type: 3}
   shootRate: 0.5
   MPcost: 3
   Spell: {fileID: 6982560049949143496, guid: 9fbbe797cef481a4583ed33f83297fd9, type: 3}
