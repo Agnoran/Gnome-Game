@@ -25,7 +25,7 @@ MonoBehaviour:
     name: Music_World Theme
     clip: {fileID: 8300000, guid: 982336a422aca0440b29365f2bbaabbe, type: 3}
     volume: 1
-    pitch: 0.1
+    pitch: 1
     randomPitchRange: 0
     loop: 1
     source: {fileID: 0}
