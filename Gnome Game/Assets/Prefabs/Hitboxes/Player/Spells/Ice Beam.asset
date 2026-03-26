@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Ice Beam
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3506351527548109682, guid: 07ff73381ad1f4a42acd0848c54e0e95, type: 3}
+  SpellWeaponModel: {fileID: 7259310971473743008, guid: 43053dba71164e9499f8e1d1e65f08e9, type: 3}
   shootRate: 0.05
   MPcost: 1
   Spell: {fileID: 6982560049949143496, guid: bed607c4d3eb32d469c352eb1001d637, type: 3}

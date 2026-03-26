@@ -1,14 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-/*
-[System.Serializable]
-public class shopItem
-{
-    public itemData item;
-    public int price;
-}
-*/
+
 public enum ShopCategory
 {
     Ingredients,
@@ -32,6 +25,8 @@ public class shopItem : ScriptableObject
 
     [SerializeField] int price;
     [SerializeField] int quantity;
+
+    [SerializeField] GameObject itemPrefab;
 
     [SerializeField] ShopCategory[] allowedCategories;
     [SerializeField] ShopItemType itemType;
