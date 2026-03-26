@@ -12,32 +12,46 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null) instance = this;
-        else { Destroy(gameObject); return; }
-        DontDestroyOnLoad(gameObject);
+        instance = this;
 
         foreach (Sound s in bank.sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
             s.source.loop = s.loop;
 
-            s.source.playOnAwake = false;
+            string checkName = s.name.ToLower();
 
-            if (s.name.Contains("Music")) s.source.outputAudioMixerGroup = musicGroup;
-            else s.source.outputAudioMixerGroup = sfxGroup;
+            if (checkName.Contains("music") || checkName.Contains("theme"))
+            {
+                s.source.outputAudioMixerGroup = musicGroup;
+            }
+            else
+            {
+                s.source.outputAudioMixerGroup = sfxGroup;
+            }
         }
     }
 
-    public void SetGlobalVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
-        if (musicGroup == null) return;
-
         float dbValue = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20;
+        musicGroup.audioMixer.SetFloat("MasterVolume", dbValue);
+    }
 
-        // CHANGE THIS: Ensure "MasterVol" is actually the name in your Mixer
-        // If you used "MusicVolume" in the sliders, use that here too!
-        musicGroup.audioMixer.SetFloat("MusicVolume", dbValue);
+    public void SetMusicVolume(float volume)
+    {
+        float dbValue = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20;
+        musicGroup.audioMixer.SetFloat("MasterVolume", dbValue);
+    }
+
+
+    public void SetSFXVolume(float volume)
+    {
+        float dbValue = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20;
+        sfxGroup.audioMixer.SetFloat("SFXVolume", dbValue);
     }
 
     public void Play(string name)
@@ -46,17 +60,14 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found in Bank!");
             return;
         }
 
-        // Safety: If the source hasn't been created yet, skip
         if (s.source == null) return;
 
         float randomVariation = UnityEngine.Random.Range(-s.randomPitchRange, s.randomPitchRange);
         s.source.pitch = s.pitch + randomVariation;
 
-        // Check if it's already playing (optional, prevents 'flanging' on music)
         if (s.name.Contains("Music") && s.source.isPlaying) return;
 
         s.source.Play();

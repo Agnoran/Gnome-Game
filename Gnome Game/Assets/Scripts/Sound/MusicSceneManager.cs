@@ -7,7 +7,6 @@ public class MusicSceneManager : MonoBehaviour
 
     void Start()
     {
-        // Boot up: Wait 0.1s to ensure AudioManager is awake
         Invoke("PlayInitialMusic", 0.1f);
     }
 
