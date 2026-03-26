@@ -17,7 +17,7 @@ public class GhostWalkAudioObserver : MonoBehaviour
 
         if (currentlyGhost && !isGhosting)
         {
-            mainMixer.SetFloat("MusicVolume", ghostModeVolume);
+            mainMixer.SetFloat("MusicVol", ghostModeVolume);
 
             AudioManager.instance.Play("Ghost Enemy Movement");
             isGhosting = true;
@@ -25,7 +25,7 @@ public class GhostWalkAudioObserver : MonoBehaviour
         else if (!currentlyGhost && isGhosting)
         {
             // Restore full volume when alive again
-            mainMixer.SetFloat("MusicVolume", 0f);
+            mainMixer.SetFloat("MusicVol", 0f);
             AudioManager.instance.Stop("Ghost Enemy Movement");
             isGhosting = false;
         }
