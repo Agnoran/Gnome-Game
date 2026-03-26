@@ -62,12 +62,12 @@ public class dialogManager : MonoBehaviour
         switch (choice.action)
         {
             case DialogAction.BuyItem:
-                shopManager.Instance.BuyItem();
+                //shopManager.Instance.BuyItem();
                 EndDialog();
                 break;
 
             case DialogAction.SellItem:
-                shopManager.Instance.SellItem();
+                //shopManager.Instance.SellItem();
                 EndDialog();
                 break;
 
