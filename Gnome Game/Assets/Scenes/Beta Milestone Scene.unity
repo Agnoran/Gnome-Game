@@ -5492,6 +5492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChasmPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 3057782130638179501, guid: 2e281de1ed2f15f42a5b716e0ddfbd0d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1516577613}
     - target: {fileID: 3561020234720552495, guid: 2e281de1ed2f15f42a5b716e0ddfbd0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.24
@@ -6780,6 +6784,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103b6594625e422478572b163c450ce9, type: 3}
+--- !u!1 &1516577613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7585933562757087071, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
+  m_PrefabInstance: {fileID: 176496509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1524588789
 PrefabInstance:
   m_ObjectHideFlags: 0

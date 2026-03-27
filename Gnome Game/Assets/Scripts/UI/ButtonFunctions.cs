@@ -91,7 +91,7 @@ public class ButtonFunctions : MonoBehaviour
 
     public void Restart()
     {
-        if (WorldController.instance != null) return;
+        
         WorldController.instance.StateBeginGame();
         //Time.timeScale = 1f;
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
