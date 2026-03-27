@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections.Generic;
 
 public class shopManager : MonoBehaviour
 {
@@ -13,12 +12,6 @@ public class shopManager : MonoBehaviour
 
     public List<shopSlot> shopInventory = new List<shopSlot>();
     
-    public static shopManager Instance { get; private set; }
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     private void Start()
     {
@@ -82,56 +75,5 @@ public class shopManager : MonoBehaviour
         {
             Debug.Log("Not enough gold!");
         }
-    }
-
-    public void SellItem(int index)
-    {
-        if (index < 0 || index >= inventoryManager.Instance.inventory.Count)
-            return;
-
-        inventorySlot slot = inventoryManager.Instance.inventory[index];
-
-        if (slot == null || slot.item == null)
-            return;
-
-        itemData itemToSell = slot.item;
-
-        int sellPrice = GetSellPrice(itemToSell);
-
-        inventoryManager.Instance.RemoveItem(index);
-
-        currencyManager.instance.AddGold(sellPrice);
-
-        Debug.Log("Sold: " + itemToSell.name + " for " + sellPrice + " gold");
-
-        var ui = FindAnyObjectByType<shopUIManager>();
-
-        if (ui != null)
-        {
-            ui.RefreshShopUI();
-            ui.RefreshSellUI();
-        }
-    }
-
-    private int GetSellPrice(itemData itemToSell)
-    {
-        return Mathf.Max(1, itemToSell.value / 2);
-    }
-
-    void AddItemBackToShop(shopItem item)
-    {
-        if (item == null) return;
-
-        foreach (var slot in shopInventory)
-        {
-            if (slot.item == item)
-            {
-                slot.stock++;
-                return;
-            }
-        }
-
-        // If item not already in shop, add new slot
-        shopInventory.Add(new shopSlot(item, 1));
     }
 }

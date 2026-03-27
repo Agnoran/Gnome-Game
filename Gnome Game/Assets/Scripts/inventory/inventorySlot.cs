@@ -10,7 +10,6 @@ public class inventorySlot
     {
         this.item = item;
         this.quantity = quantity;
-
     }
 }
 // allows items to stack

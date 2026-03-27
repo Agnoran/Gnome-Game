@@ -9,7 +9,7 @@ public class dialogManager : MonoBehaviour
     public static dialogManager Instance;
 
     public GameObject dialogPanel;
-    public TextMeshProUGUI dialogText;
+    public TextMeshPro dialogText;
 
     public GameObject choiceButtonPrefab;
     public Transform choiceContainer;
@@ -27,65 +27,71 @@ public class dialogManager : MonoBehaviour
     public void StartDialog(dialogCoreNodes startingNode)
     {
         dialogPanel.SetActive(true);
+        /*
+        lines.Clear();
        
+        foreach(string line in dialog.lines)
+        {
+            lines.Enqueue(line);
+        }
+        DisplayNextLine();
+        */
         ShowNodes(startingNode);
+        
     }
 
     void ShowNodes(dialogCoreNodes nodes)
     {
         currentNode = nodes;
-        if (dialogText != null)
-            dialogText.text = nodes.dialogText;
+        StartCoroutine(Typeline(nodes.dialogText));
 
         // to clear out the old
-        if (choiceContainer != null)
-        { 
-            foreach (Transform child in choiceContainer)
-            { Destroy(child.gameObject); }
-        }
+        foreach (Transform child in choiceContainer)
+        { Destroy(child.gameObject); }
 
         // create new
-        if (nodes.choices != null)
-        { 
-            foreach (dialogChoice choice in nodes.choices)
-            {
-                GameObject button = Instantiate(choiceButtonPrefab, choiceContainer);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
-
-                button.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => SelectChoice(choice));
-            }
-        }
-    }
-
-    void HandleAction(dialogChoice choice)
-    {
-        switch (choice.action)
+        foreach (dialogChoice choice in nodes.choices)
         {
-            case DialogAction.BuyItem:
-                //shopManager.Instance.BuyItem();
-                EndDialog();
-                break;
+            GameObject button = Instantiate(choiceButtonPrefab, choiceContainer);
+            button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
 
-            case DialogAction.SellItem:
-                //shopManager.Instance.SellItem();
-                EndDialog();
-                break;
-
-            case DialogAction.CloseDialog:
-                EndDialog();
-                break;
+            button.GetComponent<UnityEngine.UI.Button>()
+                .onClick.AddListener(() => SelectChoice(choice));
         }
     }
 
     void SelectChoice(dialogChoice choice)
     {
-        HandleAction(choice);
         if (choice.nextNode != null)
         { ShowNodes(choice.nextNode); }
         else
         { EndDialog(); }
     }
 
+    /*
+     * public void DisplayNextLine()  // Read line by line
+    {
+        if (lines.Count == 0)
+        {
+            EndDialog();
+            return;
+        }
+        string line = lines.Dequeue();
+
+
+    }
+    */
+
+    IEnumerator Typeline(string line)  // Typewriter Effect
+    {
+        dialogText.text = "";
+
+        foreach(char c in line)
+        {
+            dialogText.text += c;
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
 
     public void EndDialog()
     { dialogPanel.SetActive(false);}

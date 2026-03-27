@@ -70,13 +70,5 @@ public class inventoryManager : MonoBehaviour
         return inventory.Find(slot => slot.item == item);
     }
 
-    public void RemoveItem(int index)
-    {
-        if (index < 0 || index >= inventory.Count)
-            return;
-
-        inventory.RemoveAt(index);
-    }
-
 
 }

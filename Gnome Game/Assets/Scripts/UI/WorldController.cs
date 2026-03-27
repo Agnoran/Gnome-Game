@@ -32,7 +32,6 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuSettings;
     [SerializeField] GameObject menuMap;
     [SerializeField] GameObject menuRebinder;
-    [SerializeField] GameObject menuCredits;
 
     [Header("References")]
     [SerializeField] GameObject player;
@@ -45,7 +44,6 @@ public class WorldController : MonoBehaviour
     public bool settingsOpen;
     public bool mapOpen;
     public bool rebinderOpen;
-    public bool creditsOpen;
 
     float timeScaleOrig;
 
@@ -70,7 +68,6 @@ public class WorldController : MonoBehaviour
         mapOpen = false;
         rebinderOpen = false;
         gameWon = false;
-        creditsOpen = false;
 
         pauseInputHeld = false;
         inventoryInputHeld = false;
@@ -181,8 +178,6 @@ public class WorldController : MonoBehaviour
         settingsOpen = false;
         mapOpen = false;
         rebinderOpen = false;
-        creditsOpen = false;
-        craftOpen = false;
     }
 
     public void StateBeginGame()
@@ -302,7 +297,7 @@ public class WorldController : MonoBehaviour
 
     public bool IsMenuOpen()
     {
-        return isPaused || invOpen || gameWon || shopOpen || settingsOpen || mapOpen || rebinderOpen || craftOpen || creditsOpen;
+        return isPaused || invOpen || gameWon || shopOpen || settingsOpen || mapOpen || rebinderOpen;
     }
 
     public void StateOpenShop()
@@ -369,18 +364,4 @@ public class WorldController : MonoBehaviour
         Time.timeScale = 0;
     }
     
-    public void OpenCredits()
-    {
-        CloseAllMenuStates();
-        menuCredits.SetActive(true);
-        creditsOpen = true;
-        SetActiveMenu(menuCredits);
-    }
-
-    public void closeCredits()
-    {
-        menuCredits.SetActive(false);
-        creditsOpen = false;
-        SetActiveMenu(menuStart);
-    }
 }

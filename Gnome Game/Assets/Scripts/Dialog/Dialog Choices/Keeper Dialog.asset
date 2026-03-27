@@ -15,19 +15,4 @@ MonoBehaviour:
   dialogText: 'Welcome to my shop.
 
     Would you like to browse my wares?'
-  choices:
-  - choiceText: Buy
-    nextNode: {fileID: 11400000}
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - choiceText: Sell
-    nextNode: {fileID: 11400000}
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - choiceText: Exit
-    nextNode: {fileID: 11400000}
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
+  choices: []

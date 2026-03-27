@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Poison Ball
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3464432151153269092, guid: 9b35b3bd8a35b7a4d91211f9804e777a, type: 3}
+  SpellWeaponModel: {fileID: 3506351527548109682, guid: 38bda8c969f82434992f53de5eefc794, type: 3}
   shootRate: 0.5
   MPcost: 4
   Spell: {fileID: 6982560049949143496, guid: b3d62c237a18ebf4981f813db21b26ad, type: 3}

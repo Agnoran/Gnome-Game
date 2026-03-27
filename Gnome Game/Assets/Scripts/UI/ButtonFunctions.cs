@@ -73,13 +73,6 @@ public class ButtonFunctions : MonoBehaviour
         WorldController.instance.StateCloseCraft();
     }
 
-    public void OpenOurCredits()
-    { 
-        if (WorldController.instance == null) return;
-        WorldController.instance.OpenCredits();
-       
-    }
-
     public void Quit()
     {
 #if UNITY_EDITOR
@@ -123,11 +116,5 @@ public class ButtonFunctions : MonoBehaviour
     {
         if (WorldController.instance == null) return;
         WorldController.instance.StateTutorialTwo();
-    }
-
-    public void CloseCredits()
-    {
-        if (WorldController.instance == null) return;
-        WorldController.instance.closeCredits();
     }
 }

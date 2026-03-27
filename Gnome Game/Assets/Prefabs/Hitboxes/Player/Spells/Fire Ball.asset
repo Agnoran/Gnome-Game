@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Fire Ball
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 1563172657649785205, guid: fa2774ac66e172e4195cce4d68b07464, type: 3}
+  SpellWeaponModel: {fileID: 3506351527548109682, guid: f122f8e99b33f1f489e13b72671e7a9c, type: 3}
   shootRate: 0.7
   MPcost: 4
   Spell: {fileID: 6982560049949143496, guid: d6963fd2764a11348b5dc749d9624a92, type: 3}

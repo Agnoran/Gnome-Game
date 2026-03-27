@@ -6,20 +6,10 @@ public class shopUIManager : MonoBehaviour
     public shopManager shop;
     public GameObject slotPrefab;
     public Transform slotParent;
-
-    [Header("Sell UI")]
-    public GameObject sellSlotPrefab;
-    public Transform sellSlotParent;
-
-    [Header("Panels")]
-    public GameObject buyPanel;
-    public GameObject sellPanel;
-
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         BuildShopUI();
-        OpenBuyTab();
-        OpenSellTab();
     }
 
     public void BuildShopUI()
@@ -42,45 +32,5 @@ public class shopUIManager : MonoBehaviour
     public void RefreshShopUI()
     {
         BuildShopUI();
-    }
-
-    public void RefreshSellUI()
-    {
-        BuildSellUI();
-    }
-
-    public void BuildSellUI()
-    {
-        foreach (Transform child in sellSlotParent)
-        {
-            Destroy(child.gameObject);
-        }
-
-        var inventory = inventoryManager.Instance.inventory;
-
-        for (int i = 0; i < inventory.Count; i++)
-        {
-            GameObject slotObject = Instantiate(sellSlotPrefab, sellSlotParent);
-
-            SellSlotUI slotUI = slotObject.GetComponent<SellSlotUI>();
-
-            slotUI.Setup(shop, i);
-        }
-    }
-
-    public void OpenBuyTab()
-    {
-        buyPanel.SetActive(true);
-        sellPanel.SetActive(false);
-
-        RefreshShopUI();
-    }
-
-    public void OpenSellTab()
-    {
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(true);
-
-        RefreshSellUI();
     }
 }

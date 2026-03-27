@@ -4,36 +4,29 @@ using UnityEngine.EventSystems;
 
 public class Credits : MonoBehaviour
 {
-    public static Credits Instance;
     private RectTransform rectTransform;
+    public float scrollSpeed;
 
-    
-    public GameObject creditsPanel;
-    public GameObject mainMenu;
-
-    void Start()
-    {
-        Instance = this;
-    }
+    public GameObject firstSelected;
 
     void OnEnable()
-    {        
+    {
         EventSystem.current.SetSelectedGameObject(null);
-        
+        EventSystem.current.SetSelectedGameObject(firstSelected);
     }
 
     void Update()
     {
+        rectTransform.anchoredPosition += Vector2.up * scrollSpeed * Time.deltaTime;
+
         if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
         {
             ExitCredits();
         }
     }
 
-    public void ShowCredits()
-    {
-        EventSystem.current.SetSelectedGameObject(creditsPanel);
-    }
+    public GameObject creditsPanel;
+    public GameObject mainMenu;
 
     public void ExitCredits()
     {
