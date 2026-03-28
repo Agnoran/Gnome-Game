@@ -10,7 +10,7 @@ public class SpellRecipeListUI : MonoBehaviour
     [SerializeField] Transform recipeButtonParent;
     [SerializeField] GameObject recipeButtonPrefab;
 
-    void Start()
+    void Awake()
     {
         BuildRecipeList();
     }
