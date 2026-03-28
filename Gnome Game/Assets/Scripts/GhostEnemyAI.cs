@@ -216,14 +216,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, kbV3, knockbackSpeed);
 
 
-            Vector3 ranPos = Random.insideUnitSphere * tpDist;
-            ranPos += player.transform.position;
-
-            NavMeshHit hit;
-            NavMesh.SamplePosition(ranPos, out hit, tpDist, 1);
-            
-
-            Teleport(hit);
+            roamTimer = 0;
             
         }
     }

@@ -93,6 +93,10 @@ public class WorldController : MonoBehaviour
 
         HandlePauseInput();
         HandleInventoryInput();
+        if(IsMenuOpen())
+        {
+            Time.timeScale = 0;
+        }
         
     }
 
@@ -266,6 +270,8 @@ public class WorldController : MonoBehaviour
         isPaused = false;
         craftOpen = false;
         menuActive.SetActive(false);
+        Time.timeScale = timeScaleOrig;
+
     }
 
     public void StateInvFromPause()

@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4334928938764362447
 Transform:
   m_ObjectHideFlags: 0
@@ -546,7 +546,7 @@ MonoBehaviour:
   particle: {fileID: 9081765941917321485}
   movement: {fileID: 2549812357435470069}
   attack: {fileID: 4083737244486750443}
-  hp: 10
+  hp: 30
   mp: 100
   model: {fileID: 8790970462202525479}
 --- !u!114 &2549812357435470069
