@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Poison Essence
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 10
+  quantity: 1
+  itemPrefab: {fileID: 139550454906187105, guid: b93ed73b0a477a7499745fca1009375c, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: a3e9b8df7bb70f6489ae0f15e1bb3c31, type: 2}

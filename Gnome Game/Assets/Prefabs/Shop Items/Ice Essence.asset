@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Ice Essence
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 10
+  quantity: 1
+  itemPrefab: {fileID: 4728412210460789996, guid: 43a8d66f6a17a5546836bcb88c0ceafb, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: 6112b4b6ade926648a276fc5cbe44103, type: 2}

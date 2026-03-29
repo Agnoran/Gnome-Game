@@ -6,12 +6,11 @@ using TMPro;
 
 public class shopSlotUI : MonoBehaviour
 {
-    public Image icon;
-    public TextMeshPro nameText;
-    public TextMeshPro priceText;
-    public TextMeshPro stockText;
-    public UnityEngine.UI.Button buyButton;
-    public UnityEngine.UI.Button sellButton;
+    //public TextMeshPro nameText;
+   // public TextMeshPro priceText;
+   // public TextMeshPro stockText;
+    public Button buyButton;
+    
 
     int slotIndex;
     shopManager shop;
@@ -23,12 +22,14 @@ public class shopSlotUI : MonoBehaviour
 
         shopSlot slot = shop.shopInventory[index];
 
-        icon.sprite = slot.item.Icon;
-        nameText.text = slot.item.DisplayName;
-        priceText.text = slot.item.Price + " Gold";
-        stockText.text = "x" + slot.stock;
+       
+        //nameText.text = slot.item.DisplayName;
+        //priceText.text = slot.item.Price + " Gold";
+       // stockText.text = "x" + slot.stock;
 
-        buyButton.onClick.AddListener(() => shop.BuyItem(slotIndex));
-        sellButton.onClick.AddListener(() => shop.SellItem(slotIndex));
+       // buyButton.onClick.AddListener(() => shop.BuyItem(slotIndex));
+        
     }
+
+
 }

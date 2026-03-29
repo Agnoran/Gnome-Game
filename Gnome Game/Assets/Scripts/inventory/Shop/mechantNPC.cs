@@ -1,51 +1,27 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class mechantNPC : MonoBehaviour, iInteractable
+public class merchantNPC : MonoBehaviour
 {
-    [SerializeField] dialogCoreNodes startingNode;
+    public GameObject shopUI; // drag your Canvas/ShopPanel here
 
-    public GameObject shopUI;
-    public dialogCoreNodes merchantDialog;
-
-    bool playerInRange = false;
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerInRange && PlayerInputHandler.Instance.InteractInput)
-        { Interact(); }
-    }
-
-    void Interact()
-    {
-        if (merchantDialog != null)
-        {
-            dialogManager.Instance.StartDialog(merchantDialog);
-        }
-    }
-
-    void iInteractable.Interact()
-    {
-        OpenShop();
-    }
-
-    public void OpenShop()
-    { shopUI.SetActive(true); }
-    
-    public void CloseShop()
-    { shopUI.SetActive(false); }
-
+    private bool playerInRange = false;
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        { playerInRange = true; }
+            playerInRange = true;
+        TryOpenShop();
     }
 
-    private void OnTriggerExit(Collider other)
+    void TryOpenShop()
     {
-        if (other.CompareTag("Player"))
-        { playerInRange = false; }
-    }
+        Debug.Log("Trying to open shop");
 
-    
+        if (playerInRange)
+        {
+            Debug.Log("Opening shop");
+            shopUI.SetActive(true);
+        }
+    }
 }

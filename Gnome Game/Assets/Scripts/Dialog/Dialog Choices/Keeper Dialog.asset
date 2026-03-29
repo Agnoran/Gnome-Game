@@ -18,16 +18,10 @@ MonoBehaviour:
   choices:
   - choiceText: Buy
     nextNode: {fileID: 11400000}
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
+    action: 1
   - choiceText: Sell
     nextNode: {fileID: 11400000}
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
+    action: 2
   - choiceText: Exit
     nextNode: {fileID: 11400000}
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
+    action: 3

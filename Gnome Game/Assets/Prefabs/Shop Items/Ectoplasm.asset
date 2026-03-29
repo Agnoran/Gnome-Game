@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Ectoplasm
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 10
+  quantity: 2
+  itemPrefab: {fileID: 232534007684053755, guid: d39b37c333f77ea4ebb5a41f879d538e, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: fb3fe9bdf88051549ac843eaeeeb8c37, type: 2}

@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Fire Essence
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 10
+  quantity: 1
+  itemPrefab: {fileID: 8722208009285834056, guid: 0920fd55bc7fc8548bf81abf93546b0f, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: 7e383b51d3cc3274bbc63f653faee530, type: 2}

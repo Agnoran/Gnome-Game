@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Water Essence
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 10
+  quantity: 1
+  itemPrefab: {fileID: 7017972556555514856, guid: 32adbc964e0e6114f9fc55c8127fe57e, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: 66a62b797b58c8f44bf4b53675fda7a2, type: 2}

@@ -3,9 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 public class SellSlotUI : MonoBehaviour
 {
-    public Image icon;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI priceText;
+   // public TextMeshProUGUI nameText;
+    //public TextMeshProUGUI priceText;
     public Button sellButton;
 
     int slotIndex;
@@ -23,11 +22,11 @@ public class SellSlotUI : MonoBehaviour
 
         itemData item = slot.item;
 
-        icon.sprite = item.icon;
-        nameText.text = item.name;
+    
+       // nameText.text = item.name;
 
         int price = Mathf.Max(1, item.value / 2);
-        priceText.text = price + " Gold";
+       // priceText.text = price + " Gold";
 
         sellButton.onClick.RemoveAllListeners();
         sellButton.onClick.AddListener(() => shop.SellItem(slotIndex));

@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class shopUIManager : MonoBehaviour
 {
     [Header("References")]
     public shopManager shop;
+
     public GameObject slotPrefab;
     public Transform slotParent;
 
@@ -15,29 +18,29 @@ public class shopUIManager : MonoBehaviour
     public GameObject buyPanel;
     public GameObject sellPanel;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return null; // wait 1 frame
         BuildShopUI();
-        OpenBuyTab();
-        OpenSellTab();
+        BuildSellUI(); 
     }
+  
 
     public void BuildShopUI()
     {
-        foreach (Transform child in slotParent)
-        {
-            Destroy(child.gameObject);
-        }
-
+       
         for (int i = 0; i < shop.shopInventory.Count; i++)
         {
+            var slot = shop.shopInventory[i];
             GameObject slotObject = Instantiate(slotPrefab, slotParent);
-
+            Button btn = slotObject.GetComponent<Button>();
             shopSlotUI slotUI = slotObject.GetComponent<shopSlotUI>();
 
             slotUI.Setup(shop, i);
         }
     }
+
+    
 
     public void RefreshShopUI()
     {
@@ -60,6 +63,7 @@ public class shopUIManager : MonoBehaviour
 
         for (int i = 0; i < inventory.Count; i++)
         {
+            var slot = inventory[i];
             GameObject slotObject = Instantiate(sellSlotPrefab, sellSlotParent);
 
             SellSlotUI slotUI = slotObject.GetComponent<SellSlotUI>();

@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Magic Stone
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 20
+  quantity: 5
+  itemPrefab: {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: e78afaa3ca93ac84faad9b7c3edf5a03, type: 2}

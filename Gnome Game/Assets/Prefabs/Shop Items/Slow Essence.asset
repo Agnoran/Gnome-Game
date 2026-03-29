@@ -15,8 +15,9 @@ MonoBehaviour:
   displayName: Slow Essence
   description: 
   icon: {fileID: 0}
-  price: 0
-  quantity: 0
-  allowedCategories: 
+  price: 10
+  quantity: 1
+  itemPrefab: {fileID: 1535804893757792088, guid: f05ef1031c7f8164f8f233be61430b9c, type: 3}
+  allowedCategories: 00000000
   itemType: 0
   item: {fileID: 11400000, guid: 2a32d71847c6bd145b3ab777bbfe041f, type: 2}

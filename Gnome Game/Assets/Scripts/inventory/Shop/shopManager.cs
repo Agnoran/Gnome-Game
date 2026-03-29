@@ -12,8 +12,9 @@ public class shopManager : MonoBehaviour
     [SerializeField] shopItem[] allItems;
 
     public List<shopSlot> shopInventory = new List<shopSlot>();
-    
+    [SerializeField] private shopUIManager uiManager;
     public static shopManager Instance { get; private set; }
+    public shopItem item { get; private set; }
 
     void Awake()
     {
@@ -23,6 +24,8 @@ public class shopManager : MonoBehaviour
     private void Start()
     {
         GenerateShop();
+        AddItemBackToShop(item);
+        FindAnyObjectByType<shopUIManager>()?.RefreshShopUI();
     }
 
     void GenerateShop()
@@ -104,12 +107,10 @@ public class shopManager : MonoBehaviour
 
         Debug.Log("Sold: " + itemToSell.name + " for " + sellPrice + " gold");
 
-        var ui = FindAnyObjectByType<shopUIManager>();
-
-        if (ui != null)
+        if (uiManager != null)
         {
-            ui.RefreshShopUI();
-            ui.RefreshSellUI();
+            uiManager.RefreshShopUI();
+            uiManager.RefreshSellUI();
         }
     }
 
@@ -134,4 +135,5 @@ public class shopManager : MonoBehaviour
         // If item not already in shop, add new slot
         shopInventory.Add(new shopSlot(item, 1));
     }
+   
 }
