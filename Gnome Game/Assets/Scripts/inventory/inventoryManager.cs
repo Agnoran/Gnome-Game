@@ -29,14 +29,8 @@ public class inventoryManager : MonoBehaviour
         }
 
         // Adding new slot
-        if (inventory.Count < maxSlots)
-        {
-            inventory.Add(new inventorySlot(item, 1));
-            return true;
-        }
-
-        Debug.Log("Inventory Full");
-        return false;
+        inventory.Add(new inventorySlot(item, 1));
+        return true;
     }
 
     public bool RemoveItem(itemData item, int amount)
