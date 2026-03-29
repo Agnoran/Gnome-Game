@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ice Essence
   m_EditorClassIdentifier: Assembly-CSharp::itemData
   itemName: Ice Essence
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 30ed2f24f151aeb4c9cad01c50ba66a3, type: 3}
   stackable: 1
   max: 99
+  value: 0

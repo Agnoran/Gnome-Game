@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fire Essence
   m_EditorClassIdentifier: Assembly-CSharp::itemData
   itemName: Fire Essence
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4e318ccc07b11b84f96a0917cf03cc2d, type: 3}
   stackable: 1
   max: 99
+  value: 0

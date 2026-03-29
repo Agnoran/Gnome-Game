@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Slow Essence
   m_EditorClassIdentifier: Assembly-CSharp::itemData
   itemName: Slow Essence
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 130ae81c6e85e934e81ee232b2040040, type: 3}
   stackable: 1
   max: 99
+  value: 0

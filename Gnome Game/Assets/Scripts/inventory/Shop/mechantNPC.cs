@@ -3,6 +3,7 @@ using UnityEngine;
 public class mechantNPC : MonoBehaviour, iInteractable
 {
     [SerializeField] dialogCoreNodes startingNode;
+    [SerializeField] PlayerInputHandler inputHandler;
 
     public GameObject shopUI;
     public dialogCoreNodes merchantDialog;
@@ -12,7 +13,7 @@ public class mechantNPC : MonoBehaviour, iInteractable
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && PlayerInputHandler.Instance.InteractInput)
+        if (playerInRange && inputHandler.InteractInput)
         { Interact(); }
     }
 
@@ -22,6 +23,9 @@ public class mechantNPC : MonoBehaviour, iInteractable
         {
             dialogManager.Instance.StartDialog(merchantDialog);
         }
+        WorldController.instance.menuShop = shopUI;
+        WorldController.instance.StateOpenShop();
+
     }
 
     void iInteractable.Interact()
@@ -30,10 +34,12 @@ public class mechantNPC : MonoBehaviour, iInteractable
     }
 
     public void OpenShop()
-    { shopUI.SetActive(true); }
+    { 
+        
+        shopUI.SetActive(true); }
     
     public void CloseShop()
-    { shopUI.SetActive(false); }
+    { WorldController.instance.StateCloseShop(); }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -75,6 +75,14 @@ public class shopUIManager : MonoBehaviour
 
         RefreshShopUI();
     }
+    public void CloseTab()
+    {
+        buyPanel.SetActive(false);
+        sellPanel.SetActive(false);
+
+        RefreshShopUI();
+    }
+  
 
     public void OpenSellTab()
     {

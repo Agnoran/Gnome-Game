@@ -26,7 +26,7 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuInventory;
     [SerializeField] GameObject menuWinGame;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject menuShop;
+    public GameObject menuShop;
 
     [Header("Extra Menus")]
     [SerializeField] GameObject menuSettings;
@@ -321,6 +321,7 @@ public class WorldController : MonoBehaviour
 
     public void StateCloseShop()
     {
+        Time.timeScale = timeScaleOrig;
         shopOpen = false;
         SetActiveMenu(null);
     }
