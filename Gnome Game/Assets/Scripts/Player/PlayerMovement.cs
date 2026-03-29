@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+    private Animator animator;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
     float origMoveSpeed;
@@ -38,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("idle", true);
+
         if (playerController == null)
         {
             playerController = GetComponent<CharacterController>();
@@ -86,7 +92,26 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 moveInput = inputHandler.MoveInput;
 
-        Vector3 cameraForward = mainCamera.transform.forward;
+        //animator control checks: idle, walk, run 
+        if (moveInput != Vector2.zero)
+        {
+            animator.SetBool("idle", false);
+            if (sprintActive)
+            {
+                animator.SetBool("sprint", true);
+            }
+            else
+            {
+                animator.SetBool("sprint", false);
+            }
+        }
+        else
+        {
+            animator.SetBool("idle", true);
+        }
+
+
+            Vector3 cameraForward = mainCamera.transform.forward;
         Vector3 cameraRight = mainCamera.transform.right;
 
         cameraForward.y = 0f;
@@ -95,11 +120,14 @@ public class PlayerMovement : MonoBehaviour
         cameraForward.Normalize();
         cameraRight.Normalize();
 
+
         Vector3 moveDirection = (cameraForward * moveInput.y) + (cameraRight * moveInput.x);
         moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
 
+
         currentMovement.x = moveDirection.x * currentSpeed;
         currentMovement.z = moveDirection.z * currentSpeed;
+
 
         HandleJumping();
         playerController.Move(currentMovement * Time.deltaTime);
