@@ -7,11 +7,19 @@ public class merchantNPC : MonoBehaviour
 
     private bool playerInRange = false;
    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
             playerInRange = true;
         TryOpenShop();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            playerInRange = false;
+        TryCloseShop();
     }
 
     void TryOpenShop()
@@ -22,6 +30,13 @@ public class merchantNPC : MonoBehaviour
         {
             Debug.Log("Opening shop");
             shopUI.SetActive(true);
+            WorldController.instance.StateOpenShop();
         }
+    }
+
+    void TryCloseShop()
+    { 
+        shopUI.SetActive(false);
+        WorldController.instance.StateCloseShop();
     }
 }

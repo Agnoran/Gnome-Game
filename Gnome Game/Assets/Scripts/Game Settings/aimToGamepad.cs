@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class aimToGamepad : MonoBehaviour
 {
 
-    bool canMove = true;
+    bool canRotate = true;
     Camera mainCamera;
     Transform visualRoot;
     float rotateSpeed = 15f;
@@ -15,12 +15,14 @@ public class aimToGamepad : MonoBehaviour
             return;
 
         Vector2 stickInput = Gamepad.current.rightStick.ReadValue();
+       
 
         // Deadzone (prevents jitter)
         if (stickInput.sqrMagnitude < 0.01f)
             return;
 
         stickInput.Normalize();
+        canRotate.CompareTo(stickInput);
 
         Vector3 cameraForward = mainCamera.transform.forward;
         Vector3 cameraRight = mainCamera.transform.right;
@@ -50,7 +52,7 @@ public class aimToGamepad : MonoBehaviour
 
     void Update()
     {
-        if (!canMove)
+        if (!canRotate)
         {
             HandleRotationToStick();
             return;
@@ -67,6 +69,6 @@ public class aimToGamepad : MonoBehaviour
 
     void StickRight()
     {
-        //will fix later
+        
     }
 }
