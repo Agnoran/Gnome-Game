@@ -36,8 +36,8 @@ public class StraightEnemyAI : MonoBehaviour, IDamage, IStatus
     [SerializeField] GameObject deathPuff;
 
 
-    //[SerializeField] Renderer model;
-    [SerializeField] Material ghostMat;
+    [SerializeField] Renderer model;
+    //[SerializeField] Material ghostMat;
     Color colorOG;
 
     [Header("Status Managment")]
@@ -68,7 +68,8 @@ public class StraightEnemyAI : MonoBehaviour, IDamage, IStatus
         attacking = false;
         currentRoamTime = CalcRoamTime();
         attackTimerOG = attackTimer;
-        colorOG = ghostMat.color;
+        colorOG = model.material.color;
+        //colorOG = ghostMat.color;
     }
 
     // Update is called once per frame
@@ -175,11 +176,11 @@ public class StraightEnemyAI : MonoBehaviour, IDamage, IStatus
     IEnumerator EnemyDamageFlash()
     {
         //changes player model to red for 1/10th of a second called whenever damage is applied.
-        //model.material.color = UnityEngine.Color.red;
-        ghostMat.color = UnityEngine.Color.red;
+        model.material.color = UnityEngine.Color.red;
+        //ghostMat.color = UnityEngine.Color.red;
         yield return new WaitForSeconds(0.1f);
-        //model.material.color = colorOG;
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     //get information from what inflicted the status and apply the condiiton to the player.
@@ -199,13 +200,13 @@ public class StraightEnemyAI : MonoBehaviour, IDamage, IStatus
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
             if (buff == global::damage.statusType.shield)
             {
-                //model.material.color = UnityEngine.Color.lightSkyBlue;
-                ghostMat.color = UnityEngine.Color.lightSkyBlue;
+                model.material.color = UnityEngine.Color.lightSkyBlue;
+                //ghostMat.color = UnityEngine.Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
-                //model.material.color = UnityEngine.Color.orange;
-                ghostMat.color = UnityEngine.Color.orange;
+                model.material.color = UnityEngine.Color.orange;
+                //ghostMat.color = UnityEngine.Color.orange;
                 moddedAttackSpeed = attackTimer / 2;
                 moddedMoveSpeed = moveSpeed * 2;
             }
@@ -391,8 +392,8 @@ public class StraightEnemyAI : MonoBehaviour, IDamage, IStatus
         buff = global::damage.statusType.none;
         buffTimer = 0;
         buffDuration = 0;
-        //model.material.color = colorOG;
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     IEnumerator inflictedStatusDamage(int amount, float rate)

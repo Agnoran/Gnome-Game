@@ -29,8 +29,8 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     float explosionTimer;
     bool willExplode;
 
-    //[SerializeField] Renderer model;
-    [SerializeField] Material ghostMat;
+    [SerializeField] Renderer model;
+    //[SerializeField] Material ghostMat;
     UnityEngine.Color colorOG;
 
     Vector3 playerDir;
@@ -75,8 +75,8 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         alert = false;
         playerInTrigger = false;
         lookTimer = 0;
-        //colorOG = model.material.color;
-        colorOG = ghostMat.color;
+        colorOG = model.material.color;
+        //colorOG = ghostMat.color;
         moveSpeedOG = moveSpeed;
         isFrozen = false;
         willExplode = false;
@@ -196,7 +196,8 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     private void OnTriggerExit(Collider other)
     {
         playerInTrigger = false;
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     public void takeDamage(int amount)
@@ -242,27 +243,28 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     IEnumerator EnemyDamageFlash()
     {
         //changes player model to red for 1/10th of a second called whenever damage is applied.
-        //model.material.color = UnityEngine.Color.red;
-        ghostMat.color = UnityEngine.Color.red;
+        model.material.color = UnityEngine.Color.red;
+        //ghostMat.color = UnityEngine.Color.red;
         yield return new WaitForSeconds(0.1f);
-        //model.material.color = colorOG;
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     IEnumerator ExplosionFlash()
     {
         float explosionInterval = 1f;
-        //model.material.color = UnityEngine.Color.red;
-        ghostMat.color = UnityEngine.Color.red;
+        model.material.color = UnityEngine.Color.red;
+        //ghostMat.color = UnityEngine.Color.red;
         yield return new WaitForSeconds(explosionInterval);
         explosionInterval -= 0.1f;
-        //model.material.color = colorOG;
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
     void explode()
     {
         Instantiate(explosion,transform.position, transform.rotation);
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
         Destroy(gameObject);
     }
 
@@ -283,11 +285,13 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
             if (buff == global::damage.statusType.shield)
             {
-                ghostMat.color = UnityEngine.Color.lightSkyBlue;
+                model.material.color = UnityEngine.Color.lightSkyBlue;
+                //ghostMat.color = UnityEngine.Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
-                ghostMat.color = UnityEngine.Color.orange;
+                model.material.color = UnityEngine.Color.orange;
+                //ghostMat.color = UnityEngine.Color.orange;
                 //moddedAttackSpeed = shootRate / 2;
                 moddedMoveSpeed = moveSpeed / 2;
             }
@@ -473,7 +477,8 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         buff = global::damage.statusType.none;
         buffTimer = 0;
         buffDuration = 0;
-        ghostMat.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     IEnumerator inflictedStatusDamage(int amount, float rate)

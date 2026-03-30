@@ -130,7 +130,7 @@ MonoBehaviour:
   - {fileID: 9071978087718134104, guid: 67be040a855f12b4ab8b9537b62394bb, type: 3}
   itemDropPos: {fileID: 4532376348704334386}
   deathPuff: {fileID: 773959886891128846, guid: cd0bc928c3da7d54d96aab49a56de5c5, type: 3}
-  ghostMat: {fileID: 2100000, guid: eb9293c2cf732ae4b9719cbafaa41b11, type: 2}
+  model: {fileID: 1201159936245883506}
   Attribute: 0
   inflictedStatus: 0
   buff: 0
@@ -544,6 +544,11 @@ Animator:
 --- !u!4 &896678411096968327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
+  m_PrefabInstance: {fileID: 863315909548125036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1201159936245883506 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1968211197464594718, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
   m_PrefabInstance: {fileID: 863315909548125036}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1851170787563552906

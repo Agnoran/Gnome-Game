@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SmallGhost
   ghostWithAnims: {fileID: 5890297141445979562}
-  ghostMaterial: {fileID: 2100000, guid: 432992d01155fb243b90531b9d514dc2, type: 2}
   HP: 15
   knockbackDist: 0
   knockbackSpeed: 0
@@ -125,6 +124,7 @@ MonoBehaviour:
   - {fileID: 1535804893757792088, guid: f05ef1031c7f8164f8f233be61430b9c, type: 3}
   dropPos: {fileID: 6685284635516434618}
   charge: {fileID: 2466010751089518807, guid: 91f99f692a6dabd498dd45d2611b8533, type: 3}
+  model: {fileID: 5057435165576206821}
   deathPuff: {fileID: 773959886891128846, guid: cd0bc928c3da7d54d96aab49a56de5c5, type: 3}
   shootRate: 2
   projectile: {fileID: 5664110817717348276, guid: 231640423f40f5541be430589a2a7c45, type: 3}
@@ -299,6 +299,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1072164798533952427}
   m_SourcePrefab: {fileID: 100100000, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
+--- !u!137 &5057435165576206821 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1968211197464594718, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
+  m_PrefabInstance: {fileID: 6737354097934979323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5890297141445979562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
