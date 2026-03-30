@@ -11,9 +11,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
 {
     private Animator animator;
     [SerializeField] GameObject ghostWithAnims;
-    [SerializeField] Material ghostMaterial;
-    [SerializeField] List<AudioClip> ghostSounds;
-    AudioSource source;
+    //[SerializeField] Material ghostMaterial;
 
     [Header("Attributes")]
     [SerializeField] int HP;                //health
@@ -24,7 +22,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     [SerializeField] Transform dropPos;
     [SerializeField] GameObject charge;
 
-    //[SerializeField] Renderer model;
+    [SerializeField] Renderer model;
     [SerializeField] GameObject deathPuff;
     Color colorOG;
 
@@ -93,11 +91,10 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         endStatus();
         tpWaitOg = tpWaitTime;
         shootRateOg = shootRate;
-        //colorOG = model.material.color;
-        colorOG = ghostMaterial.color;
+        colorOG = model.material.color;
+        //colorOG = ghostMaterial.color;
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("walk", false);
-        source = GetComponent<AudioSource>();    
     }
 
     // Update is called once per frame
@@ -162,7 +159,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         if (shotTimer >= shootRate)
         {
             Debug.Log("shoot");
-            source.PlayOneShot(ghostSounds[0]);
+
             Instantiate(projectile, shootPos.position, Quaternion.LookRotation(playerDir));
             shotTimer = 0;
             isCharging = false;
@@ -204,7 +201,6 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         weakness = false;
         //reduce health
         HP -= amount;
-        source.PlayOneShot(ghostSounds[1]);
 
         //check for death
         if (HP < 0)
@@ -214,6 +210,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             {
                 DropItem();
             }
+            model.material.color = colorOG;
             Destroy(gameObject);
         }
         else
@@ -234,11 +231,11 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     IEnumerator EnemyDamageFlash()
     {
         //changes player model to red for 1/10th of a second called whenever damage is applied.
-        //model.material.color = Color.red;
-        ghostMaterial.color = Color.red;
+        model.material.color = Color.red;
+        //ghostMaterial.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        //model.material.color = colorOG;
-        ghostMaterial.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMaterial.color = colorOG;
     }
 
 
@@ -248,7 +245,6 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     {
         animator.SetTrigger("disappear");
         StartCoroutine(Disappear());
-        source.PlayOneShot(ghostSounds[2]);
         agent.SetDestination(target.position);
     }
 
@@ -287,13 +283,13 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
             if (buff == global::damage.statusType.shield)
             {
-                //model.material.color = Color.lightSkyBlue;
-                ghostMaterial.color = Color.lightSkyBlue;
+                model.material.color = Color.lightSkyBlue;
+                //ghostMaterial.color = Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
-                //model.material.color = Color.orange;
-                ghostMaterial.color = Color.orange;
+                model.material.color = Color.orange;
+                //ghostMaterial.color = Color.orange;
                 moddedAttackSpeed = shootRate / 2;
                 moddedMoveSpeed = tpWaitTime / 2;
             }
@@ -481,8 +477,8 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         buff = global::damage.statusType.none;
         buffTimer = 0;
         buffDuration = 0;
-        //model.material.color = colorOG;
-        ghostMaterial.color = colorOG;
+        model.material.color = colorOG;
+        //ghostMaterial.color = colorOG;
     }
 
     IEnumerator inflictedStatusDamage(int amount, float rate)
@@ -502,8 +498,8 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             tpWaitTime = tpWaitOg;
             shootRate = shootRateOg;
             isFrozen = false;
-            //model.material.color = colorOG;
-            ghostMaterial.color = colorOG;
+            model.material.color = colorOG;
+            //ghostMaterial.color = colorOG;
         }
         inflictedStatus = global::damage.statusType.none;
         statusTimer = 0;

@@ -179,7 +179,7 @@ MonoBehaviour:
   deathPuff: {fileID: 773959886891128846, guid: cd0bc928c3da7d54d96aab49a56de5c5, type: 3}
   explosion: {fileID: 7428456264589160067, guid: 3a1e774ef273fa54bb1f86c39c1ab21d, type: 3}
   explosionTime: 3
-  ghostMat: {fileID: 2100000, guid: 0881982788fa6c84484a99550067f519, type: 2}
+  model: {fileID: 2564052116822746327}
   faceTargetSpeed: 12
   FOV: 30
   Attribute: 0
@@ -646,6 +646,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2861224666847692596}
   m_SourcePrefab: {fileID: 100100000, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
+--- !u!137 &2564052116822746327 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1968211197464594718, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
+  m_PrefabInstance: {fileID: 4090722528385576393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3748195173059858584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d3f8d00f53b448b4ebf6366f6db06f86, type: 3}
