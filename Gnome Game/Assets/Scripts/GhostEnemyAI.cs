@@ -210,6 +210,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             {
                 DropItem();
             }
+            model.material.color = colorOG;
             Destroy(gameObject);
         }
         else
