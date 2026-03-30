@@ -4,12 +4,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 
 public class PlayerAttack : MonoBehaviour, IPickup
 {
     [SerializeField] PlayerInputHandler inputHandler;
     [SerializeField] GameObject slashEffect;
+    public TextMeshProUGUI spellText;
+    public TextMeshProUGUI enchanmentText;
+
 
     [Header("----- Attack Stats -----")]
     [SerializeField] GameObject basicShot;
@@ -18,6 +22,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
     [SerializeField] GameObject enchantment;
     [SerializeField] float shootRate;
     [SerializeField] float basicAttackRate;
+    bool cycleInputHeld = false;
 
 
     public Transform weaponModel;
@@ -74,11 +79,23 @@ public class PlayerAttack : MonoBehaviour, IPickup
     {
         shootTimer += Time.deltaTime;
         selectSpell();
-        selectEnchantment();
+        if (inputHandler.EnchantCycleInput)
+        {
+            if (!cycleInputHeld)
+            {
+                cycleInputHeld = true;
+                selectEnchantment();
+            }
+        }
+        else
+        {
+            cycleInputHeld = false;
+        }
         if (inputHandler.MeleeInput && shootTimer >= basicAttackRate && Time.timeScale != 0)
         {
-            if (frozen)
+            if (frozen )
             {
+                shootTimer = 0.5f;
                 playerController.breakFreeze();
             }
             else
@@ -91,6 +108,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         {
             if (frozen)
             {
+                shootTimer = 0.5f;
                 playerController.breakFreeze();
             }
             else
@@ -103,6 +121,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         {
             if (frozen)
             {
+                shootTimer = 0.5f;
                 playerController.breakFreeze();
             }
             else if (specialShot != null)
@@ -249,6 +268,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         specialShot = current.Spell;
         shootRate = current.shootRate;
         currentSpell.SetActive(true);
+        spellText.text = specialShot.name;
 
     }
 
@@ -275,10 +295,12 @@ public class PlayerAttack : MonoBehaviour, IPickup
         }
         enchantMPCost = current.MPcost;
         enchantment = current.Spell;
+        enchanmentText.text = enchantment.name;
         
     }
     void selectEnchantment()
     {
+
         if (inputHandler.EnchantCycleInput && enchantListPos < EnchantmentList.Count - 1)
         {
             enchantListPos++;
@@ -295,6 +317,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         if(spell.Spell.name == "Clear" || spell.Spell.name == "Haste" || spell.Spell.name == "Shield" || spell.Spell.name == "Heal")
         {
             EnchantmentList.Add(spell);
+            changeEnchantment(EnchantmentList[0]);
             return;
         }
         SpellList.Add(spell);

@@ -20,4 +20,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 0}
   allowedCategories: 
   itemType: 0
-  item: {fileID: 11400000, guid: 2a32d71847c6bd145b3ab777bbfe041f, type: 2}
+  item: {fileID: 11400000, guid: 5e72f16c982664e44b8d2920b0c4b6cd, type: 2}

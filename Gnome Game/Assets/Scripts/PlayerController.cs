@@ -361,6 +361,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             hp = HPOriginal;
         }
+        updatePlayerUI();
     }
 
     public void breakFreeze()
