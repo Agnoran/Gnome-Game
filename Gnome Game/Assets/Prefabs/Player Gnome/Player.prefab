@@ -426,7 +426,7 @@ MonoBehaviour:
   enchantment: {fileID: 0}
   shootRate: 1
   basicAttackRate: 1
-  weaponModel: {fileID: 0}
+  weaponModel: {fileID: 4163764144539183589}
   shootPos: {fileID: 1127570743553968561}
   meleePos: {fileID: 7797739315691487817}
   enchantmentPos: {fileID: 7363648729564043063}

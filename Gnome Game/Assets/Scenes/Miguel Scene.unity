@@ -1866,6 +1866,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::mazeunlock
   unlockButtton: {fileID: 0}
   requiredGnomes: 4
+  gnomeTMP: {fileID: 0}
+  gnomeTMPCube: {fileID: 0}
+  oscillateSpeed: 0
+  oscillateAmt: 0
 --- !u!1001 &1109632109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2038,6 +2042,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8056543947793843169, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
   m_PrefabInstance: {fileID: 1158788652}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1422420827
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5822723
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.44583315
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 57.054474
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897119727260145334, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589671625335664250, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: goldAmount
+      value: 2999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951620737303410605, guid: 103b6594625e422478572b163c450ce9, type: 3}
+      propertyPath: m_Name
+      value: Gold
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 103b6594625e422478572b163c450ce9, type: 3}
 --- !u!1001 &1436934481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2912,3 +2977,4 @@ SceneRoots:
   - {fileID: 1619346496}
   - {fileID: 914654168}
   - {fileID: 1546470959}
+  - {fileID: 1422420827}
