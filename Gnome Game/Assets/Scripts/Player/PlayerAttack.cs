@@ -230,8 +230,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             {
                 playerController.removeMP(SpellMPCost);
                 Instantiate(specialShot, shootPos.position, transform.rotation);
-            }
-            
+            }  
         }
     
         

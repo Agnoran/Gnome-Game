@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Ice Ball
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 2098614039564943676, guid: a3387f00ae03e6642aa417e98e71b50c, type: 3}
+  SpellWeaponModel: {fileID: 3506351527548109682, guid: bf54081dd4b7d3d4e856c874d1b6f799, type: 3}
   shootRate: 1.5
   MPcost: 5
   Spell: {fileID: 6982560049949143496, guid: 06c3432ee1a7d1a4ea02b43ad9caeea1, type: 3}
