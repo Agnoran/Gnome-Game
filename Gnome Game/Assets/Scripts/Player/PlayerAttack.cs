@@ -9,6 +9,8 @@ using TMPro;
 
 public class PlayerAttack : MonoBehaviour, IPickup
 {
+    private Animator animator;
+
     [SerializeField] PlayerInputHandler inputHandler;
     [SerializeField] GameObject slashEffect;
     public TextMeshProUGUI spellText;
@@ -72,6 +74,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         hasHappened = false;
         playerController = GetComponentInParent<PlayerController>();
         movement = GetComponentInParent<PlayerMovement>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -100,6 +103,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
             else
             {
+                animator.SetTrigger("melee");
                 Melee();
                 StartCoroutine(Slash());
             }
@@ -113,6 +117,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
             else
             {
+                animator.SetTrigger("small magic");
                 Shoot();
             }
         }
@@ -126,13 +131,15 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
             else if (specialShot != null)
             {
+                animator.SetTrigger("big magic");
                 spell();
             }
         }
 
         if (inputHandler.EnchantInput && shootTimer >= shootRate && enchantment != null && Time.timeScale != 0)
         {
-                enchant();
+            animator.SetTrigger("small magic");
+            enchant();
         }
 
         if (hasHappened == true && !inputHandler.SpecialSpellInput)

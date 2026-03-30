@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage,IStatus
 {
+    private Animator animator;
+
     [SerializeField] damage.statusType inflictedStatus;
     [SerializeField] damage.statusType buff;
     [SerializeField] ParticleSystem statusParticles;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         MPOriginal = mp;
         colorOG = model.material.color;
         endStatus();
+        animator = GetComponentInChildren<Animator>();
 
     }
 
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         }
         else
         {
+            animator.SetTrigger("flinch");
             StartCoroutine(playerDamageFlash());
         }
     }

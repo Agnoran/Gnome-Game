@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Animator animator;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed = 5f;
     float origMoveSpeed;
@@ -38,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("idle", true);
+
         if (playerController == null)
         {
             playerController = GetComponent<CharacterController>();
@@ -101,9 +106,37 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.x = moveDirection.x * currentSpeed;
         currentMovement.z = moveDirection.z * currentSpeed;
 
+        //animator control checks: idle, walk, run 
+        if (moveInput != Vector2.zero)
+        {
+            animator.SetBool("idle", false);
+            if (sprintActive)
+            {
+                animator.SetBool("sprint", true);
+            }
+            else
+            {
+                animator.SetBool("sprint", false);
+            }
+        }
+        else
+        {
+            animator.SetBool("idle", true);
+        }
+
+        //HandleRolling();
         HandleJumping();
         playerController.Move(currentMovement * Time.deltaTime);
     }
+
+    //void HandleRolling()
+    //{
+    //    if (inputHandler.RollInput)
+    //    {
+    //        animator.SetTrigger("Roll");
+    //    }
+    //}
+
 
     void HandleJumping()
     {
