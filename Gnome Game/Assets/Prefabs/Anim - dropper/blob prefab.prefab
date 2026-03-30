@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: blob prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d95f50f0a49a4a4ab4a1d812f1c0d58, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -62,6 +66,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d95f50f0a49a4a4ab4a1d812f1c0d58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2537964437000440720}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d95f50f0a49a4a4ab4a1d812f1c0d58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8034002798083839481}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d95f50f0a49a4a4ab4a1d812f1c0d58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5499142972616082234}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d95f50f0a49a4a4ab4a1d812f1c0d58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3604312608818722539}
   m_SourcePrefab: {fileID: 100100000, guid: 9d95f50f0a49a4a4ab4a1d812f1c0d58, type: 3}
 --- !u!1 &886747314833405521 stripped
 GameObject:
@@ -102,5 +115,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3839bb35424df664b9fb3eccd63f2652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropperBlob
-  destroyTime: 20
-  meltWaitTime: 1
+  destroyTime: 6
+--- !u!114 &-8034002798083839481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886747314833405521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde47a6ff6e693844bcb8626cb93dd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::damage
+  type: 2
+  status: 0
+  rb: {fileID: -5499142972616082234}
+  damageAmount: 1
+  damageRate: 1
+  statusDamageAmount: 0
+  statusDamageRate: 0
+  statusDuration: 0
+  speed: 0
+  destroyTime: 0
+  hitEffect: {fileID: 0}
+--- !u!54 &-5499142972616082234
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886747314833405521}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &3604312608818722539
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886747314833405521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: -2.4}

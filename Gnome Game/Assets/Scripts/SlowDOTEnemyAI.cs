@@ -70,7 +70,7 @@ public class SlowDOTEnemyAI : MonoBehaviour, IDamage, IStatus
 
     void Move()
     {
-        //gameObject.transform.RotateAround(home.transform.position, rotAxis, moveSpeed);
+        gameObject.transform.RotateAround(home.transform.position, rotAxis, moveSpeed);
     }
 
     void dropDot()
