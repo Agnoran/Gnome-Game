@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 26a797e12fa89804aa24b78c67c21b9c, type: 3}
   stackable: 1
   max: 99
-  value: 0
+  value: 4

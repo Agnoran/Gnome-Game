@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d38acfdaea890c4d8cdfc006b727992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostAudioObserver
-  modelRenderer: {fileID: 0}
+  modelRenderer: {fileID: 8771818154822635479}
 --- !u!33 &6865384737417086992
 MeshFilter:
   m_ObjectHideFlags: 0
