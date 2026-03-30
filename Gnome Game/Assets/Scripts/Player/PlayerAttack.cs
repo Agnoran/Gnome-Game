@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 
 public class PlayerAttack : MonoBehaviour, IPickup
@@ -12,6 +13,11 @@ public class PlayerAttack : MonoBehaviour, IPickup
 
     [SerializeField] PlayerInputHandler inputHandler;
     [SerializeField] GameObject slashEffect;
+    public TextMeshProUGUI spellText;
+    public TextMeshProUGUI enchanmentText;
+    [SerializeField]List<AudioClip> attackSounds;
+    AudioSource source;
+
 
     [Header("----- Attack Stats -----")]
     [SerializeField] GameObject basicShot;
@@ -20,6 +26,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
     [SerializeField] GameObject enchantment;
     [SerializeField] float shootRate;
     [SerializeField] float basicAttackRate;
+    bool cycleInputHeld = false;
 
 
     public Transform weaponModel;
@@ -64,6 +71,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        source = GetComponent<AudioSource>();
         shootRateOG = shootRate;
         frozen = false;
         hasHappened = false;
@@ -77,11 +85,23 @@ public class PlayerAttack : MonoBehaviour, IPickup
     {
         shootTimer += Time.deltaTime;
         selectSpell();
-        selectEnchantment();
-        if (inputHandler.MeleeInput && shootTimer >= basicAttackRate)
+        if (inputHandler.EnchantCycleInput)
         {
-            if (frozen)
+            if (!cycleInputHeld)
             {
+                cycleInputHeld = true;
+                selectEnchantment();
+            }
+        }
+        else
+        {
+            cycleInputHeld = false;
+        }
+        if (inputHandler.MeleeInput && shootTimer >= basicAttackRate && Time.timeScale != 0)
+        {
+            if (frozen )
+            {
+                shootTimer = 0.5f;
                 playerController.breakFreeze();
             }
             else
@@ -91,10 +111,11 @@ public class PlayerAttack : MonoBehaviour, IPickup
                 StartCoroutine(Slash());
             }
         }
-        if (inputHandler.ShootInput && shootTimer >= basicAttackRate)
+        if (inputHandler.ShootInput && shootTimer >= basicAttackRate && Time.timeScale != 0)
         {
             if (frozen)
             {
+                shootTimer = 0.5f;
                 playerController.breakFreeze();
             }
             else
@@ -104,10 +125,11 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
         }
 
-        if (inputHandler.SpecialSpellInput && shootTimer >= shootRate)
+        if (inputHandler.SpecialSpellInput && shootTimer >= shootRate && Time.timeScale != 0)
         {
             if (frozen)
             {
+                shootTimer = 0.5f;
                 playerController.breakFreeze();
             }
             else if (specialShot != null)
@@ -117,7 +139,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
         }
 
-        if (inputHandler.EnchantInput && shootTimer >= shootRate && enchantment != null)
+        if (inputHandler.EnchantInput && shootTimer >= shootRate && enchantment != null && Time.timeScale != 0)
         {
             animator.SetTrigger("small magic");
             enchant();
@@ -135,7 +157,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         void Melee()
         {
             shootTimer = 0;
-            
+            source.PlayOneShot(attackSounds[0]);    
             Instantiate(melee, meleePos.position, transform.rotation);
             playerController.addMP(attackMPRegen);
         }
@@ -145,82 +167,84 @@ public class PlayerAttack : MonoBehaviour, IPickup
         yield return new WaitForSeconds(0.5f);
         slashEffect.SetActive(false);
     }
-        void enchant()
+    void enchant()
+    {
+        source.PlayOneShot(attackSounds[1]);
+        shootTimer = 0;
+        switch (enchantment.name)
         {
-            shootTimer = 0;
-            switch (enchantment.name)
-            {
-                case "Haste":
-                    if (playerController.mp > HasteMPCost)
-                    {
-                        playerController.removeMP(HasteMPCost);
-                        Instantiate(enchantment, enchantmentPos.position, transform.rotation);
-                    }
-                    break;
-                case "Clear":
-                    if (playerController.mp > ClearMPCost)
-                    {
-                        playerController.removeMP(ClearMPCost);
-                        Instantiate(enchantment, enchantmentPos.position, transform.rotation);
-                    }
-                    break;
-                case "Heal":
-                    if (playerController.mp > HealMPCost)
-                    {
-                        playerController.removeMP(HealMPCost);
-                        playerController.Heal(healAmount);
-                        Instantiate(enchantment, enchantmentPos.position, transform.rotation);
-                    }
-                    break;
-                case "Shield":
-                    if (playerController.mp > ShieldMPCost)
-                    {
-                        playerController.removeMP(ShieldMPCost);
-                        Instantiate(enchantment, enchantmentPos.position, transform.rotation);
-                    }
-                    break;
-                default: break;
-            }
-        }
-        void Shoot()
-        {
-            shootTimer = 0;
-
-            Instantiate(basicShot, shootPos.position, transform.rotation);
-        }
-
-        void spell()
-        {
-            shootTimer = 0;
-            switch (specialShot.name)
-            {
-                case "Flamethrower":
-                    if (playerController.mp > SpellMPCost)
-                    {
-                        
-                        if (movement != null)
-                        {
-                            movement.SetMoveSpeed(4);
-                        }
-
-                        shootRate = 0.05f;
-                        hasHappened = true;
-                    }
-                    break;
-
-
-                default:
-                   
+            case "Haste":
+                if (playerController.mp > HasteMPCost)
+                {
+                    playerController.removeMP(HasteMPCost);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
                 break;
-            }
-
-            if (playerController.mp > SpellMPCost)
-            {
-                playerController.removeMP(SpellMPCost);
-                Instantiate(specialShot, shootPos.position, transform.rotation);
-            }
-            
+            case "Clear":
+                if (playerController.mp > ClearMPCost)
+                {
+                    playerController.removeMP(ClearMPCost);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            case "Heal":
+                if (playerController.mp > HealMPCost)
+                {
+                    playerController.removeMP(HealMPCost);
+                    playerController.Heal(healAmount);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            case "Shield":
+                if (playerController.mp > ShieldMPCost)
+                {
+                    playerController.removeMP(ShieldMPCost);
+                    Instantiate(enchantment, enchantmentPos.position, transform.rotation);
+                }
+                break;
+            default: break;
         }
+    }
+    void Shoot()
+    {
+        shootTimer = 0;
+        source.PlayOneShot(attackSounds[2]);
+        Instantiate(basicShot, shootPos.position, transform.rotation);
+    }
+
+    void spell()
+    {
+        switch (specialShot.name)
+        {
+            case "Flamethrower":
+                if (playerController.mp > SpellMPCost)
+                {
+
+                    if (movement != null)
+                    {
+                        movement.SetMoveSpeed(4);
+                    }
+
+                    shootRate = 0.05f;
+                    hasHappened = true;
+                }
+                break;
+
+
+            default:
+
+                break;
+        }
+
+        if (playerController.mp > SpellMPCost)
+        {
+            shootTimer = 0;
+            source.PlayOneShot(attackSounds[3]);
+            playerController.removeMP(SpellMPCost);
+            Instantiate(specialShot, shootPos.position, transform.rotation);
+        }
+
+    }
     
         
     
@@ -256,6 +280,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         specialShot = current.Spell;
         shootRate = current.shootRate;
         currentSpell.SetActive(true);
+        spellText.text = specialShot.name;
 
     }
 
@@ -282,10 +307,12 @@ public class PlayerAttack : MonoBehaviour, IPickup
         }
         enchantMPCost = current.MPcost;
         enchantment = current.Spell;
+        enchanmentText.text = enchantment.name;
         
     }
     void selectEnchantment()
     {
+
         if (inputHandler.EnchantCycleInput && enchantListPos < EnchantmentList.Count - 1)
         {
             enchantListPos++;
@@ -302,6 +329,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         if(spell.Spell.name == "Clear" || spell.Spell.name == "Haste" || spell.Spell.name == "Shield" || spell.Spell.name == "Heal")
         {
             EnchantmentList.Add(spell);
+            changeEnchantment(EnchantmentList[0]);
             return;
         }
         SpellList.Add(spell);

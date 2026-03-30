@@ -6,6 +6,7 @@ public class SellSlotUI : MonoBehaviour
     public Image icon;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI priceText;
+    public TextMeshProUGUI stockText;
     public Button sellButton;
 
     int slotIndex;
@@ -28,8 +29,14 @@ public class SellSlotUI : MonoBehaviour
 
         int price = Mathf.Max(1, item.value / 2);
         priceText.text = price + " Gold";
+        stockText.text = slot.quantity.ToString();
 
-        sellButton.onClick.RemoveAllListeners();
-        sellButton.onClick.AddListener(() => shop.SellItem(slotIndex));
+
+        if (sellButton != null)
+        {
+
+            sellButton.onClick.RemoveAllListeners();
+            sellButton.onClick.AddListener(() => shop.SellItem(slotIndex));
+        }
     }
 }

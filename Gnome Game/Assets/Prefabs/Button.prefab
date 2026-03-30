@@ -171,10 +171,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3138885713916402845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25e5bb64b89f8c245befe831e9e307aa, type: 3}
+  m_Script: {fileID: 11500000, guid: c3de7adeb4f652947a707b049f125484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Button
-  pressedHeight: -0.5
+  pressedHeight: -0.15
   startPressed: 0
   buttonTop: {fileID: 4762887808755678786}
   isSticky: 1

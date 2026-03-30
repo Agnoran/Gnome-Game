@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController playerController;
     [SerializeField] Camera mainCamera;
     [SerializeField] PlayerInputHandler inputHandler;
+    [SerializeField] List<AudioClip> movementSounds;
+    AudioSource source;
 
     [Header("Options")]
     [SerializeField] bool isToggleSprint = false;
@@ -41,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        source = GetComponent<AudioSource>();
         animator.SetBool("idle", true);
 
         if (playerController == null)
@@ -107,6 +111,13 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.z = moveDirection.z * currentSpeed;
 
         //animator control checks: idle, walk, run 
+        bool isWalking = false;
+        if (isWalking && moveInput == Vector2.zero)
+        {
+            source.Stop();
+            source.loop = false;
+            isWalking = false;
+        }
         if (moveInput != Vector2.zero)
         {
             animator.SetBool("idle", false);
@@ -117,6 +128,12 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 animator.SetBool("sprint", false);
+            }
+            if (!isWalking && !source.isPlaying)
+            {
+                source.PlayOneShot(movementSounds[0]);
+                source.loop = true;
+                isWalking = true;
             }
         }
         else
@@ -147,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
             if (inputHandler.JumpInput)
             {
                 currentMovement.y = jumpforce;
+                source.PlayOneShot(movementSounds[1]);
             }
         }
         else

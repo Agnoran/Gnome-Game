@@ -22,7 +22,7 @@ public class shopManager : MonoBehaviour
 
     private void Start()
     {
-        GenerateShop();
+        //GenerateShop();
     }
 
     void GenerateShop()
@@ -98,7 +98,7 @@ public class shopManager : MonoBehaviour
 
         int sellPrice = GetSellPrice(itemToSell);
 
-        inventoryManager.Instance.RemoveItem(index);
+        inventoryManager.Instance.RemoveItem(itemToSell, 1);
 
         currencyManager.instance.AddGold(sellPrice);
 
