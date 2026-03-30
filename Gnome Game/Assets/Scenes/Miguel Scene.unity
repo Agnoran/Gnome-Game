@@ -480,7 +480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -1071,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -1325,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -1489,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -1579,7 +1579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -1592,22 +1592,22 @@ PrefabInstance:
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: 'itemsToSpawn.Array.data[0]'
       value: 
-      objectReference: {fileID: 7716768706962817080, guid: 63ac7cc9d9e74784d88e67065527f32a, type: 3}
+      objectReference: {fileID: 616952096081038356, guid: ed996016e19160242b3baf69b78e7c5c, type: 3}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: controlledByBattlefieldManager
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8056543947793843169, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.3148193
+      value: 8.685181
       objectReference: {fileID: 0}
     - target: {fileID: 8056543947793843169, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8056543947793843169, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.28492
+      value: 4.4650803
       objectReference: {fileID: 0}
     - target: {fileID: 8056543947793843169, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2063,7 +2063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -2231,7 +2231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -2848,7 +2848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 951946719738818706, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915167457844056742, guid: 5981101682ddbf14782c5ba82b1293fa, type: 3}
       propertyPath: maxSpawn
@@ -2986,6 +2986,10 @@ PrefabInstance:
       propertyPath: enchanmentText
       value: 
       objectReference: {fileID: 1735766086}
+    - target: {fileID: 4334928938764362447, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6333685372134156605, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
       propertyPath: m_ImplicitTensor
       value: 0

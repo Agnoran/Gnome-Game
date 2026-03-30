@@ -19,10 +19,15 @@ public class HUD : MonoBehaviour
     }
 
     public void updateGnomeTotal(int total)
-    {   
-        gnomeTotal += total; 
+    {
+        gnomeTotal += total;
         //gnomeRemainingText.text = gnomeTotal.ToString();
         gnomeCollectedText.text = gnomeTotal.ToString();
+    }
+    
+    public int getGnomes()
+    {
+        return gnomeTotal;
     }
 
 
