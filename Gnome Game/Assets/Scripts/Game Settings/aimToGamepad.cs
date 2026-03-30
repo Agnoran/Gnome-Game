@@ -1,46 +1,41 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class aimToGamepad : MonoBehaviour
 {
 
     bool canRotate = true;
-    Camera mainCamera;
-    Transform visualRoot;
-    float rotateSpeed = 15f;
+    
+    public Transform visualRoot;
+    public float rotateSpeed = 10f;
 
     void HandleRotationToStick()
     {
-        if (mainCamera == null || visualRoot == null || Gamepad.current == null)
+        if (visualRoot == null || Gamepad.current == null)
             return;
 
         Vector2 stickInput = Gamepad.current.rightStick.ReadValue();
        
 
         // Deadzone (prevents jitter)
-        if (stickInput.sqrMagnitude < 0.01f)
+        if (stickInput.sqrMagnitude < 0.02f)
             return;
 
         stickInput.Normalize();
-        canRotate.CompareTo(stickInput);
 
-        Vector3 cameraForward = mainCamera.transform.forward;
-        Vector3 cameraRight = mainCamera.transform.right;
+        
 
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
+        Vector3 camForward = Camera.main.transform.forward;
+        Vector3 camRight = Camera.main.transform.right;
 
-        cameraForward.Normalize();
-        cameraRight.Normalize();
+        camForward.y = 0;
+        camRight.y = 0;
+        Vector3 direction = camForward * stickInput.y + camRight * stickInput.x;
 
-        Vector3 worldLookDirection =
-            (cameraRight * stickInput.x) +
-            (cameraForward * stickInput.y);
+        Quaternion targetRotation = Quaternion.LookRotation(direction);  // If no Ridgid Body 
 
-        if (worldLookDirection.sqrMagnitude < 0.001f)
-            return;
-
-        Quaternion targetRotation = Quaternion.LookRotation(worldLookDirection);
+        visualRoot.GetComponent<Rigidbody>().MoveRotation(targetRotation);  // Ridgid Body
 
         visualRoot.rotation = Quaternion.Slerp
         (
@@ -50,9 +45,9 @@ public class aimToGamepad : MonoBehaviour
         );
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (!canRotate)
+       /* if (!canRotate)
         {
             HandleRotationToStick();
             return;
@@ -61,14 +56,11 @@ public class aimToGamepad : MonoBehaviour
         if (Gamepad.current != null && Gamepad.current.rightStick.ReadValue().sqrMagnitude > 0.01f)
         {
             HandleRotationToStick();
-        }
+        }*/
 
         HandleRotationToStick();
         
     }
 
-    void StickRight()
-    {
-        
-    }
+   
 }

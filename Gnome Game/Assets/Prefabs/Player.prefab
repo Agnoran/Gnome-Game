@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 4083737244486750443}
   - component: {fileID: 8822442325409093125}
   - component: {fileID: 3781774980035264785}
+  - component: {fileID: 6745492744586347189}
   m_Layer: 3
   m_Name: VisualRoot
   m_TagString: Untagged
@@ -366,7 +367,7 @@ MonoBehaviour:
   enchantMPCost: 0
   SpellMPCost: 0
   frozen: 0
-  movement: {fileID: 0}
+  movement: {fileID: 2549812357435470069}
   hasHappened: 0
   playerController: {fileID: 1731970094742935110}
 --- !u!114 &8822442325409093125
@@ -404,6 +405,28 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &6745492744586347189
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612224647431931160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 1
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3540945191092637329
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007c10b770896ad4b8fcd6772c8b7661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  animator: {fileID: 0}
   moveSpeed: 8
   sprintMultiplier: 2
   gravity: 10
@@ -682,7 +704,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
