@@ -6,5 +6,13 @@ public class dialogChoice
 {
     public string choiceText;
     public dialogCoreNodes nextNode;
-    public UnityEvent onSelected;
+    public DialogAction action;
+}
+
+public enum DialogAction
+{
+    None,
+    BuyItem,
+    SellItem,
+    CloseDialog
 }

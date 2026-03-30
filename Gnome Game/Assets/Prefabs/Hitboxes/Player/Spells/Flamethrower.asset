@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c33f95f38906428948413d940b142, type: 3}
   m_Name: Flamethrower
   m_EditorClassIdentifier: Assembly-CSharp::SpellStats
-  SpellWeaponModel: {fileID: 3506351527548109682, guid: aba9ba58e69f3bd4b92c122239e5e27f, type: 3}
+  SpellWeaponModel: {fileID: 8942216734487841743, guid: 42371c78faa1d944fb62f39787b08513, type: 3}
   shootRate: 0.05
   MPcost: 1
   Spell: {fileID: 6982560049949143496, guid: deb48496756c728499f65251e1e9aee7, type: 3}
