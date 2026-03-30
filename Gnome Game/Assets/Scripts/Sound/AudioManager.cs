@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        musicGroup.audioMixer.SetFloat("MasterVolume", 0f);
 
         foreach (Sound s in bank.sounds)
         {
@@ -44,7 +45,8 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         float dbValue = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20;
-        musicGroup.audioMixer.SetFloat("MasterVolume", dbValue);
+
+        musicGroup.audioMixer.SetFloat("MusicVolume", dbValue);
     }
 
 

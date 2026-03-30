@@ -82,7 +82,7 @@ public class WorldController : MonoBehaviour
             inputHandler = player.GetComponentInChildren<PlayerInputHandler>();
         }
 
-        StateBeginGame();
+        StateStartGame();
     }
 
     

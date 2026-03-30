@@ -467,6 +467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 169562100291810586, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0012054443
+      objectReference: {fileID: 0}
     - target: {fileID: 643750975843884258, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
