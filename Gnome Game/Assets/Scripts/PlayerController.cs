@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
-        updatePlayerUI();
+        //updatePlayerUI();
     }
 
     public void takeDamage(int amount)
@@ -341,7 +341,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             mp += amount;
         }
-        //updatePlayerUI();
+        updatePlayerUI();
     }
     public void removeMP(int amount)
     {
@@ -349,7 +349,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             mp -= amount;
         }
-        //updatePlayerUI();
+        updatePlayerUI();
     }
     public void Heal(int amount)
     {

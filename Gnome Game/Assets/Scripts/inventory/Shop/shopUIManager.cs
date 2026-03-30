@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class shopUIManager : MonoBehaviour
@@ -5,7 +6,9 @@ public class shopUIManager : MonoBehaviour
     [Header("References")]
     public shopManager shop;
     public GameObject slotPrefab;
-    public Transform slotParent;
+    public Transform slotContainer;
+    public GameObject goldTextObj;
+
 
     [Header("Sell UI")]
     public GameObject sellSlotPrefab;
@@ -18,20 +21,19 @@ public class shopUIManager : MonoBehaviour
     void Start()
     {
         BuildShopUI();
-        OpenBuyTab();
-        OpenSellTab();
     }
 
     public void BuildShopUI()
     {
-        foreach (Transform child in slotParent)
+        
+        foreach (Transform child in slotContainer)
         {
             Destroy(child.gameObject);
         }
 
         for (int i = 0; i < shop.shopInventory.Count; i++)
         {
-            GameObject slotObject = Instantiate(slotPrefab, slotParent);
+            GameObject slotObject = Instantiate(slotPrefab, slotContainer);
 
             shopSlotUI slotUI = slotObject.GetComponent<shopSlotUI>();
 
@@ -72,6 +74,8 @@ public class shopUIManager : MonoBehaviour
     {
         buyPanel.SetActive(true);
         sellPanel.SetActive(false);
+        goldTextObj.transform.SetAsLastSibling();
+
 
         RefreshShopUI();
     }
@@ -88,6 +92,7 @@ public class shopUIManager : MonoBehaviour
     {
         buyPanel.SetActive(false);
         sellPanel.SetActive(true);
+        goldTextObj.transform.SetAsLastSibling();
 
         RefreshSellUI();
     }

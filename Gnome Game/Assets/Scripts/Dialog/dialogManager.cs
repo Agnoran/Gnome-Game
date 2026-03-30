@@ -45,16 +45,16 @@ public class dialogManager : MonoBehaviour
         }
 
         // create new
-        if (nodes.choices != null)
-        { 
-            foreach (dialogChoice choice in nodes.choices)
-            {
-                GameObject button = Instantiate(choiceButtonPrefab, choiceContainer);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
+        //if (nodes.choices != null)
+        //{ 
+        //    foreach (dialogChoice choice in nodes.choices)
+        //    {
+        //        GameObject button = Instantiate(choiceButtonPrefab, choiceContainer);
+        //        button.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText;
 
-                button.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => SelectChoice(choice));
-            }
-        }
+        //        button.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => SelectChoice(choice));
+        //    }
+        //}
     }
 
     void HandleAction(dialogChoice choice)

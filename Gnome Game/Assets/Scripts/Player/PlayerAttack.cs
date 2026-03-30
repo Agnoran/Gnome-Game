@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
         shootTimer += Time.deltaTime;
         selectSpell();
         selectEnchantment();
-        if (inputHandler.MeleeInput && shootTimer >= basicAttackRate)
+        if (inputHandler.MeleeInput && shootTimer >= basicAttackRate && Time.timeScale != 0)
         {
             if (frozen)
             {
@@ -87,7 +87,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
                 StartCoroutine(Slash());
             }
         }
-        if (inputHandler.ShootInput && shootTimer >= basicAttackRate)
+        if (inputHandler.ShootInput && shootTimer >= basicAttackRate && Time.timeScale != 0)
         {
             if (frozen)
             {
@@ -99,7 +99,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
         }
 
-        if (inputHandler.SpecialSpellInput && shootTimer >= shootRate)
+        if (inputHandler.SpecialSpellInput && shootTimer >= shootRate && Time.timeScale != 0)
         {
             if (frozen)
             {
@@ -111,7 +111,7 @@ public class PlayerAttack : MonoBehaviour, IPickup
             }
         }
 
-        if (inputHandler.EnchantInput && shootTimer >= shootRate && enchantment != null)
+        if (inputHandler.EnchantInput && shootTimer >= shootRate && enchantment != null && Time.timeScale != 0)
         {
                 enchant();
         }

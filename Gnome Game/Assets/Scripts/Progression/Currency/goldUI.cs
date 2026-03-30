@@ -3,7 +3,7 @@ using TMPro;
 
 public class goldUI : MonoBehaviour
 {
-    public TextMeshPro goldText;
+    public TextMeshProUGUI goldText;
     
 
     // Update is called once per frame

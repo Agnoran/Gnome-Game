@@ -25,11 +25,12 @@ public class HUD : MonoBehaviour
         gnomeCollectedText.text = gnomeTotal.ToString();
     }
 
-    
-    public void UpdateGoldAmount(int total)
-    {
 
-        goldAmount += total;
-        Gold.text = goldAmount.ToString();
-    }
+    //public void UpdateGoldAmount(int total)
+    //{
+
+    //    goldAmount += total;
+    //    Gold.text = goldAmount.ToString();
+    //    currencyManager.instance.AddGold(goldAmount);
+    //}
 }
