@@ -303,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5853632437445743936}
   - component: {fileID: 4083737244486750443}
+  - component: {fileID: 452190551591186990}
   - component: {fileID: 3781774980035264785}
   m_Layer: 3
   m_Name: VisualRoot
@@ -367,7 +368,19 @@ MonoBehaviour:
   frozen: 0
   movement: {fileID: 0}
   hasHappened: 0
-  playerController: {fileID: 0}
+  playerController: {fileID: 1731970094742935110}
+--- !u!114 &452190551591186990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612224647431931160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ac997781649024b8ed175b14648131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAudioObserver
 --- !u!136 &3781774980035264785
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -548,7 +561,7 @@ MonoBehaviour:
   attack: {fileID: 4083737244486750443}
   hp: 10
   mp: 100
-  model: {fileID: 8790970462202525479}
+  model: {fileID: 140688976693013837}
 --- !u!114 &2549812357435470069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,10 +1009,5 @@ Transform:
 --- !u!4 &8033722477341875437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c9927e1025ae0a45925cdbc80bea419, type: 3}
-  m_PrefabInstance: {fileID: 7563581694070356742}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &8790970462202525479 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7995876752452907999, guid: 9c9927e1025ae0a45925cdbc80bea419, type: 3}
   m_PrefabInstance: {fileID: 7563581694070356742}
   m_PrefabAsset: {fileID: 0}
