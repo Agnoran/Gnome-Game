@@ -9,6 +9,7 @@ public class damage : MonoBehaviour
     [SerializeField] damageType type;
     [SerializeField] statusType status;
     [SerializeField] Rigidbody rb;
+    
 
 
     [SerializeField] int damageAmount;
@@ -29,10 +30,12 @@ public class damage : MonoBehaviour
         if(type == damageType.bullet)
         {
             rb.linearVelocity = transform.forward * speed;
+           
             Destroy(gameObject, destroyTime);
         }
         if (type == damageType.explosion)
         {
+           
             Destroy(gameObject, destroyTime);
         }
         if (type == damageType.buff)
