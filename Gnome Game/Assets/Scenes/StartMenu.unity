@@ -833,15 +833,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5728471157137021290, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1040678482}
-    - targetCorrespondingSourceObject: {fileID: 6585669412757299590, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1040678481}
-    - targetCorrespondingSourceObject: {fileID: 4874511500948652601, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1040678480}
     - targetCorrespondingSourceObject: {fileID: 1743881521052958735, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       insertIndex: 1
       addedObject: {fileID: 933466515}
@@ -849,63 +840,6 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 970699169}
   m_SourcePrefab: {fileID: 100100000, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
---- !u!1 &1040678477 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4874511500948652601, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-  m_PrefabInstance: {fileID: 1040678476}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1040678478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6585669412757299590, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-  m_PrefabInstance: {fileID: 1040678476}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1040678479 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5728471157137021290, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
-  m_PrefabInstance: {fileID: 1040678476}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1040678480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040678477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6632ebc84300bc4a8eeb9e68bba3257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
-  clickSound: UI Button Clicks
-  hoverSound: Button Magic
---- !u!114 &1040678481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040678478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6632ebc84300bc4a8eeb9e68bba3257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
-  clickSound: UI Button Clicks
-  hoverSound: Button Magic
---- !u!114 &1040678482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040678479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6632ebc84300bc4a8eeb9e68bba3257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
-  clickSound: UI Button Clicks
-  hoverSound: Button Magic
 --- !u!114 &1222971774 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2641328572363988459, guid: f6dfa43c85412df458e57aaef298bbe2, type: 3}
