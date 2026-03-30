@@ -1158,6 +1158,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1821719766113916499, guid: 2e281de1ed2f15f42a5b716e0ddfbd0d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30.144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821719766113916499, guid: 2e281de1ed2f15f42a5b716e0ddfbd0d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.0673
+      objectReference: {fileID: 0}
     - target: {fileID: 2218214639232273761, guid: 2e281de1ed2f15f42a5b716e0ddfbd0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25
@@ -11677,6 +11685,14 @@ PrefabInstance:
       propertyPath: model
       value: 
       objectReference: {fileID: 353729827}
+    - target: {fileID: 2549812357435470069, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
+      propertyPath: gravity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549812357435470069, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
+      propertyPath: jumpforce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3813620833287469775, guid: 1b0f8864e20a80c49a91b80311df3fcf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.36507
