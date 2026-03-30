@@ -7,7 +7,6 @@ public class MusicSceneManager : MonoBehaviour
 
     void Start()
     {
-        // Boot up: Wait 0.1s to ensure AudioManager is awake
         Invoke("PlayInitialMusic", 0.1f);
     }
 
@@ -19,27 +18,39 @@ public class MusicSceneManager : MonoBehaviour
 
     void Update()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-
-        if (currentScene != lastScene)
+        if (GameManager.Instance != null)
         {
-            UpdateMusic(currentScene);
-            lastScene = currentScene;
+            string currentScene = GameManager.Instance.CurrentAreaScene;
+
+            if (currentScene != lastScene)
+            {
+                UpdateMusic(currentScene);
+                lastScene = currentScene;
+            }
         }
     }
 
     void UpdateMusic(string sceneName)
     {
-        AudioManager.instance.Stop("Music_Start Menu");
-        AudioManager.instance.Stop("Music_World Theme");
+        string targetTrack = "";
 
         if (sceneName == "StartMenu")
         {
-            AudioManager.instance.Play("Music_Start Menu");
+            targetTrack = "Music_Start Menu";
         }
         else if (sceneName == "Beta Milestone Scene" || sceneName == "Miu-Dev")
         {
-            AudioManager.instance.Play("Music_World Theme");
+            targetTrack = "Music_World Theme";
+        }
+
+        if (!string.IsNullOrEmpty(targetTrack))
+        {
+            if (!AudioManager.instance.IsTrackPlaying(targetTrack))
+            {
+                AudioManager.instance.Stop("Music_Start Menu");
+                AudioManager.instance.Stop("Music_World Theme");
+                AudioManager.instance.Play(targetTrack);
+            }
         }
     }
 }

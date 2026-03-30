@@ -142,7 +142,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - type: 1
-    name: Gnome Roll
+    name: Gnome Jump
     clip: {fileID: 8300000, guid: 20f0f0c7ec9a9f64f98995576ba1eb15, type: 3}
     volume: 1
     pitch: 1
