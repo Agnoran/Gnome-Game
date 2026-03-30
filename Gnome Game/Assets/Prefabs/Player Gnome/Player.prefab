@@ -421,9 +421,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 229d6a960fd6a324992c5801f13c9d75, type: 3}
   - {fileID: 8300000, guid: 8d4604d48297c5e40b1bf6991da53fa3, type: 3}
   basicShot: {fileID: 197963296258554442, guid: cbb27d78c14bb5949a08a32d5ce2d25e, type: 3}
-  specialShot: {fileID: 6982560049949143496, guid: bed607c4d3eb32d469c352eb1001d637, type: 3}
+  specialShot: {fileID: 0}
   melee: {fileID: 3322809873616591940, guid: d344d2288045ced42ab09eaa3d27c9d5, type: 3}
-  enchantment: {fileID: 3137806040249747994, guid: b96ec52c8fa40bb4fbe79c0fdaa7c259, type: 3}
+  enchantment: {fileID: 0}
   shootRate: 1
   basicAttackRate: 1
   weaponModel: {fileID: 0}
@@ -1213,6 +1213,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7995876752452907999, guid: 9c9927e1025ae0a45925cdbc80bea419, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a90ce132dbf8a6d4e93546644333ea80, type: 2}
+    - target: {fileID: -7995876752452907999, guid: 9c9927e1025ae0a45925cdbc80bea419, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: efc01a6707aadd342a0af6c71def5f2a, type: 2}
+    - target: {fileID: -7995876752452907999, guid: 9c9927e1025ae0a45925cdbc80bea419, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a63e40b1899572a4d9d6ac310bf9191d, type: 2}
     - target: {fileID: 464887797596916154, guid: 9c9927e1025ae0a45925cdbc80bea419, type: 3}
       propertyPath: m_IsActive
       value: 0
