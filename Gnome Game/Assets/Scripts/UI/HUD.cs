@@ -25,7 +25,7 @@ public class HUD : MonoBehaviour
         gnomeCollectedText.text = gnomeTotal.ToString();
     }
     
-    public int getGnomes()
+    public int GetGnomes()
     {
         return gnomeTotal;
     }
