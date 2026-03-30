@@ -56,21 +56,25 @@ public class AudioManager : MonoBehaviour
         sfxGroup.audioMixer.SetFloat("SFXVolume", dbValue);
     }
 
+    public bool IsTrackPlaying(string name)
+    {
+        Sound s = bank.sounds.Find(sound => sound.name == name);
+        if (s == null || s.source == null) return false;
+        return s.source.isPlaying;
+    }
+
     public void Play(string name)
     {
         Sound s = bank.sounds.Find(sound => sound.name == name);
+        if (s == null || s.source == null) return;
 
-        if (s == null)
+        if (!s.name.Contains("Music") && s.source.isPlaying)
         {
-            return;
+            s.source.Stop();
         }
-
-        if (s.source == null) return;
 
         float randomVariation = UnityEngine.Random.Range(-s.randomPitchRange, s.randomPitchRange);
         s.source.pitch = s.pitch + randomVariation;
-
-        if (s.name.Contains("Music") && s.source.isPlaying) return;
 
         s.source.Play();
     }
