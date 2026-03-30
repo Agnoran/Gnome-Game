@@ -12,6 +12,8 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     private Animator animator;
     [SerializeField] GameObject ghostWithAnims;
     [SerializeField] Material ghostMaterial;
+    [SerializeField] List<AudioClip> ghostSounds;
+    AudioSource source;
 
     [Header("Attributes")]
     [SerializeField] int HP;                //health
@@ -95,6 +97,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         colorOG = ghostMaterial.color;
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("walk", false);
+        source = GetComponent<AudioSource>();    
     }
 
     // Update is called once per frame
@@ -159,7 +162,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         if (shotTimer >= shootRate)
         {
             Debug.Log("shoot");
-
+            source.PlayOneShot(ghostSounds[0]);
             Instantiate(projectile, shootPos.position, Quaternion.LookRotation(playerDir));
             shotTimer = 0;
             isCharging = false;
@@ -201,6 +204,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         weakness = false;
         //reduce health
         HP -= amount;
+        source.PlayOneShot(ghostSounds[1]);
 
         //check for death
         if (HP < 0)
@@ -244,6 +248,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     {
         animator.SetTrigger("disappear");
         StartCoroutine(Disappear());
+        source.PlayOneShot(ghostSounds[2]);
         agent.SetDestination(target.position);
     }
 

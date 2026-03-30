@@ -16,17 +16,17 @@ public class AudioManager : MonoBehaviour
         else { Destroy(gameObject); return; }
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound s in bank.sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.loop = s.loop;
+        //foreach (Sound s in bank.sounds)
+        //{
+        //    s.source = gameObject.AddComponent<AudioSource>();
+        //    s.source.clip = s.clip;
+        //    s.source.loop = s.loop;
 
-            s.source.playOnAwake = false;
+        //    s.source.playOnAwake = false;
 
-            if (s.name.Contains("Music")) s.source.outputAudioMixerGroup = musicGroup;
-            else s.source.outputAudioMixerGroup = sfxGroup;
-        }
+        //    if (s.name.Contains("Music")) s.source.outputAudioMixerGroup = musicGroup;
+        //    else s.source.outputAudioMixerGroup = sfxGroup;
+        //}
     }
 
     public void SetGlobalVolume(float volume)
