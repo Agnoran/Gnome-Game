@@ -8,10 +8,10 @@ public class mazeunlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HUD.instance.GetGnomes() >= requiredGnomes)
-        {
-            Debug.Log("unlocking maze");
-            Destroy(gameObject);
-        }
+        //if(HUD.instance.GetGnomes() >= requiredGnomes)
+        //{
+        //    Debug.Log("unlocking maze");
+        //    Destroy(gameObject);
+        //}
     }
 }
