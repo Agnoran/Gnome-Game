@@ -307,12 +307,14 @@ public class WorldController : MonoBehaviour
 
         shopOpen = true;
         SetActiveMenu(menuShop);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void StateCloseShop()
     {
         shopOpen = false;
         SetActiveMenu(null);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void StateShowSettings()
