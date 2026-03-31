@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MusicSceneManager : MonoBehaviour
 {
     private string lastScene;
+    
 
     void Start()
     {
@@ -43,14 +44,14 @@ public class MusicSceneManager : MonoBehaviour
             targetTrack = "Music_World Theme";
         }
 
-        if (!string.IsNullOrEmpty(targetTrack))
-        {
-            if (!AudioManager.instance.IsTrackPlaying(targetTrack))
-            {
-                AudioManager.instance.Stop("Music_Start Menu");
-                AudioManager.instance.Stop("Music_World Theme");
-                AudioManager.instance.Play(targetTrack);
-            }
-        }
+        //if (!string.IsNullOrEmpty(targetTrack))
+        //{
+        //    if (!AudioManager.instance.IsTrackPlaying(targetTrack))
+        //    {
+        //        AudioManager.instance.Stop("Music_Start Menu");
+        //        AudioManager.instance.Stop("Music_World Theme");
+        //        AudioManager.instance.Play(targetTrack);
+        //    }
+        //}
     }
 }

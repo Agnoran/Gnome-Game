@@ -79,7 +79,7 @@ public class WorldController : MonoBehaviour
 
         pauseInputHeld = false;
         inventoryInputHeld = false;
-        shop = GameObject.FindWithTag("Shop").GetComponent<shopManager>();
+        
 
         player = GameObject.FindWithTag("Player");
 
