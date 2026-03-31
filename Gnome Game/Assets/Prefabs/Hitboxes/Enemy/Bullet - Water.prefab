@@ -50,6 +50,8 @@ MonoBehaviour:
   type: 0
   status: 5
   rb: {fileID: 3011790996300500151}
+  source: {fileID: 0}
+  clip: {fileID: 0}
   damageAmount: 1
   damageRate: 0
   statusDamageAmount: 0

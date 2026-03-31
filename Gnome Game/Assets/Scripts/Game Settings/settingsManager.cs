@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class settingsManager : MonoBehaviour
 {
     [Header("Audio Settings")]
-    public AudioMixer audioMixer;
+    [SerializeField] AudioMixer mixer;
     // public AudioClip clickSound; // Keeping for reference
 
     // [Header("UI Elements")]
@@ -68,24 +68,33 @@ public class settingsManager : MonoBehaviour
 
         PlayerPrefs.Save();
     }
-
-    public void SetMusicVolume(float value)
+    public void SetMasterVolume(float value)
     {
-        if (audioMixer == null) return; // Prevent NullReference Crashes
+        if (mixer == null) return; // Prevent NullReference Crashes
 
         float volume = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
-        audioMixer.SetFloat("MusicVolume", volume);
+        mixer.SetFloat("MasterVolume", volume);
 
+        PlayerPrefs.SetFloat("MasterVolume", value);
+        PlayerPrefs.Save();
+    }
+    public void SetMusicVolume(float value)
+    {
+        if (mixer == null) return; // Prevent NullReference Crashes
+
+        float volume = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
+        mixer.SetFloat("MusicVolume", volume);
+        
         PlayerPrefs.SetFloat("MusicVolume", value);
         PlayerPrefs.Save();
     }
 
     public void SetSFXVolume(float value)
     {
-        if (audioMixer == null) return; // Prevent NullReference Crashes
+        if (mixer == null) return; // Prevent NullReference Crashes
 
         float volume = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
-        audioMixer.SetFloat("SFXVolume", volume);
+        mixer.SetFloat("SFXVolume", volume);
 
         PlayerPrefs.SetFloat("SFXVolume", value);
         PlayerPrefs.Save();

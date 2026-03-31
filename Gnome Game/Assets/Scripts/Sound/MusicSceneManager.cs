@@ -1,68 +1,57 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicSceneManager : MonoBehaviour
 {
     private string lastScene;
+    
 
     void Start()
     {
-        // Wait a tiny bit for the AudioManager to finish its Awake loop
         Invoke("PlayInitialMusic", 0.1f);
     }
 
     void PlayInitialMusic()
     {
-        if (AudioManager.instance != null)
-        {
-            // Make sure this name matches your SoundBank EXACTLY
-            AudioManager.instance.Play("Music_World Theme");
-        }
+        UpdateMusic(SceneManager.GetActiveScene().name);
+        lastScene = SceneManager.GetActiveScene().name;
     }
 
     void Update()
     {
-        if (GameManager.Instance == null) return;
-
-        string currentScene = GameManager.Instance.CurrentAreaScene;
-
-        // Only trigger a change if the scene name actually changed
-        if (currentScene != lastScene)
+        if (GameManager.Instance != null)
         {
-            UpdateMusic(currentScene);
-            lastScene = currentScene;
-        }
+            string currentScene = GameManager.Instance.CurrentAreaScene;
 
-        // Inside MusicSceneManager Update
-        if (WorldController.instance != null)
-        {
-            // If ANY menu is open, dim the Master volume or Music group
-            if (WorldController.instance.IsMenuOpen())
+            if (currentScene != lastScene)
             {
-                // Use your SetGlobalVolume method or target the Mixer directly
-                AudioManager.instance.SetGlobalVolume(0.2f); // Dim to 20%
-            }
-            else
-            {
-                AudioManager.instance.SetGlobalVolume(1.0f); // Back to 100%
+                UpdateMusic(currentScene);
+                lastScene = currentScene;
             }
         }
     }
 
     void UpdateMusic(string sceneName)
     {
-        switch (sceneName)
+        string targetTrack = "";
+
+        if (sceneName == "StartMenu")
         {
-            case "SaveSelectScene":
-                AudioManager.instance.Play("Music_Menu");
-                break;
-            case "HubScene":
-                AudioManager.instance.Play("Music_Hub");
-                break;
-            case "ChasmLevel":
-                AudioManager.instance.Play("Music_Chasm");
-                break;
-            default:
-                break;
+            targetTrack = "Music_Start Menu";
         }
+        else if (sceneName == "Beta Milestone Scene" || sceneName == "Miu-Dev")
+        {
+            targetTrack = "Music_World Theme";
+        }
+
+        //if (!string.IsNullOrEmpty(targetTrack))
+        //{
+        //    if (!AudioManager.instance.IsTrackPlaying(targetTrack))
+        //    {
+        //        AudioManager.instance.Stop("Music_Start Menu");
+        //        AudioManager.instance.Stop("Music_World Theme");
+        //        AudioManager.instance.Play(targetTrack);
+        //    }
+        //}
     }
 }

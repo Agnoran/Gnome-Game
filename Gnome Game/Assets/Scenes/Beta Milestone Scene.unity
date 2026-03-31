@@ -3812,6 +3812,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3184378411429757440, guid: f6dfa43c85412df458e57aaef298bbe2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3957808160665238210, guid: f6dfa43c85412df458e57aaef298bbe2, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -3886,6 +3890,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6100174591283284562, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6284946299011422968, guid: 6f68b1b0def8c384987e59dd5a544cc9, type: 3}
       propertyPath: m_Name
       value: Updated UI manager
