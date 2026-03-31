@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour
@@ -42,6 +43,7 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] PlayerInputHandler inputHandler;
     public shopManager shop;
+    [SerializeField] ChasmPuzzle fallRef;
 
     public bool isPaused;
     public bool invOpen;
@@ -195,6 +197,17 @@ public class WorldController : MonoBehaviour
         craftOpen = false;
     }
 
+    public void Respawn()
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.Heal(30);
+        fallRef.RespawnPlayerAtCheckpoint();
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StateUnpaused();
+    }
     public void StateBeginGame()
     {
         CloseAllMenuStates();

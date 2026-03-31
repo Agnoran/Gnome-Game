@@ -4,6 +4,7 @@ public class ChasmCheckpointHandler : MonoBehaviour
 {
     [SerializeField] ChasmPuzzle chasmPuzzle;
     [SerializeField] GameObject completedFloorGroup;
+    [SerializeField] bool destroyAfter = true;
 
     [SerializeField] ChasmRoute routeType = ChasmRoute.Main;
 
@@ -25,6 +26,10 @@ public class ChasmCheckpointHandler : MonoBehaviour
             chasmPuzzle.deactivateSpecialButtons();
         }
 
-        Destroy(gameObject);
+        if (destroyAfter)
+        {
+            Destroy(gameObject);
+
+        }
     }
 }

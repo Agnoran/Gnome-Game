@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 3af713fa995e51c488801a9e346cb81e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Beta Milestone Scene.unity
     guid: 2b77516a3012bb34bbd421d8f9aa24ac
   - enabled: 0
@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Matt Scene.unity
     guid: 10e13e85fec20454cb2417cd23ac7681
+  - enabled: 1
+    path: Assets/Scenes/Miguel Scene.unity
+    guid: ef8c262e5b6ed1f4bbb1d6c038d8f5b5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

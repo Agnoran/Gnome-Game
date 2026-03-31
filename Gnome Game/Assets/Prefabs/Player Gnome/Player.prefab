@@ -490,7 +490,7 @@ Transform:
   m_GameObject: {fileID: 3540945191092637329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.309, y: 0.338, z: 0.535}
+  m_LocalPosition: {x: -0.493, y: 0.692, z: 1.002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -777,7 +777,7 @@ MonoBehaviour:
   moveSpeed: 8
   sprintMultiplier: 2
   gravity: 10
-  jumpforce: 3.75
+  jumpforce: 3.25
   rotateSpeed: 15
   visualRoot: {fileID: 5853632437445743936}
   playerController: {fileID: 3531931213495739001}

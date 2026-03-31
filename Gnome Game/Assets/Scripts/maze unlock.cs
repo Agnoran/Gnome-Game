@@ -3,7 +3,7 @@ using UnityEngine;
 public class mazeunlock : MonoBehaviour
 {
     [SerializeField] GameButton unlockButtton;
-    [SerializeField] int requiredGnomes = 4;
+    [SerializeField] int requiredGnomes;
     [SerializeField] TMPro.TextMeshPro gnomeTMP;    //text disp to write to
     [SerializeField] GameObject gnomeTMPCube;       //text disp parent for movement
     int gnomeCount;
@@ -37,7 +37,7 @@ public class mazeunlock : MonoBehaviour
     void DisplayCount()
     {
         gnomeCount = HUD.instance.GetGnomes();
-        gnomeTMP.text = gnomeCount.ToString() + " / 4";
+        gnomeTMP.text = gnomeCount.ToString() + " / " + requiredGnomes;
     }
 
 
