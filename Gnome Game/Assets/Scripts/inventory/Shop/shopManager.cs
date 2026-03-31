@@ -23,9 +23,13 @@ public class shopManager : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
         GenerateShop();
         AddItemBackToShop(item);
         FindAnyObjectByType<shopUIManager>()?.RefreshShopUI();
+=======
+        //GenerateShop();
+>>>>>>> origin/June-Bug-Fixing
     }
 
     void GenerateShop()
@@ -101,7 +105,7 @@ public class shopManager : MonoBehaviour
 
         int sellPrice = GetSellPrice(itemToSell);
 
-        inventoryManager.Instance.RemoveItem(index);
+        inventoryManager.Instance.RemoveItem(itemToSell, 1);
 
         currencyManager.instance.AddGold(sellPrice);
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage,IStatus
 {
+    private Animator animator;
+
     [SerializeField] damage.statusType inflictedStatus;
     [SerializeField] damage.statusType buff;
     [SerializeField] ParticleSystem statusParticles;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         MPOriginal = mp;
         colorOG = model.material.color;
         endStatus();
+        animator = GetComponentInChildren<Animator>();
 
     }
 
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
     void Update()
     {
         handleStatus();
-        updatePlayerUI();
+        //updatePlayerUI();
     }
 
     public void takeDamage(int amount)
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         }
         else
         {
+            animator.SetTrigger("flinch");
             StartCoroutine(playerDamageFlash());
         }
     }
@@ -341,7 +345,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             mp += amount;
         }
-        //updatePlayerUI();
+        updatePlayerUI();
     }
     public void removeMP(int amount)
     {
@@ -349,7 +353,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             mp -= amount;
         }
-        //updatePlayerUI();
+        updatePlayerUI();
     }
     public void Heal(int amount)
     {
@@ -361,6 +365,7 @@ public class PlayerController : MonoBehaviour, IDamage,IStatus
         {
             hp = HPOriginal;
         }
+        updatePlayerUI();
     }
 
     public void breakFreeze()

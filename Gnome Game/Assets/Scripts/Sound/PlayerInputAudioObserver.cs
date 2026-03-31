@@ -24,11 +24,14 @@ public class PlayerAudioObserver : MonoBehaviour
         }
 
         // --- COMBAT/ACTION INPUTS ---
-        if (PlayerInputHandler.Instance.RollInput) AudioManager.instance.Play("Gnome Roll");
-        if (PlayerInputHandler.Instance.MeleeInput) AudioManager.instance.Play("Melee Swing");
+        if(Time.timeScale != 0)
+        {
+            if (PlayerInputHandler.Instance.MeleeInput) AudioManager.instance.Play("Melee Swing");
 
-        // --- SPELL INPUTS ---
-        if (PlayerInputHandler.Instance.ShootInput) AudioManager.instance.Play("Small Magic");
-        if (PlayerInputHandler.Instance.SpecialSpellInput) AudioManager.instance.Play("Big Magic");
+            // --- SPELL INPUTS ---
+            if (PlayerInputHandler.Instance.ShootInput) AudioManager.instance.Play("Small Magic");
+            if (PlayerInputHandler.Instance.SpecialSpellInput) AudioManager.instance.Play("Big Magic");
+
+        }
     }
 }

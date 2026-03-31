@@ -19,17 +19,23 @@ public class HUD : MonoBehaviour
     }
 
     public void updateGnomeTotal(int total)
-    {   
-        gnomeTotal += total; 
+    {
+        gnomeTotal += total;
         //gnomeRemainingText.text = gnomeTotal.ToString();
         gnomeCollectedText.text = gnomeTotal.ToString();
     }
-
     
-    public void UpdateGoldAmount(int total)
+    public int GetGnomes()
     {
-
-        goldAmount += total;
-        Gold.text = goldAmount.ToString();
+        return gnomeTotal;
     }
+
+
+    //public void UpdateGoldAmount(int total)
+    //{
+
+    //    goldAmount += total;
+    //    Gold.text = goldAmount.ToString();
+    //    currencyManager.instance.AddGold(goldAmount);
+    //}
 }

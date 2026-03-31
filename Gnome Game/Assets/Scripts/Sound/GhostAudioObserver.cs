@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class GhostAudioObserver : MonoBehaviour
 {
-    [SerializeField] Renderer modelRenderer;
+    //[SerializeField] Renderer modelRenderer;
+    [SerializeField] Material ghostMaterial;
     private bool hasFlashed = false;
 
     void Update()
     {
-        if (modelRenderer.material.color == Color.red)
+        if (ghostMaterial.color == Color.red)
         {
             if (!hasFlashed)
             {

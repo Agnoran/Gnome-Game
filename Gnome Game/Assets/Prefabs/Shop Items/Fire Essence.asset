@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::shopItem
   displayName: Fire Essence
   description: 
+<<<<<<< HEAD
   icon: {fileID: 0}
   price: 10
   quantity: 1
   itemPrefab: {fileID: 8722208009285834056, guid: 0920fd55bc7fc8548bf81abf93546b0f, type: 3}
   allowedCategories: 00000000
+=======
+  icon: {fileID: 21300000, guid: 4e318ccc07b11b84f96a0917cf03cc2d, type: 3}
+  price: 5
+  quantity: 0
+  itemPrefab: {fileID: 0}
+  allowedCategories: 
+>>>>>>> origin/June-Bug-Fixing
   itemType: 0
   item: {fileID: 11400000, guid: 7e383b51d3cc3274bbc63f653faee530, type: 2}

@@ -9,6 +9,8 @@ using Color = UnityEngine.Color;
 
 public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
 {
+    private Animator animator;
+
     [SerializeField] GameObject alertCube;  //like an exclamation point when seeing player
     float alertTimer;
     [SerializeField] float alertTime;//how long the alert object is visible
@@ -28,6 +30,7 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     bool willExplode;
 
     [SerializeField] Renderer model;
+    //[SerializeField] Material ghostMat;
     UnityEngine.Color colorOG;
 
     Vector3 playerDir;
@@ -66,12 +69,14 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         gameObject.transform.Rotate(0f, 90 * Random.Range(0, 3), 0.0f, Space.Self);
         player = GameObject.FindWithTag("Player");
         alert = false;
         playerInTrigger = false;
         lookTimer = 0;
         colorOG = model.material.color;
+        //colorOG = ghostMat.color;
         moveSpeedOG = moveSpeed;
         isFrozen = false;
         willExplode = false;
@@ -91,9 +96,12 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         }
         if (willExplode)
         {
+            animator.SetTrigger("willExplode");
+
             explosionTimer += Time.deltaTime;
 
             agent.speed = moveSpeed / 2;
+
 
             StartCoroutine(ExplosionFlash());
             if (explosionTimer >= explosionTime)
@@ -156,6 +164,7 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
                 agent.speed = moveSpeed;
                 faceTarget();
                 Alert();
+                animator.SetTrigger("alert");
                 
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
@@ -187,6 +196,8 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     private void OnTriggerExit(Collider other)
     {
         playerInTrigger = false;
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     public void takeDamage(int amount)
@@ -233,21 +244,27 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
     {
         //changes player model to red for 1/10th of a second called whenever damage is applied.
         model.material.color = UnityEngine.Color.red;
+        //ghostMat.color = UnityEngine.Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     IEnumerator ExplosionFlash()
     {
         float explosionInterval = 1f;
         model.material.color = UnityEngine.Color.red;
+        //ghostMat.color = UnityEngine.Color.red;
         yield return new WaitForSeconds(explosionInterval);
         explosionInterval -= 0.1f;
         model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
     void explode()
     {
         Instantiate(explosion,transform.position, transform.rotation);
+        model.material.color = colorOG;
+        //ghostMat.color = colorOG;
         Destroy(gameObject);
     }
 
@@ -269,10 +286,12 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
             if (buff == global::damage.statusType.shield)
             {
                 model.material.color = UnityEngine.Color.lightSkyBlue;
+                //ghostMat.color = UnityEngine.Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
                 model.material.color = UnityEngine.Color.orange;
+                //ghostMat.color = UnityEngine.Color.orange;
                 //moddedAttackSpeed = shootRate / 2;
                 moddedMoveSpeed = moveSpeed / 2;
             }
@@ -459,6 +478,7 @@ public class AlertChaseEnemyAI : MonoBehaviour, IDamage, IStatus
         buffTimer = 0;
         buffDuration = 0;
         model.material.color = colorOG;
+        //ghostMat.color = colorOG;
     }
 
     IEnumerator inflictedStatusDamage(int amount, float rate)

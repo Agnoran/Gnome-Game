@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/June-Bug-Fixing
     private Animator animator;
 
     [Header("Movement")]
@@ -26,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController playerController;
     [SerializeField] Camera mainCamera;
     [SerializeField] PlayerInputHandler inputHandler;
+    [SerializeField] List<AudioClip> movementSounds;
+    AudioSource source;
 
     [Header("Options")]
     [SerializeField] bool isToggleSprint = false;
@@ -42,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+<<<<<<< HEAD
+=======
+        source = GetComponent<AudioSource>();
+>>>>>>> origin/June-Bug-Fixing
         animator.SetBool("idle", true);
 
         if (playerController == null)
@@ -128,10 +138,54 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.x = moveDirection.x * currentSpeed;
         currentMovement.z = moveDirection.z * currentSpeed;
 
+<<<<<<< HEAD
 
+=======
+        //animator control checks: idle, walk, run 
+        bool isWalking = false;
+        if (isWalking && moveInput == Vector2.zero)
+        {
+            source.Stop();
+            source.loop = false;
+            isWalking = false;
+        }
+        if (moveInput != Vector2.zero)
+        {
+            animator.SetBool("idle", false);
+            if (sprintActive)
+            {
+                animator.SetBool("sprint", true);
+            }
+            else
+            {
+                animator.SetBool("sprint", false);
+            }
+            if (!isWalking && !source.isPlaying)
+            {
+                source.PlayOneShot(movementSounds[0]);
+                source.loop = true;
+                isWalking = true;
+            }
+        }
+        else
+        {
+            animator.SetBool("idle", true);
+        }
+
+        //HandleRolling();
+>>>>>>> origin/June-Bug-Fixing
         HandleJumping();
         playerController.Move(currentMovement * Time.deltaTime);
     }
+
+    //void HandleRolling()
+    //{
+    //    if (inputHandler.RollInput)
+    //    {
+    //        animator.SetTrigger("Roll");
+    //    }
+    //}
+
 
     void HandleJumping()
     {
@@ -142,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
             if (inputHandler.JumpInput)
             {
                 currentMovement.y = jumpforce;
+                source.PlayOneShot(movementSounds[1]);
             }
         }
         else

@@ -9,6 +9,9 @@ using UnityEngine.AI;
 
 public class SmallGhost : MonoBehaviour, IDamage, IStatus
 {
+    private Animator animator;
+    [SerializeField] GameObject ghostWithAnims;
+    //[SerializeField] Material ghostMaterial;
 
     private Animator animator;
 
@@ -91,8 +94,15 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         endStatus();
         tpWaitOg = tpWaitTime;
         shootRateOg = shootRate;
+<<<<<<< HEAD
         colorOG = model.color;
         animator = GetComponentInChildren<Animator>();
+=======
+        colorOG = model.material.color;
+        //colorOG = ghostMaterial.color;
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("walk", false);
+>>>>>>> origin/June-Bug-Fixing
     }
 
     // Update is called once per frame
@@ -208,6 +218,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             {
                 DropItem();
             }
+            model.material.color = colorOG;
             Destroy(gameObject);
         }
         else
@@ -215,19 +226,16 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             StartCoroutine(EnemyDamageFlash());
 
 
+<<<<<<< HEAD
             animator.SetTrigger("Flinch");
+=======
+            animator.SetTrigger("flinch");
+>>>>>>> origin/June-Bug-Fixing
             Vector3 kbV3 = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - knockbackDist);
             gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, kbV3, knockbackSpeed);
 
 
-            Vector3 ranPos = Random.insideUnitSphere * tpDist;
-            ranPos += player.transform.position;
-
-            NavMeshHit hit;
-            NavMesh.SamplePosition(ranPos, out hit, tpDist, 1);
-            
-
-            Teleport(hit);
+            roamTimer = 0;
             
         }
     }
@@ -235,9 +243,17 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
     IEnumerator EnemyDamageFlash()
     {
         //changes player model to red for 1/10th of a second called whenever damage is applied.
+<<<<<<< HEAD
         model.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.color = colorOG;
+=======
+        model.material.color = Color.red;
+        //ghostMaterial.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        model.material.color = colorOG;
+        //ghostMaterial.color = colorOG;
+>>>>>>> origin/June-Bug-Fixing
     }
 
 
@@ -245,6 +261,7 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
 
     void Teleport(NavMeshHit target)
     {
+        animator.SetTrigger("disappear");
         StartCoroutine(Disappear());
         agent.SetDestination(target.position);
     }
@@ -255,15 +272,17 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         animator.SetTrigger("Teleport");
 
         yield return new WaitForSeconds(tpInvisDelay);
-
+        ghostWithAnims.SetActive(false);
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        //gameObject.GetComponent<MeshRenderer>().enabled = false;
         isVisible = false;
 
         yield return new WaitForSeconds(tpInvisTime);
 
+        ghostWithAnims.SetActive(true);
+        animator.SetTrigger("reappear");
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //gameObject.GetComponent<MeshRenderer>().enabled = true;
         isVisible = true;
 
         animator.SetTrigger("Reappear");
@@ -286,11 +305,21 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             // MAY CHANGE LATER if shielded change model to a different color to reflect this
             if (buff == global::damage.statusType.shield)
             {
+<<<<<<< HEAD
                 model.color = Color.lightSkyBlue;
             }
             if (buff == global::damage.statusType.hasted)
             {
                 model.color = Color.orange;
+=======
+                model.material.color = Color.lightSkyBlue;
+                //ghostMaterial.color = Color.lightSkyBlue;
+            }
+            if (buff == global::damage.statusType.hasted)
+            {
+                model.material.color = Color.orange;
+                //ghostMaterial.color = Color.orange;
+>>>>>>> origin/June-Bug-Fixing
                 moddedAttackSpeed = shootRate / 2;
                 moddedMoveSpeed = tpWaitTime / 2;
             }
@@ -478,7 +507,12 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
         buff = global::damage.statusType.none;
         buffTimer = 0;
         buffDuration = 0;
+<<<<<<< HEAD
         model.color = colorOG;
+=======
+        model.material.color = colorOG;
+        //ghostMaterial.color = colorOG;
+>>>>>>> origin/June-Bug-Fixing
     }
 
     IEnumerator inflictedStatusDamage(int amount, float rate)
@@ -498,7 +532,12 @@ public class SmallGhost : MonoBehaviour, IDamage, IStatus
             tpWaitTime = tpWaitOg;
             shootRate = shootRateOg;
             isFrozen = false;
+<<<<<<< HEAD
             model.color = colorOG;
+=======
+            model.material.color = colorOG;
+            //ghostMaterial.color = colorOG;
+>>>>>>> origin/June-Bug-Fixing
         }
         inflictedStatus = global::damage.statusType.none;
         statusTimer = 0;

@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::shopItem
   displayName: Poison Essence
   description: 
+<<<<<<< HEAD
   icon: {fileID: 0}
   price: 10
   quantity: 1
   itemPrefab: {fileID: 139550454906187105, guid: b93ed73b0a477a7499745fca1009375c, type: 3}
   allowedCategories: 00000000
+=======
+  icon: {fileID: 21300000, guid: b8fae866747b9f3469e77a6e42017d58, type: 3}
+  price: 4
+  quantity: 0
+  itemPrefab: {fileID: 0}
+  allowedCategories: 
+>>>>>>> origin/June-Bug-Fixing
   itemType: 0
   item: {fileID: 11400000, guid: a3e9b8df7bb70f6489ae0f15e1bb3c31, type: 2}

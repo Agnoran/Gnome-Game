@@ -26,7 +26,11 @@ public class WorldController : MonoBehaviour
     [SerializeField] GameObject menuInventory;
     [SerializeField] GameObject menuWinGame;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject menuShop;
+    public GameObject menuShop;
+
+    [Header("Inventory UI")]
+    public GameObject inventorySlotPrefab;
+    public Transform inventorySlotContainer;
 
     [Header("Extra Menus")]
     [SerializeField] GameObject menuSettings;
@@ -37,6 +41,7 @@ public class WorldController : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject player;
     [SerializeField] PlayerInputHandler inputHandler;
+    public shopManager shop;
 
     public bool isPaused;
     public bool invOpen;
@@ -74,6 +79,7 @@ public class WorldController : MonoBehaviour
 
         pauseInputHeld = false;
         inventoryInputHeld = false;
+        shop = GameObject.FindWithTag("Shop").GetComponent<shopManager>();
 
         player = GameObject.FindWithTag("Player");
         inputHandler = player.GetComponentInChildren<PlayerInputHandler>();
@@ -89,6 +95,10 @@ public class WorldController : MonoBehaviour
 
         HandlePauseInput();
         HandleInventoryInput();
+        if(IsMenuOpen())
+        {
+            Time.timeScale = 0;
+        }
         
     }
 
@@ -241,6 +251,21 @@ public class WorldController : MonoBehaviour
     public void StateOpenInventory()
     {
         CloseAllMenuStates();
+        foreach (Transform child in inventorySlotContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        var inventory = inventoryManager.Instance.inventory;
+
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            GameObject slotObject = Instantiate(inventorySlotPrefab, inventorySlotContainer);
+
+            SellSlotUI slotUI = slotObject.GetComponent<SellSlotUI>();
+
+            slotUI.Setup(shop, i);
+        }
 
         invOpen = true;
         SetActiveMenu(menuInventory);
@@ -262,6 +287,8 @@ public class WorldController : MonoBehaviour
         isPaused = false;
         craftOpen = false;
         menuActive.SetActive(false);
+        Time.timeScale = timeScaleOrig;
+
     }
 
     public void StateInvFromPause()
@@ -312,6 +339,7 @@ public class WorldController : MonoBehaviour
 
     public void StateCloseShop()
     {
+        Time.timeScale = timeScaleOrig;
         shopOpen = false;
         SetActiveMenu(null);
         DontDestroyOnLoad(gameObject);
